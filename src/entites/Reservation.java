@@ -9,25 +9,28 @@ public class Reservation {
     int idUser;
     int idFacture;
     int idP;
+    int idSalle;
 
     public Reservation() {
     }
 
-    public Reservation(Date dateReservation, String validation, int idUser, int idFacture, int idP) {
+    public Reservation(Date dateReservation, String validation, int idUser, int idFacture, int idP, int idSalle) {
         this.dateReservation = dateReservation;
         this.validation = validation;
         this.idUser = idUser;
         this.idFacture = idFacture;
         this.idP = idP;
+        this.idSalle = idSalle;
     }
 
-    public Reservation(int id, Date dateReservation, String validation, int idUser, int idFacture, int idP) {
+    public Reservation(int id, Date dateReservation, String validation, int idUser, int idFacture, int idP, int idSalle) {
         this.id = id;
         this.dateReservation = dateReservation;
         this.validation = validation;
         this.idUser = idUser;
         this.idFacture = idFacture;
         this.idP = idP;
+        this.idSalle = idSalle;
     }
 
     public int getId() {
@@ -78,15 +81,13 @@ public class Reservation {
         this.idP = idP;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", dateReservation=" + dateReservation +
-                ", validation='" + validation + '\'' +
-                ", idUer=" + idUser +
-                ", idFacture=" + idFacture +
-                ", idP=" + idP +
-                '}';
+    public int getIdSalle() {
+        return idSalle;
     }
+
+    public void setIdSalle(int idSalle) {
+        this.idSalle = idSalle;
+    }
+
+
 }

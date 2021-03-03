@@ -1,10 +1,8 @@
 package services;
 
-import entites.Film;
 import entites.Reservation;
 import iServices.IServiceReservation;
 import utils.SingletonConnection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
@@ -25,7 +23,7 @@ public class ReservationService implements IServiceReservation {
 
     @Override
     public void addReservation(Reservation r) {
-        String req = "insert into reservation (dateReservation, validation, idUser, idFacture, idP) values (?,?,?,?,?)";
+        String req = "insert into reservation (dateReservation, validation, idUser, idFacture, idP, idSalle) values (?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
@@ -33,6 +31,7 @@ public class ReservationService implements IServiceReservation {
             pst.setInt(3, r.getIdUser());
             pst.setInt(4, r.getIdFacture());
             pst.setInt(5, r.getIdP());
+            pst.setInt(6, r.getIdSalle());
 
             pst.executeUpdate();
 
@@ -42,7 +41,7 @@ public class ReservationService implements IServiceReservation {
     }
 
     public void editReservation(Reservation r){
-        String req = "update reservation SET dateReservation= ?, validation=?, idUser=?, idFacture=?, idP=? where id=?";
+        String req = "update reservation SET dateReservation= ?, validation=?, idUser=?, idFacture=?, idP=?, idSalle=? where id=?";
         try {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
@@ -50,7 +49,8 @@ public class ReservationService implements IServiceReservation {
             pst.setInt(3, r.getIdUser());
             pst.setInt(4, r.getIdFacture());
             pst.setInt(5, r.getIdP());
-            pst.setInt(6, r.getId());
+            pst.setInt(6, r.getIdSalle());
+            pst.setInt(7, r.getId());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -72,7 +72,8 @@ public class ReservationService implements IServiceReservation {
                         rs.getString("validation"),
                         rs.getInt("idUser"),
                         rs.getInt("idFacture"),
-                        rs.getInt("idP")
+                        rs.getInt("idP"),
+                        rs.getInt("idSalle")
                 ));
             }
 
@@ -94,5 +95,29 @@ public class ReservationService implements IServiceReservation {
         } catch (SQLException ex) {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<Reservation> reservationSalleList() {
+        String req = "select * from planning p INNER JOIN salledecinema s ON p.idSalle=s.id INNER JOIN film f ON f.idSalle = s.id";
+
+        List<Reservation> list = new ArrayList<>();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                list.add(new Reservation(rs.getInt("id"),
+                        rs.getDate("dateReservation"),
+                        rs.getString("validation"),
+                        rs.getInt("idUser"),
+                        rs.getInt("idFacture"),
+                        rs.getInt("idP"),
+                        rs.getInt("idSalle")
+                ));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 }

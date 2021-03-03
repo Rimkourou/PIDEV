@@ -12,8 +12,11 @@ public class Paiement {
     public Paiement() {
     }
 
-    public Paiement(int id) {
-        this.id = id;
+    public Paiement(String numCarte, int code, Date date, String codePostale) {
+        this.numCarte = numCarte;
+        this.code = code;
+        this.date = date;
+        this.codePostale = codePostale;
     }
 
     public Paiement(int id, String numCarte, int code, Date date, String codePostale) {

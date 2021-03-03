@@ -1,12 +1,16 @@
 import entites.Film;
+import entites.Paiement;
 import entites.Reservation;
 import services.FilmService;
+import services.PaiementService;
 import services.ReservationService;
 
+import java.text.ParseException;
 import java.util.List;
 
 public class testDB {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws ParseException {
 
         /**********testAddFilm************/
         Film f = new Film("test", "drama", "aut", "Documentaire", "Animation", 1, 3);
@@ -24,28 +28,40 @@ public class testDB {
             System.out.println(fl);
         }*/
         /**********testListFilm************/
-        List<Film> filmSalleList = fs.filmSalleList();
+        /*List<Film> filmSalleList = fs.filmSalleList();
         System.out.println("size : " + filmSalleList.size());
         for (Film fl:filmSalleList) {
             System.out.println(fl);
-        }
+        }*/
+        /**********testSearchFilm************/
+        /*List<Film> list = fs.SearchFilmByTitle("test");
+        for(Film film:list) {
+            System.out.println(film.toString());
+        }*/
 
 
 
 
         /**********testAddReservation************/
-        /*Reservation r = new Reservation(02-06-2010,"validé", 1, 1, 1);
-        Reservation r1 = new Reservation(1,02-06-2010,"non validé", 1, 2, 1);
+        java.util.Date date_util = new java.util.Date();
+        Reservation r = new Reservation( new java.sql.Date(date_util.getTime()),"non validé", 2, 1, 1,1);
+        Reservation r2 = new Reservation(1,new java.sql.Date(date_util.getTime()),"non validé", 1, 2, 1,1);
         ReservationService rs = new ReservationService();
-        rs.addReservation(r);*/
+        //rs.addReservation(r);
         /**********testEditReservation************/
-        //rs.editReservation(r1);
+        //rs.editReservation(r2);
         /**********testDeleteFilm************/
-        //rs.deleteReservation(2);
+        //rs.deleteReservation(7);
         /**********testListReservation************/
         /*List<Reservation> reservationList = rs.reservationList();
         System.out.println("size : " + reservationList.size());
         for (Reservation rl:reservationList) {
+            System.out.println(rl.toString());
+        }*/
+        /**********testListSalleReservation************/
+        /*List<Reservation> reservationSalleList = rs.reservationSalleList();
+        System.out.println("size : " + reservationSalleList.size());
+        for (Reservation rl:reservationSalleList) {
             System.out.println(rl);
         }*/
 
@@ -53,10 +69,11 @@ public class testDB {
 
 
         /**********testAddPaiement************/
-        /*Paiement p = new Paiement("3333333",33, 02-06-2010,"Tunis 2051");
-        Paiement p1 = new Paiement(1,"44444",44, 02-06-2010,"Tunis 2000");
+        /*java.util.Date date_util = new java.util.Date();
+        Paiement p = new Paiement("3333333",33, new java.sql.Date(date_util.getTime()),"Tunis 2051");
+        Paiement p1 = new Paiement(1,"44444",44, new java.sql.Date(date_util.getTime()),"Tunis 2000");
         PaiementService ps = new PaiementService();
-        ps.addPaiement(p);*/
+        ps.addPaiement(p1);*/
         /**********testEditPaiement************/
         //ps.editPaiement(p1);
         /**********testDeletePaiement************/

@@ -128,4 +128,33 @@ public class FilmService implements IServiceFilm {
         return list;
 
     }
+
+    public List<Film> SearchFilmByTitle(String titre) {
+        String req = "select * from film where titre like ?";
+        List<Film> list = new ArrayList<Film>();
+        try {
+
+            pst = conn.prepareStatement(req);
+            pst.setString(1,"%" + titre + "%");
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(
+                        new Film(
+                                rs.getInt("id"),
+                                rs.getString("titre"),
+                                rs.getString("description"),
+                                rs.getString("auteur"),
+                                rs.getString("categorie"),
+                                rs.getString("genre"),
+                                rs.getInt("idUser"),
+                                rs.getInt("idSalle")
+                        )
+                );
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FilmService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

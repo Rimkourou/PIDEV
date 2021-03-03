@@ -10,4 +10,5 @@ public interface IServiceReservation {
     void editReservation(Reservation r);
     List<Reservation> reservationList();
     void deleteReservation(int idR);
+    List<Reservation> reservationSalleList();
 }

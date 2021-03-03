@@ -10,4 +10,5 @@ public interface IServiceFilm{
     List<Film> filmList();
     void deleteFilm(int id);
     List<Film> filmSalleList();
+    List<Film> SearchFilmByTitle(String titre);
 }
