@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="824.0" style="-fx-background-color: #989887;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="table_users.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="pane_user" prefHeight="550.0" prefWidth="823.0">
+         <children>
+            <TableView fx:id="table_users" layoutX="222.0" layoutY="112.0" onMouseClicked="#getSelected" prefHeight="438.0" prefWidth="597.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-3.0">
+              <columns>
+                <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="col_cin" prefWidth="75.0" text="CIN" />
+                <TableColumn fx:id="col_nom" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="col_prenom" prefWidth="75.0" text="Prenom" />
+                  <TableColumn fx:id="col_role" prefWidth="114.0" text="Role" />
+                  <TableColumn fx:id="col_email" prefWidth="107.0" text="Email" />
+                  <TableColumn fx:id="col_password" prefWidth="98.0" text="Password" />
+              </columns>
+            </TableView>
+            <AnchorPane prefHeight="550.0" prefWidth="230.0" style="-fx-background-color: #141414;">
+               <children>
+                  <Button layoutX="27.0" layoutY="376.0" mnemonicParsing="false" onAction="#Add_users" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="424.0" mnemonicParsing="false" onAction="#Edit" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Modifier" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="25.0" layoutY="472.0" mnemonicParsing="false" onAction="#Delete" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Supprimer" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txt_nom" layoutX="25.0" layoutY="172.0" prefWidth="180.0" promptText="Nom" />
+                  <TextField fx:id="txt_password" layoutX="26.0" layoutY="329.0" prefWidth="180.0" promptText="Password" />
+                  <TextField fx:id="txt_email" layoutX="25.0" layoutY="289.0" prefWidth="180.0" promptText="Email" />
+                  <TextField fx:id="txt_role" layoutX="25.0" layoutY="250.0" prefWidth="180.0" promptText="Role" />
+                  <TextField fx:id="txt_id" layoutX="25.0" layoutY="90.0" prefHeight="25.0" prefWidth="180.0" promptText="ID" />
+                  <TextField fx:id="txt_cin" layoutX="26.0" layoutY="130.0" prefHeight="25.0" prefWidth="180.0" promptText="CIN" />
+                  <TextField fx:id="txt_prenom" layoutX="25.0" layoutY="210.0" prefWidth="180.0" promptText="Prenom" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="10.0" layoutY="53.0" text="Table des utilisateurs:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_promotion" layoutY="-1.0" prefHeight="551.0" prefWidth="824.0" visible="false">
+         <children>
+            <TableView fx:id="table_promotion" layoutX="226.0" layoutY="113.0" onMouseClicked="#getSelectedP" prefHeight="438.0" prefWidth="597.0">
+              <columns>
+                <TableColumn fx:id="col_idP" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="col_critere" prefWidth="75.0" text="Critére" />
+                <TableColumn fx:id="col_DateD" prefWidth="166.0" text="Date Debut" />
+                  <TableColumn fx:id="col_DateF" prefWidth="114.0" text="Date Fin" />
+                  <TableColumn fx:id="col_id_user" prefWidth="167.0" text="IdAdmin" />
+              </columns>
+            </TableView>
+            <AnchorPane layoutX="-6.0" prefHeight="551.0" prefWidth="236.0" style="-fx-background-color: #141414;">
+               <children>
+                  <Label layoutX="28.0" layoutY="67.0" text="Table des promotion:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txt_dateD" layoutX="29.0" layoutY="197.0" prefWidth="180.0" promptText="Date début" />
+                  <TextField fx:id="txt_dateF" layoutX="29.0" layoutY="239.0" prefWidth="180.0" promptText="Date fin" />
+                  <TextField fx:id="txt_critere" layoutX="30.0" layoutY="153.0" prefHeight="25.0" prefWidth="180.0" promptText="Critére" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="25.0" layoutY="371.0" mnemonicParsing="false" onAction="#Add_Promotions" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="24.0" layoutY="419.0" mnemonicParsing="false" onAction="#EditP" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="23.0" layoutY="467.0" mnemonicParsing="false" onAction="#DeleteP" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txt_id1" layoutX="23.0" layoutY="112.0" prefHeight="25.0" prefWidth="180.0" promptText="ID" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_salles" prefHeight="550.0" prefWidth="831.0" visible="false">
+         <children>
+            <AnchorPane prefHeight="550.0" prefWidth="230.0" style="-fx-background-color: #141414;" />
+            <TableView layoutX="230.0" layoutY="112.0" prefHeight="438.0" prefWidth="470.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <Button layoutX="28.0" layoutY="375.0" mnemonicParsing="false" onAction="#Add_users" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="27.0" layoutY="423.0" mnemonicParsing="false" onAction="#Edit" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="26.0" layoutY="471.0" mnemonicParsing="false" onAction="#Delete" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txt_nom11" layoutX="26.0" layoutY="162.0" prefWidth="180.0" promptText="Nom" />
+            <TextField fx:id="txt_password11" layoutX="26.0" layoutY="204.0" prefWidth="180.0" promptText="Date" />
+            <TextField fx:id="txt_id11" layoutX="26.0" layoutY="116.0" prefHeight="25.0" prefWidth="180.0" promptText="ID" />
+         </children>
+      </AnchorPane>
+      <HBox layoutX="230.0" layoutY="6.0" prefHeight="32.0" prefWidth="470.0" style="-fx-background-color: #141414;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#user_paneShow" prefHeight="39.0" prefWidth="104.0" style="-fx-border-color: #141414; -fx-background-color: #141414; -fx-border-width: 2;" text="Utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#promotion_paneShow" prefHeight="39.0" prefWidth="104.0" style="-fx-border-color: #141414; -fx-background-color: #141414; -fx-border-width: 2;" text="Promotion" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#salles_paneShow" prefHeight="39.0" prefWidth="129.0" style="-fx-border-color: #141414; -fx-background-color: #141414; -fx-border-width: 2;" text="Salles" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="140.0" style="-fx-border-color: #141414; -fx-background-color: #141414; -fx-border-width: 2;" text="Spectacles" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
