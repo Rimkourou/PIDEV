@@ -6,7 +6,6 @@
 package Services;
 
 import Models.Categorie;
-import Models.Produit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +29,7 @@ public class ServiceCategorie implements IService<Categorie>{
     public void ajouter(Categorie t) {
         try {
             String requete = "INSERT INTO categorie (id, nom) VALUES (?,?)";
-            PreparedStatement pst = cnx.prepareStatement(requete);
+            PreparedStatement pst = cnx.prepareStatement(requete);//analyse de requet
             pst.setInt(1, t.getId());
             pst.setString(2, t.getNom());
             pst.executeUpdate();

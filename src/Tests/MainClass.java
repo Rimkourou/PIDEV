@@ -27,23 +27,26 @@ public class MainClass {
         
         Categorie C = new Categorie(1,"AFFICHE");
         Categorie C1 = new Categorie(1,"A");
+        Categorie C2 = new Categorie(2,"T-shirt");
         
         Produit P = new Produit(1,"affiche_Xmen,",5,40,1);
-        Produit P1 = new Produit(2,"affiche_Winx,",10,30,1);
-
-        //S.ajouter(C);
-        //S.afficher().forEach(System.out::println);
+        Produit P1 = new Produit(1,"affiche_Winx,",10,30,1);
+        Produit P2 = new Produit(3,"T-shirt_ironman,",20,20,2);
+        //S.ajouter(C2);
         //S.modifier(C1);
+//        S.supprimer(C2);
+//        S.afficher().forEach(System.out::println);
+        
         //S.afficher().forEach(System.out::println);
-        //S.supprimer(C);
-        SP.ajouter(P1);
+        
+        //SP.ajouter(P2);
         //SP.afficher().forEach(System.out::println);
         //SP.modifier(P1);
-        //SP.supprimer(P1);
+        //SP.supprimer(P);
         //S.rechercheParId(1);
         //S.rechercheParId(1);
         //SP.rechercheParId(1);
-        //SP.RechercheParNom("affiche_Xmen,").forEach(System.out::println);
+        //SP.RechercheParNom("T-shirt_ironman,").forEach(System.out::println);
         SP.getTrierParNom().forEach(System.out::println);
     }
     
