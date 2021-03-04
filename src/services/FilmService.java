@@ -157,4 +157,33 @@ public class FilmService implements IServiceFilm {
         }
         return list;
     }
+
+    public List<Film> SearchFilmByAuthor(String auteur) {
+        String req = "select * from film where auteur like ?";
+        List<Film> list = new ArrayList<Film>();
+        try {
+
+            pst = conn.prepareStatement(req);
+            pst.setString(1,"%" + auteur + "%");
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(
+                        new Film(
+                                rs.getInt("id"),
+                                rs.getString("titre"),
+                                rs.getString("description"),
+                                rs.getString("auteur"),
+                                rs.getString("categorie"),
+                                rs.getString("genre"),
+                                rs.getInt("idUser"),
+                                rs.getInt("idSalle")
+                        )
+                );
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FilmService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

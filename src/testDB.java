@@ -13,17 +13,27 @@ public class testDB {
     public static void main(String[] args) throws ParseException {
 
         /**********testAddFilm************/
-        Film f = new Film("test", "drama", "aut", "Documentaire", "Animation", 1, 3);
-        Film f1 = new Film(1,"title", "des", "aut", "Documentaire", "Animation", 1, 1);
+
+        Film f = new Film("tunis", "drama", "aut", "Documentaire", "Animation", 1, 3);
+        Film f1 = new Film(1,"testsuivie", "des", "mohamed", "Documentaire", "Animation", 1, 1);
         FilmService fs= new FilmService();
-        //fs.addFilm(f);
+        List<Film> filmList = fs.filmList();
+        //fs.addFilm(f1);
+        /*for (Film fl:filmList) {
+            System.out.println(fl);
+        }*/
         /**********testEditFilm************/
         //fs.editFilm(f1);
+        /*for (Film fl:filmList) {
+            System.out.println(fl);
+        }*/
         /**********testDeleteFilm************/
-        //fs.deleteFilm(4);
+        //fs.deleteFilm(9);
+        /*for (Film fl:filmList) {
+            System.out.println(fl);
+        }*/
         /**********testListFilm************/
-        /*List<Film> filmList = fs.filmList();
-        System.out.println("size : " + filmList.size());
+        /*System.out.println("size : " + filmList.size());
         for (Film fl:filmList) {
             System.out.println(fl);
         }*/
@@ -33,8 +43,13 @@ public class testDB {
         for (Film fl:filmSalleList) {
             System.out.println(fl);
         }*/
-        /**********testSearchFilm************/
+        /**********testSearchFilmByTitle************/
         /*List<Film> list = fs.SearchFilmByTitle("test");
+        for(Film film:list) {
+            System.out.println(film.toString());
+        }*/
+        /**********testSearchFilmByAuthor************/
+        /*List<Film> list = fs.SearchFilmByAuthor("mohamed");
         for(Film film:list) {
             System.out.println(film.toString());
         }*/
@@ -44,14 +59,24 @@ public class testDB {
 
         /**********testAddReservation************/
         java.util.Date date_util = new java.util.Date();
-        Reservation r = new Reservation( new java.sql.Date(date_util.getTime()),"non validé", 2, 1, 1,1);
-        Reservation r2 = new Reservation(1,new java.sql.Date(date_util.getTime()),"non validé", 1, 2, 1,1);
+        Reservation r = new Reservation( new java.sql.Date(date_util.getTime()),"validé", 2, 1, 1,1);
+        Reservation r2 = new Reservation(1,new java.sql.Date(date_util.getTime())," non validé", 1, 2, 1,1);
         ReservationService rs = new ReservationService();
+        List<Reservation> reservationList = rs.reservationList();
         //rs.addReservation(r);
+        /*for (Reservation rl:reservationList) {
+            System.out.println(rl.toString());
+        }*/
         /**********testEditReservation************/
         //rs.editReservation(r2);
+        /*for (Reservation rl:reservationList) {
+            System.out.println(rl.toString());
+        }*/
         /**********testDeleteFilm************/
-        //rs.deleteReservation(7);
+        //rs.deleteReservation(4);
+        /*for (Reservation rl:reservationList) {
+            System.out.println(rl.toString());
+        }*/
         /**********testListReservation************/
         /*List<Reservation> reservationList = rs.reservationList();
         System.out.println("size : " + reservationList.size());
@@ -59,11 +84,11 @@ public class testDB {
             System.out.println(rl.toString());
         }*/
         /**********testListSalleReservation************/
-        /*List<Reservation> reservationSalleList = rs.reservationSalleList();
+        List<Reservation> reservationSalleList = rs.reservationSalleList();
         System.out.println("size : " + reservationSalleList.size());
         for (Reservation rl:reservationSalleList) {
             System.out.println(rl);
-        }*/
+        }
 
 
 
@@ -71,9 +96,9 @@ public class testDB {
         /**********testAddPaiement************/
         /*java.util.Date date_util = new java.util.Date();
         Paiement p = new Paiement("3333333",33, new java.sql.Date(date_util.getTime()),"Tunis 2051");
-        Paiement p1 = new Paiement(1,"44444",44, new java.sql.Date(date_util.getTime()),"Tunis 2000");
-        PaiementService ps = new PaiementService();
-        ps.addPaiement(p1);*/
+        Paiement p1 = new Paiement(1,"55555",44, new java.sql.Date(date_util.getTime()),"Tunis 2000");
+        PaiementService ps = new PaiementService();*/
+        //ps.addPaiement(p);
         /**********testEditPaiement************/
         //ps.editPaiement(p1);
         /**********testDeletePaiement************/

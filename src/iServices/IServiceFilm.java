@@ -11,4 +11,5 @@ public interface IServiceFilm{
     void deleteFilm(int id);
     List<Film> filmSalleList();
     List<Film> SearchFilmByTitle(String titre);
+    List<Film> SearchFilmByAuthor(String auteur);
 }
