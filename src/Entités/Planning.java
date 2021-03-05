@@ -4,24 +4,32 @@ import java.util.Date;
 
 public class Planning {
     private int id;
-    private int idFilm;
-    private int idSpectacle;
+    private Date date;
     private Date dateDebut;
     private Date dateFin;
-    private Date date;
-
+    private int idFilm;
+    private int idSpectacle;
 
     public Planning() {
     }
 
-    public Planning(int id, int idFilm, int idSpectacle, Date dateDebut, Date dateFin, Date date) {
-        this.id = id;
-        this.idFilm = idFilm;
-        this.idSpectacle = idSpectacle;
+    public Planning(Date date, Date dateDebut, Date dateFin, int idFilm, int idSpectacle) {
+        this.date = date;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
-        this.date = date;
+        this.idFilm = idFilm;
+        this.idSpectacle = idSpectacle;
     }
+
+    public Planning(int id, Date date, Date dateDebut, Date dateFin, int idFilm, int idSpectacle) {
+        this.id = id;
+        this.date = date;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.idFilm = idFilm;
+        this.idSpectacle = idSpectacle;
+    }
+
 
     public int getId() {
         return id;
@@ -31,20 +39,12 @@ public class Planning {
         this.id = id;
     }
 
-    public int getIdFilm() {
-        return idFilm;
+    public Date getDate() {
+        return date;
     }
 
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    public int getIdSpectacle() {
-        return idSpectacle;
-    }
-
-    public void setIdSpectacle(int idSpectacle) {
-        this.idSpectacle = idSpectacle;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Date getDateDebut() {
@@ -63,25 +63,36 @@ public class Planning {
         this.dateFin = dateFin;
     }
 
-    public Date getDate() {
-        return date;
+    public int getIdFilm() {
+        return idFilm;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setIdFilm(int idFilm) {
+        this.idFilm = idFilm;
+    }
+
+    public int getIdSpectacle() {
+        return idSpectacle;
+    }
+
+    public void setIdSpectacle(int idSpectacle) {
+        this.idSpectacle = idSpectacle;
     }
 
     @Override
     public String toString() {
         return "Planning{" +
                 "id=" + id +
-                ", idFilm=" + idFilm +
-                ", idSpectacle=" + idSpectacle +
+                ", date=" + date +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
-                ", date=" + date +
+                ", idFilm=" + idFilm +
+                ", idSpectacle=" + idSpectacle +
                 '}';
     }
 }
+
+
+
 
 
