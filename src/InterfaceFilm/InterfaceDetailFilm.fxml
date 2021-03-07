@@ -204,12 +204,12 @@
                               <Insets left="20.0" top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Rating>
+                        <Rating fx:id="rating">
                            <VBox.margin>
                               <Insets left="20.0" top="20.0" />
                            </VBox.margin>
                         </Rating>
-                        <Label text="Label">
+                        <Label fx:id="test" text="Rating:">
                            <VBox.margin>
                               <Insets left="20.0" top="20.0" />
                            </VBox.margin>
