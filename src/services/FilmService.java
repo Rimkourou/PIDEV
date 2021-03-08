@@ -2,9 +2,10 @@ package services;
 
 import iServices.IServiceFilm;
 import entites.Film;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.SingletonConnection;
 
-import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class FilmService implements IServiceFilm {
 
     @Override
     public void addFilm(Film f) {
-        String req = "insert into film (titre, description, auteur, categorie, genre, idUser, idSalle) values (?,?,?,?,?,?,?)";
+        String req = "insert into film (titre, description, auteur, categorie, genre, idSalle) values (?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, f.getTitre());
@@ -31,9 +32,8 @@ public class FilmService implements IServiceFilm {
             pst.setString(3, f.getAuteur());
             pst.setString(4, f.getCategorie());
             pst.setString(5, f.getGenre());
-            pst.setInt(6, f.getIdUser());
-            pst.setInt(7, f.getIdSalle());
-
+            //pst.setInt(6, f.getIdUser());
+            pst.setInt(6, f.getIdSalle());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -42,7 +42,7 @@ public class FilmService implements IServiceFilm {
     }
 
     public void editFilm(Film f){
-        String req = "update film SET titre= ?, description=?, auteur=?, categorie=?, genre=?, idUser=?, idSalle=? where id=?";
+        String req = "update film SET titre= ?, description=?, auteur=?, categorie=?, genre=?, idSalle=? where id=?";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, f.getTitre());
@@ -50,9 +50,9 @@ public class FilmService implements IServiceFilm {
             pst.setString(3, f.getAuteur());
             pst.setString(4, f.getCategorie());
             pst.setString(5, f.getGenre());
-            pst.setInt(6, f.getIdUser());
-            pst.setInt(7, f.getIdSalle());
-            pst.setInt(8, f.getId());
+            //pst.setInt(6, f.getIdUser());
+            pst.setInt(6, f.getIdSalle());
+            pst.setInt(7, f.getId());
 
             pst.executeUpdate();
 
@@ -62,10 +62,10 @@ public class FilmService implements IServiceFilm {
     }
 
     @Override
-    public List <Film>filmList() {
+    public ObservableList<Film> filmList() {
         String req = "select * from film";
 
-        List<Film> list = new ArrayList<>();
+        ObservableList<Film> list = FXCollections.observableArrayList();
         try {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
@@ -76,7 +76,7 @@ public class FilmService implements IServiceFilm {
                         rs.getString("auteur"),
                         rs.getString("categorie"),
                         rs.getString("genre"),
-                        rs.getInt("idUser"),
+                        //rs.getInt("idUser"),
                         rs.getInt("idSalle")
                 ));
             }
@@ -117,7 +117,7 @@ public class FilmService implements IServiceFilm {
                         rs.getString("auteur"),
                         rs.getString("categorie"),
                         rs.getString("genre"),
-                        rs.getInt("idUser"),
+                        //rs.getInt("idUser"),
                         rs.getInt("idSalle")
                 ));
             }
@@ -146,7 +146,7 @@ public class FilmService implements IServiceFilm {
                                 rs.getString("auteur"),
                                 rs.getString("categorie"),
                                 rs.getString("genre"),
-                                rs.getInt("idUser"),
+                                //rs.getInt("idUser"),
                                 rs.getInt("idSalle")
                         )
                 );
@@ -175,7 +175,7 @@ public class FilmService implements IServiceFilm {
                                 rs.getString("auteur"),
                                 rs.getString("categorie"),
                                 rs.getString("genre"),
-                                rs.getInt("idUser"),
+                                //rs.getInt("idUser"),
                                 rs.getInt("idSalle")
                         )
                 );

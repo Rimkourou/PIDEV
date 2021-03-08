@@ -98,7 +98,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../DashboardFilm/DashboardFilm.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
                </font>
@@ -111,7 +111,7 @@
                   <Insets left="145.0" top="30.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #F0F0F0;" stylesheets="@../DashboardFilm/DashboardFilm.css" text="Sign up" textAlignment="CENTER" textFill="#2c3e50">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #F0F0F0;" stylesheets="@../Dashboard/DashboardFilm.css" text="Sign up" textAlignment="CENTER" textFill="#2c3e50">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
                </font>
@@ -137,7 +137,7 @@
                         <Insets left="15.0" top="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="CATEGORY" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../DashboardFilm/DashboardFilm.css">
+                  <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="CATEGORY" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../Dashboard/DashboardFilm.css">
                      <styleClass>
                         <String fx:value="button_settings" />
                         <String fx:value="cursor-hand" />
@@ -147,7 +147,7 @@
                         <Insets left="15.0" top="20.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="TYPE" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../DashboardFilm/DashboardFilm.css">
+                  <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="TYPE" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../Dashboard/DashboardFilm.css">
                      <styleClass>
                         <String fx:value="button_settings" />
                         <String fx:value="cursor-hand" />

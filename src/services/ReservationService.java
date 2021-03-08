@@ -2,6 +2,8 @@ package services;
 
 import entites.Reservation;
 import iServices.IServiceReservation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.SingletonConnection;
 import javax.swing.*;
 import java.awt.*;
@@ -59,10 +61,10 @@ public class ReservationService implements IServiceReservation {
     }
 
     @Override
-    public List<Reservation> reservationList() {
+    public ObservableList<Reservation> reservationList() {
         String req = "select * from Reservation";
 
-        List<Reservation> list = new ArrayList<>();
+        ObservableList<Reservation> list =  FXCollections.observableArrayList();
         try {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);

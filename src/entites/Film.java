@@ -7,30 +7,30 @@ public class Film {
     private String auteur;
     private String categorie;
     private String genre;
-    int idUser;
+    //int idUser;
     int idSalle;
 
     public Film() {
     }
 
-    public Film(String titre, String description, String auteur, String categorie, String genre, int idUser, int idSalle) {
+    public Film(String titre, String description, String auteur, String categorie, String genre, int idSalle) {
         this.titre = titre;
         this.description = description;
         this.auteur = auteur;
         this.categorie = categorie;
         this.genre = genre;
-        this.idUser = idUser;
+        //this.idUser = idUser;
         this.idSalle = idSalle;
     }
 
-    public Film(int id, String titre, String description, String auteur, String categorie, String genre, int idUser, int idSalle) {
+    public Film(int id, String titre, String description, String auteur, String categorie, String genre, int idSalle) {
         this.id = id;
         this.titre = titre;
         this.description = description;
         this.auteur = auteur;
         this.categorie = categorie;
         this.genre = genre;
-        this.idUser = idUser;
+        //this.idUser = idUser;
         this.idSalle = idSalle;
     }
 
@@ -58,9 +58,9 @@ public class Film {
         return genre;
     }
 
-    public int getIdUser() {
+    /*public int getIdUser() {
         return idUser;
-    }
+    }*/
 
     public int getIdSalle() {
         return idSalle;
@@ -90,9 +90,9 @@ public class Film {
         this.genre = genre;
     }
 
-    public void setIdUser(int idUser) {
+    /*public void setIdUser(int idUser) {
         this.idUser = idUser;
-    }
+    }*/
 
     public void setIdSalle(int idSalle) {
         this.idSalle = idSalle;
@@ -100,6 +100,6 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", auteur=" + auteur + ", categorie=" + categorie + ", genre=" + genre + ", idUser=" + idUser + ", idSalle=" + idSalle + '}';
+        return "Film{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", auteur=" + auteur + ", categorie=" + categorie + ", genre=" + genre + ", idSalle=" + idSalle + '}';
     }
 }
