@@ -1,6 +1,5 @@
 package Dashboard;
 
-import entites.Film;
 import entites.Reservation;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -9,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
-import services.FilmService;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -18,7 +16,6 @@ import javafx.scene.control.TextField;
 import services.ReservationService;
 
 import javax.swing.*;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
