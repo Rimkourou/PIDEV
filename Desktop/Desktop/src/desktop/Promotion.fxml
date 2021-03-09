@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane_promotion" prefHeight="551.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desktop.PromotionController">
+   <children>
+      <TableView fx:id="table_promotion" layoutX="226.0" layoutY="113.0" onMouseClicked="#getSelected" prefHeight="438.0" prefWidth="597.0">
+         <columns>
+            <TableColumn fx:id="col_idP" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="col_critere" prefWidth="75.0" text="Critére" />
+            <TableColumn fx:id="col_DateD" prefWidth="166.0" text="Date Debut" />
+            <TableColumn fx:id="col_DateF" prefWidth="114.0" text="Date Fin" />
+            <TableColumn fx:id="col_id_user" prefWidth="167.0" text="IdAdmin" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="-6.0" prefHeight="551.0" prefWidth="236.0" style="-fx-background-color: #141414;">
+         <children>
+            <Label layoutX="28.0" layoutY="67.0" text="Table des promotion:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_dateD" layoutX="29.0" layoutY="197.0" prefWidth="180.0" promptText="Date début" />
+            <TextField fx:id="txt_dateF" layoutX="29.0" layoutY="239.0" prefWidth="180.0" promptText="Date fin" />
+            <TextField fx:id="txt_critere" layoutX="30.0" layoutY="153.0" prefHeight="25.0" prefWidth="180.0" promptText="Critére" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="25.0" layoutY="371.0" mnemonicParsing="false" onAction="#Add_Promotions" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="24.0" layoutY="419.0" mnemonicParsing="false" onAction="#Editer" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="23.0" layoutY="467.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #a06672;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txt_id1" layoutX="23.0" layoutY="112.0" prefHeight="25.0" prefWidth="180.0" promptText="ID" />
+      <TextField fx:id="filterField" layoutX="652.0" layoutY="70.0" promptText="search.." />
+   </children>
+</AnchorPane>
