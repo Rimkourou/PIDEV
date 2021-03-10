@@ -1,5 +1,7 @@
-package Dashboard;
+package InterfaceReservation;
 
+
+import Dashboard.DashboardFilmController;
 import entites.Reservation;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,12 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -26,12 +27,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DashboardReservationController implements Initializable {
+public class InterfaceMyReservationListController implements Initializable {
     ReservationService rs= new ReservationService();
-
-    @FXML
-    private TextField tfSearch;
-
     @FXML
     private TableView<Reservation> tvReservation;
 
@@ -42,37 +39,31 @@ public class DashboardReservationController implements Initializable {
     private TableColumn<Reservation, Date> colDate;
 
     @FXML
-    private TableColumn<Reservation, Integer> colUser;
+    private TableColumn<Reservation, Integer> colFilm;
 
     @FXML
     private TableColumn<Reservation, Integer> colSalle;
 
     @FXML
-    private TableColumn<Reservation, Integer> colFilm;
-
-    @FXML
     private TableColumn<Reservation, Integer> colPlace;
 
     @FXML
-    private TextField tfId;
+    private TableColumn<Reservation, Integer> colUser;
+
+    @FXML
+    private TextField tfId,tfUser;
 
     @FXML
     private TextField tfDate;
 
     @FXML
-    private TextField tfUser;
+    private TextField tfFilm;
 
     @FXML
     private TextField tfSalle;
 
     @FXML
-    private TextField tfFilm;
-
-    @FXML
     private TextField tfPlace;
-
-    @FXML
-    private Button btnAdd;
 
     @FXML
     private Button btnEdit;
@@ -80,17 +71,9 @@ public class DashboardReservationController implements Initializable {
     @FXML
     private Button btnDelete;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        showFilm();
-        //searchReservation();
-    }
-
     @FXML
     void handleButtonAction(ActionEvent event) {
-        if (event.getSource() == btnAdd){
-            AddReservation();
-        } else if (event.getSource() == btnEdit) {
+        if (event.getSource() == btnEdit) {
             EditReservation();
         } else {
             DeleteReservation();
@@ -111,7 +94,6 @@ public class DashboardReservationController implements Initializable {
         tfFilm.setText(colFilm.getCellData(index).toString());
         tfPlace.setText(colPlace.getCellData(index).toString());
     }
-
     private void showFilm() {
         ObservableList<Reservation> list= rs.reservationList();
         colId.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("id"));
@@ -122,29 +104,6 @@ public class DashboardReservationController implements Initializable {
         colPlace.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("nbrPlaceRes"));
         tvReservation.setItems(list);
     }
-
-    /*@FXML
-    void searchReservation() {
-        FilteredList<Reservation> filteredData = new FilteredList<>(rs.reservationList(), b -> true);
-        tfSearch.setOnKeyReleased(b -> {
-            tfSearch.textProperty().addListener((observableValue, oldValue, newValue) ->{
-                filteredData.setPredicate((Predicate<? super Reservation>) reservation ->{
-                    if(newValue == null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if(reservation.getValidation().toLowerCase().contains(lowerCaseFilter)){
-                        return true;
-                    }
-                    return false;
-                });
-            });
-            SortedList<Reservation> sortedList = new SortedList<>(filteredData);
-            sortedList.comparatorProperty().bind(tvReservation.comparatorProperty());
-            tvReservation.setItems(sortedList);
-        });
-    }*/
-
     public void AddReservation() {
         try {
             java.util.Date date_util = new java.util.Date();
@@ -184,21 +143,24 @@ public class DashboardReservationController implements Initializable {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        showFilm();
+
+    }
     @FXML
-    private HBox linkRes;
+    private Button linkRes;
 
     @FXML
     private AnchorPane reservationPage;
 
     @FXML
-    void lier(MouseEvent event) throws IOException {
+    void lier(ActionEvent event) throws IOException {
         if(event.getSource() == linkRes){
-            Parent fxml = FXMLLoader.load(getClass().getResource("DashboardFilm.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceReservation.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 
         }
     }
-
 }
-

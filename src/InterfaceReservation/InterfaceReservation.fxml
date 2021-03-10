@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reservationPage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceReservation.InterfacePaiementController">
+<AnchorPane fx:id="reservationPage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceReservation.InterfaceReservationController">
     <children>
         <HBox prefHeight="78.0" prefWidth="1518.0">
             <children>
@@ -127,7 +127,7 @@
             </effect></HBox>
         <VBox layoutX="8.0" layoutY="105.0" prefHeight="701.0" prefWidth="1518.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 20px 20px 0px 0px;" AnchorPane.leftAnchor="8.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="355.0" text="Pay With  Credit Card">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="355.0" text="Booking">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
                </font>
@@ -135,11 +135,11 @@
                   <Insets left="580.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="519.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 20;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="519.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 20;">
                <children>
                   <HBox minWidth="-Infinity" prefHeight="100.0" prefWidth="320.0" AnchorPane.leftAnchor="50.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="253.0" text="Personnal Informations" textFill="WHITE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="253.0" text="Book For A Movie" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="17.0" />
                            </font>
@@ -154,119 +154,43 @@
                         <Insets top="80.0" />
                      </padding>
                   </VBox>
-                  <HBox layoutX="32.0" layoutY="-3.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="460.0" AnchorPane.topAnchor="220.0">
+                  <HBox layoutX="116.0" layoutY="233.0" minWidth="-Infinity" prefHeight="38.0" prefWidth="293.0" AnchorPane.topAnchor="233.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefHeight="23.0" prefWidth="209.0" text="Credit Card Informations" textFill="WHITE">
+                        <Button fx:id="payBtn" mnemonicParsing="false" onAction="#lier" prefHeight="26.0" prefWidth="111.0" style="-fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="PAY" textFill="WHITE">
                            <font>
-                              <Font name="Calibri Bold" size="17.0" />
+                              <Font name="Calibri Bold" size="20.0" />
                            </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="linkRes" mnemonicParsing="false" onAction="#lier" prefHeight="38.0" prefWidth="204.0" style="-fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="MY RESERVATIONS" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                           </styleClass>
                            <HBox.margin>
-                              <Insets left="120.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                   </HBox>
                   <VBox layoutX="24.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="6.0" prefWidth="478.0" AnchorPane.leftAnchor="24.0">
-                     <children>
-                        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="330.0">
-                           <children>
-                              <VBox minWidth="-Infinity" prefHeight="150.0" prefWidth="186.0">
-                                 <children>
-                                    <Label text="Card Number : " textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="15.0" left="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Expiration Month : " textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="15.0" left="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Expiration Year :" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="15.0" left="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Code : " textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="150.0" prefWidth="158.0">
-                                 <children>
-                                    <TextField fx:id="tfCcNum" prefHeight="30.0" prefWidth="146.0" promptText="Card Number">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField fx:id="tfExpM" prefHeight="32.0" prefWidth="100.0" promptText="Expiration Month">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField fx:id="tfExpY" prefHeight="31.0" prefWidth="100.0" promptText="Expiration Year">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TextField fx:id="tfCvv" prefHeight="29.0" prefWidth="146.0" promptText="CVV/CVC" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets left="60.0" />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
                      <padding>
                         <Insets top="270.0" />
                      </padding>
                   </VBox>
-                  <Button fx:id="payBtn" layoutX="139.0" layoutY="456.0" mnemonicParsing="false" onAction="#Pay" prefHeight="50.0" prefWidth="111.0" style="-fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="PAY" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="139.0" AnchorPane.topAnchor="456.0">
-                     <font>
-                        <Font name="Calibri Bold" size="20.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="button_settings" />
-                        <String fx:value="cursor-hand" />
-                     </styleClass></Button>
                   <HBox layoutX="84.0" layoutY="83.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="355.0">
                      <children>
                         <VBox minWidth="-Infinity" prefHeight="150.0" prefWidth="185.0">
                            <children>
-                              <Label text="Name : " textFill="WHITE">
+                              <Label text="Places :" textFill="WHITE">
                                  <VBox.margin>
-                                    <Insets bottom="15.0" left="10.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Email : " textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" left="10.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Cin : " textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" left="10.0" />
+                                    <Insets bottom="15.0" left="10.0" top="50.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -276,41 +200,22 @@
                         </VBox>
                         <VBox prefHeight="150.0" prefWidth="158.0">
                            <children>
-                              <TextField fx:id="tfName" prefHeight="30.0" prefWidth="146.0" promptText="Full Name">
+                              <TextField fx:id="tfPlace" prefHeight="32.0" prefWidth="100.0" promptText="Places">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="tfEmail" prefHeight="32.0" prefWidth="100.0" promptText="Email">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="tfCin" prefHeight="31.0" prefWidth="100.0" promptText="Cin">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
+                                    <Insets bottom="5.0" top="50.0" />
                                  </VBox.margin>
                               </TextField>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="linkRes" layoutX="263.0" layoutY="457.0" mnemonicParsing="false" onAction="#lier" prefHeight="6.0" prefWidth="111.0" style="-fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="BACK" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri Bold" size="20.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="button_settings" />
-                        <String fx:value="cursor-hand" />
-                     </styleClass>
-                  </Button>
                </children>
-               <VBox.margin>
-                  <Insets left="500.0" right="500.0" />
-               </VBox.margin>
                <padding>
                   <Insets bottom="10.0" />
                </padding>
+               <VBox.margin>
+                  <Insets left="500.0" right="500.0" />
+               </VBox.margin>
             </AnchorPane>
          </children></VBox>
     </children>

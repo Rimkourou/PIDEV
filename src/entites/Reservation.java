@@ -5,32 +5,29 @@ import java.util.Date;
 public class Reservation {
     private int id;
     private Date dateReservation;
-    private String validation;
     int idUser;
-    int idFacture;
-    int idP;
     int idSalle;
+    int idFilm;
+    private int nbrPlaceRes;
 
     public Reservation() {
     }
 
-    public Reservation(Date dateReservation, String validation, int idUser, int idFacture, int idP, int idSalle) {
+    public Reservation(Date dateReservation, int idUser, int idSalle, int idFilm, int nbrPlaceRes) {
         this.dateReservation = dateReservation;
-        this.validation = validation;
         this.idUser = idUser;
-        this.idFacture = idFacture;
-        this.idP = idP;
         this.idSalle = idSalle;
+        this.idFilm=idFilm;
+        this.nbrPlaceRes = nbrPlaceRes;
     }
 
-    public Reservation(int id, Date dateReservation, String validation, int idUser, int idFacture, int idP, int idSalle) {
+    public Reservation(int id, Date dateReservation, int idUser, int idSalle, int idFilm, int nbrPlaceRes) {
         this.id = id;
         this.dateReservation = dateReservation;
-        this.validation = validation;
         this.idUser = idUser;
-        this.idFacture = idFacture;
-        this.idP = idP;
         this.idSalle = idSalle;
+        this.idFilm=idFilm;
+        this.nbrPlaceRes = nbrPlaceRes;
     }
 
     public int getId() {
@@ -49,36 +46,12 @@ public class Reservation {
         this.dateReservation = dateReservation;
     }
 
-    public String getValidation() {
-        return validation;
-    }
-
-    public void setValidation(String validation) {
-        this.validation = validation;
-    }
-
     public int getIdUser() {
         return idUser;
     }
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
-    }
-
-    public int getIdFacture() {
-        return idFacture;
-    }
-
-    public void setIdFacture(int idFacture) {
-        this.idFacture = idFacture;
-    }
-
-    public int getIdP() {
-        return idP;
-    }
-
-    public void setIdP(int idP) {
-        this.idP = idP;
     }
 
     public int getIdSalle() {
@@ -89,5 +62,31 @@ public class Reservation {
         this.idSalle = idSalle;
     }
 
+    public int getNbrPlaceRes() {
+        return nbrPlaceRes;
+    }
 
+    public void setNbrPlaceRes(int nbrPlaceRes) {
+        this.nbrPlaceRes = nbrPlaceRes;
+    }
+
+    public int getIdFilm() {
+        return idFilm;
+    }
+
+    public void setIdFilm(int idFilm) {
+        this.idFilm = idFilm;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", dateReservation=" + dateReservation +
+                ", idUser=" + idUser +
+                ", idSalle=" + idSalle +
+                ", idFilm=" + idFilm +
+                ", nbrPlaceRes=" + nbrPlaceRes +
+                '}';
+    }
 }

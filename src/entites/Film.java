@@ -1,5 +1,7 @@
 package entites;
 
+import java.sql.Blob;
+
 public class Film {
     private int id;
     private String titre;
@@ -100,6 +102,14 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", auteur=" + auteur + ", categorie=" + categorie + ", genre=" + genre + ", idSalle=" + idSalle + '}';
+        return "Film{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", auteur='" + auteur + '\'' +
+                ", categorie='" + categorie + '\'' +
+                ", genre='" + genre + '\'' +
+                ", idSalle=" + idSalle +
+                '}';
     }
 }

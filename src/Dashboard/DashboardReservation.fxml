@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardReservationController">
+<AnchorPane fx:id="reservationPage" prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardReservationController">
    <children>
       <VBox prefHeight="794.0" prefWidth="274.0">
          <children>
@@ -85,7 +85,7 @@
                   <String fx:value="cursor-hand" />
                </styleClass>
             </HBox>
-            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@DashboardFilm.css">
+            <HBox fx:id="linkRes" onMouseClicked="#lier" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@DashboardFilm.css">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -257,7 +257,7 @@
                <children>
                   <HBox prefHeight="94.0" prefWidth="446.0">
                      <children>
-                        <TextField fx:id="tfSearch" alignment="TOP_LEFT" onAction="#searchReservation" prefHeight="38.0" prefWidth="342.0" promptText="Search" style="-fx-background-radius: 50;">
+                        <TextField fx:id="tfSearch" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="342.0" promptText="Search" style="-fx-background-radius: 50;">
                            <HBox.margin>
                               <Insets left="20.0" top="30.0" />
                            </HBox.margin>
@@ -295,13 +295,12 @@
                <children>
                   <TableView fx:id="tvReservation" onMouseClicked="#handleMouseAction" prefHeight="690.0" prefWidth="930.0" stylesheets="@DashboardFilm.css">
                     <columns>
-                      <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="colDate" prefWidth="153.60006713867188" text="Date" />
-                        <TableColumn fx:id="colValidation" prefWidth="186.3999481201172" text="Validation" />
-                        <TableColumn fx:id="colUser" prefWidth="128.800048828125" text="User" />
-                        <TableColumn fx:id="colFacture" minWidth="4.79998779296875" prefWidth="117.60003662109375" text="Facture" />
-                        <TableColumn fx:id="colPayment" minWidth="4.7999267578125" prefWidth="130.4000244140625" text="Payment" />
-                        <TableColumn fx:id="colSalle" prefWidth="137.5999755859375" text="Movie Room" />
+                      <TableColumn fx:id="colId" prefWidth="115.20001524686813" text="ID" />
+                      <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="163.9999237060547" text="Date" />
+                        <TableColumn fx:id="colUser" prefWidth="128.79998779296875" text="User" />
+                        <TableColumn fx:id="colFilm" prefWidth="153.5999755859375" text="Movie" />
+                        <TableColumn fx:id="colSalle" prefWidth="169.5999755859375" text="Movie Room" />
+                        <TableColumn fx:id="colPlace" prefWidth="197.60001220703123" text="Places" />
                     </columns>
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" top="20.0" />
@@ -309,37 +308,32 @@
                   </TableView>
                   <VBox prefHeight="695.0" prefWidth="392.0">
                      <children>
-                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="229.0">
+                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="229.0" promptText="ID">
                            <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="80.0" />
+                              <Insets left="40.0" right="120.0" top="110.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfDate" prefHeight="43.0" prefWidth="278.0">
-                           <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="tfValidation" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfDate" prefHeight="43.0" prefWidth="278.0" promptText="Date ">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfUser" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfUser" prefHeight="43.0" prefWidth="278.0" promptText="User">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfFacture" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfFilm" prefHeight="43.0" prefWidth="278.0" promptText="Movie">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfPayment" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfSalle" prefHeight="43.0" prefWidth="278.0" promptText="Movie Room">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfSalle" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfPlace" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="229.0" promptText="Places">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>

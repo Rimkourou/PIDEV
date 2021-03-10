@@ -1,12 +1,4 @@
-import entites.Film;
-import entites.Paiement;
-import entites.Reservation;
-import services.FilmService;
-import services.PaiementService;
-import services.ReservationService;
-
 import java.text.ParseException;
-import java.util.List;
 
 public class testDB {
 

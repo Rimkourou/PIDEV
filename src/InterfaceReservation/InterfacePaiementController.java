@@ -8,14 +8,19 @@ import static com.stripe.param.checkout.SessionCreateParams.ShippingAddressColle
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import com.stripe.model.Charge;
+import javafx.scene.layout.AnchorPane;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -144,6 +149,22 @@ public class InterfacePaiementController implements Initializable {
         }catch(StripeException e){
             System.out.println(e.getMessage());} catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private Button linkRes;
+
+    @FXML
+    private AnchorPane reservationPage;
+
+    @FXML
+    void lier(ActionEvent event) throws IOException {
+        if(event.getSource() == linkRes){
+            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceReservation.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
         }
     }
 

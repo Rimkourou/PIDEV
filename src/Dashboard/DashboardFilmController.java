@@ -6,16 +6,25 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import services.FilmService;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Blob;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -80,6 +89,9 @@ public class DashboardFilmController implements Initializable {
 
     @FXML
     private Button btnDelete;
+
+    @FXML
+    private HBox linkRes;
 
     @FXML
     void handleButtonAction(ActionEvent event) {
@@ -186,6 +198,18 @@ public class DashboardFilmController implements Initializable {
             sortedList.comparatorProperty().bind(tvFilm.comparatorProperty());
             tvFilm.setItems(sortedList);
         });
+    }
+    @FXML
+    private AnchorPane reservationPage;
+
+    @FXML
+    void lier(MouseEvent event) throws IOException {
+        if(event.getSource() == linkRes){
+            Parent fxml = FXMLLoader.load(getClass().getResource("DashboardReservation.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        }
     }
 
 }

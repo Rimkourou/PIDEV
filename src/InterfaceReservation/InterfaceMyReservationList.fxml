@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="reservationPage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceReservation.InterfaceMyReservationListController">
+    <children>
+        <HBox prefHeight="78.0" prefWidth="1518.0">
+            <children>
+                <ImageView fitHeight="90.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Data/logo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                    </HBox.margin>
+                </ImageView>
+                <HBox alignment="TOP_RIGHT" prefHeight="106.0" prefWidth="762.0">
+                    <HBox.margin>
+                        <Insets left="110.0" />
+                    </HBox.margin>
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="Home" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri Bold" size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menu_hbox" />
+                        <String fx:value="cursor-hand" />
+                     </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="164.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="Movie Room" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri Bold" size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menu_hbox" />
+                        <String fx:value="cursor-hand" />
+                     </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="Movies" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri Bold" size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menu_hbox" />
+                        <String fx:value="menu" />
+                        <String fx:value="cursor-hand" />
+                     </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="Shows" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri Bold" size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menu_hbox" />
+                        <String fx:value="menu" />
+                        <String fx:value="cursor-hand" />
+                     </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfacePaiement.css" text="Complaints" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri Bold" size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="30.0" />
+                            </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menu_hbox" />
+                        <String fx:value="cursor-hand" />
+                     </styleClass>
+                        </Button>
+                    </children>
+                </HBox>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@InterfacePaiement.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="145.0" top="30.0" />
+                    </HBox.margin>
+               <styleClass>
+                  <String fx:value="button_settings" />
+                  <String fx:value="cursor-hand" />
+               </styleClass>
+                </Button>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #F0F0F0;" stylesheets="@InterfacePaiement.css" text="Sign up" textAlignment="CENTER" textFill="#2c3e50">
+                    <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="15.0" top="30.0" />
+                    </HBox.margin>
+               <styleClass>
+                  <String fx:value="button_settings" />
+                  <String fx:value="cursor-hand" />
+               </styleClass>
+                </Button>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect></HBox>
+        <VBox layoutX="8.0" layoutY="105.0" prefHeight="701.0" prefWidth="1518.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 20px 20px 0px 0px;" AnchorPane.leftAnchor="8.0" />
+      <HBox layoutX="148.0" layoutY="153.0" prefHeight="640.0" prefWidth="1394.0">
+         <children>
+            <TableView fx:id="tvReservation" onMouseClicked="#handleMouseAction" prefHeight="690.0" prefWidth="930.0" stylesheets="@../Dashboard/DashboardFilm.css">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="115.20001524686813" text="ID" />
+                  <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="163.9999237060547" text="Date" />
+                  <TableColumn fx:id="colFilm" prefWidth="193.5999755859375" text="Movie" />
+                  <TableColumn fx:id="colSalle" prefWidth="226.4000244140625" text="Movie Room" />
+                  <TableColumn fx:id="colPlace" prefWidth="229.60003662109375" text="Places" />
+                  <TableColumn fx:id="colUser" minWidth="0.0" prefWidth="0.0" text="Date" />
+               </columns>
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" top="20.0" />
+               </HBox.margin>
+            </TableView>
+            <VBox prefHeight="695.0" prefWidth="392.0">
+               <children>
+                  <TextField fx:id="tfId" prefHeight="43.0" prefWidth="229.0" promptText="ID">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="90.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfDate" prefHeight="43.0" prefWidth="278.0" promptText="Date ">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfFilm" prefHeight="43.0" prefWidth="278.0" promptText="Movie">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfSalle" prefHeight="43.0" prefWidth="278.0" promptText="Movie Room">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfPlace" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="229.0" promptText="Places">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button fx:id="btnEdit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Edit" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button_settings" />
+                        <String fx:value="cursor-hand" />
+                        <String fx:value="menu_hbox" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="221.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Delete" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button_settings" />
+                        <String fx:value="cursor-hand" />
+                        <String fx:value="menu_hbox" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="40.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="linkRes" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#lier" prefHeight="44.0" prefWidth="221.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="BACK" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button_settings" />
+                        <String fx:value="cursor-hand" />
+                        <String fx:value="menu_hbox" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="40.0" top="50.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

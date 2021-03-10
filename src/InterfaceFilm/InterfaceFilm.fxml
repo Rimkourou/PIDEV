@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceFilm.InterfaceFilmController">
+<AnchorPane fx:id="reservationPage" prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceFilm.InterfaceFilmController">
    <children>
       <HBox prefHeight="78.0" prefWidth="1518.0">
          <children>
@@ -175,22 +175,101 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="324.0" fitWidth="328.0" pickOnBounds="true" preserveRatio="true">
+            <HBox prefHeight="282.0" prefWidth="1518.0" spacing="30.0">
+               <children>
+                  <ImageView fx:id="linkRes" fitHeight="290.0" fitWidth="238.0" onMouseClicked="#lier" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/un%20fils.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="290.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/Dachra-affiche.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="290.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/noura.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="290.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/bro.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="291.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/hedi.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="291.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Data/Eljaida_aff1.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
                <VBox.margin>
-                  <Insets left="15.0" top="20.0" />
+                  <Insets top="50.0" />
                </VBox.margin>
-               <image>
-                  <Image url="@../Data/un%20fils.jpg" />
-               </image>
-            </ImageView>
-            <Label text="son">
-               <font>
-                  <Font name="Calibri" size="24.0" />
-               </font>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+               <children>
+                  <Label fx:id="idTitre" text="son">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="140.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="idTitre1" text="Dachra">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="idTitre2" text="Noura dreams">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="idTitre3" text="Brotherhood">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="idTitre4" text="Hedi">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="idTitre5" text="El jaida">
+                     <font>
+                        <Font name="Calibri" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
                <VBox.margin>
-                  <Insets left="110.0" />
+                  <Insets top="30.0" />
                </VBox.margin>
-            </Label>
+            </HBox>
          </children></VBox>
    </children>
 </AnchorPane>

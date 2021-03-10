@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardFilmController">
+<AnchorPane fx:id="reservationPage" prefHeight="780.0" prefWidth="1200.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardFilmController">
    <children>
       <VBox prefHeight="794.0" prefWidth="274.0">
          <children>
@@ -197,7 +197,7 @@
                   <String fx:value="cursor-hand" />
                </styleClass>
             </HBox>
-            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@DashboardFilm.css">
+            <HBox fx:id="linkRes" onMouseClicked="#lier" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@DashboardFilm.css">
                <children>
                   <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -296,12 +296,12 @@
                   <TableView fx:id="tvFilm" onMouseClicked="#handleMouseAction" prefHeight="690.0" prefWidth="930.0" stylesheets="@DashboardFilm.css">
                     <columns>
                       <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="colTitle" prefWidth="153.60006713867188" text="Title" />
-                        <TableColumn fx:id="colDescription" prefWidth="186.3999481201172" text="Description" />
-                        <TableColumn fx:id="colAuthor" prefWidth="128.800048828125" text="Author" />
-                        <TableColumn fx:id="colCategory" minWidth="4.79998779296875" prefWidth="117.60003662109375" text="Category" />
-                        <TableColumn fx:id="colType" minWidth="4.7999267578125" prefWidth="130.4000244140625" text="Type" />
-                        <TableColumn fx:id="colSalle" prefWidth="137.5999755859375" text="Movie Room" />
+                      <TableColumn fx:id="colTitle" prefWidth="131.20001220703125" text="Title" />
+                        <TableColumn fx:id="colDescription" prefWidth="152.8000030517578" text="Description" />
+                        <TableColumn fx:id="colAuthor" prefWidth="146.39996337890625" text="Author" />
+                        <TableColumn fx:id="colCategory" minWidth="4.79998779296875" prefWidth="156.0" text="Category" />
+                        <TableColumn fx:id="colType" minWidth="4.7999267578125" prefWidth="140.00006103515625" text="Type" />
+                        <TableColumn fx:id="colSalle" prefWidth="135.199951171875" text="Movie Room" />
                     </columns>
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" top="20.0" />
@@ -344,6 +344,7 @@
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
+
                         <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@DashboardFilm.css" text="Add" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Calibri Bold" size="24.0" />
