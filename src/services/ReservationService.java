@@ -106,12 +106,6 @@ public class ReservationService implements IServiceReservation {
     @Override
     public ObservableList<Reservation> reservationList() {
 
-        /*Timestamp timestampp = new Timestamp(System.currentTimeMillis());
-        Reservation r=new Reservation();
-        Planning p = getPlanningById(r.getIdFilm());
-        int compare =timestampp.compareTo(p.getDateDebut());
-        System.out.println(compare>30);*/
-
         String req = "select * from Reservation";
 
         ObservableList<Reservation> list =  FXCollections.observableArrayList();
@@ -122,6 +116,30 @@ public class ReservationService implements IServiceReservation {
                 list.add(new Reservation(rs.getInt("id"),
                         rs.getDate("dateReservation"),
                         rs.getInt("idUser"),
+                        rs.getInt("idSalle"),
+                        rs.getInt("idFilm"),
+                        rs.getInt("nbrPlaceRes")
+                ));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
+
+    public ObservableList<Reservation> ListR() {
+
+        String req = "select * from Reservation";
+
+        ObservableList<Reservation> list =  FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                list.add(new Reservation(rs.getInt("id"),
+                        rs.getDate("dateReservation"),
                         rs.getInt("idSalle"),
                         rs.getInt("idFilm"),
                         rs.getInt("nbrPlaceRes")

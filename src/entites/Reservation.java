@@ -30,6 +30,14 @@ public class Reservation {
         this.nbrPlaceRes = nbrPlaceRes;
     }
 
+    public Reservation(int id, Date dateReservation, int idSalle, int idFilm, int nbrPlaceRes) {
+        this.id = id;
+        this.dateReservation = dateReservation;
+        this.idSalle = idSalle;
+        this.idFilm = idFilm;
+        this.nbrPlaceRes = nbrPlaceRes;
+    }
+
     public int getId() {
         return id;
     }

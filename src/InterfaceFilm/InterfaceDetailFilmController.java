@@ -41,7 +41,7 @@ public class InterfaceDetailFilmController implements Initializable {
     @FXML
     void lier(ActionEvent event) throws IOException {
         if(event.getSource() == linkRes){
-            Parent fxml = FXMLLoader.load(getClass().getResource("/InterfaceReservation/InterfaceReservation.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("/InterfaceReservation/InterfaceMyReservationList.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

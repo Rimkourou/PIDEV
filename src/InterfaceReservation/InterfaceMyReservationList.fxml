@@ -129,14 +129,14 @@
         <VBox layoutX="8.0" layoutY="105.0" prefHeight="701.0" prefWidth="1518.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 20px 20px 0px 0px;" AnchorPane.leftAnchor="8.0" />
       <HBox layoutX="148.0" layoutY="153.0" prefHeight="640.0" prefWidth="1394.0">
          <children>
-            <TableView fx:id="tvReservation" onMouseClicked="#handleMouseAction" prefHeight="690.0" prefWidth="930.0" stylesheets="@../Dashboard/DashboardFilm.css">
+            <TableView fx:id="tvReservation" onMouseClicked="#handleMouseAction" prefHeight="605.0" prefWidth="934.0" stylesheets="@../Dashboard/DashboardFilm.css">
                <columns>
                   <TableColumn fx:id="colId" prefWidth="115.20001524686813" text="ID" />
-                  <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="163.9999237060547" text="Date" />
-                  <TableColumn fx:id="colFilm" prefWidth="193.5999755859375" text="Movie" />
-                  <TableColumn fx:id="colSalle" prefWidth="226.4000244140625" text="Movie Room" />
-                  <TableColumn fx:id="colPlace" prefWidth="229.60003662109375" text="Places" />
-                  <TableColumn fx:id="colUser" minWidth="0.0" prefWidth="0.0" text="Date" />
+                  <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="132.0" text="Date" />
+                  <TableColumn fx:id="colUser" prefWidth="137.59996032714844" text="User" />
+                  <TableColumn fx:id="colFilm" prefWidth="142.4000244140625" text="Movie" />
+                  <TableColumn fx:id="colSalle" prefWidth="190.4000244140625" text="Movie Room" />
+                  <TableColumn fx:id="colPlace" prefWidth="215.20001220703125" text="Places" />
                </columns>
                <HBox.margin>
                   <Insets bottom="15.0" left="15.0" top="20.0" />
@@ -146,10 +146,15 @@
                <children>
                   <TextField fx:id="tfId" prefHeight="43.0" prefWidth="229.0" promptText="ID">
                      <VBox.margin>
-                        <Insets left="40.0" right="120.0" top="90.0" />
+                        <Insets left="40.0" right="120.0" top="40.0" />
                      </VBox.margin>
                   </TextField>
                   <TextField fx:id="tfDate" prefHeight="43.0" prefWidth="278.0" promptText="Date ">
+                     <VBox.margin>
+                        <Insets left="40.0" right="120.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfUser" prefHeight="43.0" prefWidth="278.0" promptText="User">
                      <VBox.margin>
                         <Insets left="40.0" right="120.0" top="10.0" />
                      </VBox.margin>
@@ -169,6 +174,19 @@
                         <Insets left="40.0" right="120.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Add" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button_settings" />
+                        <String fx:value="cursor-hand" />
+                        <String fx:value="menu_hbox" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="40.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="btnEdit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Edit" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="24.0" />
@@ -179,7 +197,7 @@
                         <String fx:value="menu_hbox" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets left="40.0" top="40.0" />
+                        <Insets left="40.0" top="10.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="221.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Delete" textAlignment="CENTER" textFill="WHITE">
@@ -205,7 +223,7 @@
                         <String fx:value="menu_hbox" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets left="40.0" top="50.0" />
+                        <Insets left="40.0" top="25.0" />
                      </VBox.margin>
                   </Button>
                </children>

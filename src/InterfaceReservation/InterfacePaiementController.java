@@ -140,7 +140,6 @@ public class InterfacePaiementController implements Initializable {
                 JavaMailTransaction.sendMail(tfEmail.getText());
                 JOptionPane.showMessageDialog(null, "payment done with success!");
                 System.err.println("notiff paie ");
-                JavaMailTransaction.sendMail(charge.getReceiptEmail());
             } else {
                 JOptionPane.showMessageDialog(null, "Please check your card info!");
                 System.err.println("Erreur!!!!");
@@ -161,7 +160,7 @@ public class InterfacePaiementController implements Initializable {
     @FXML
     void lier(ActionEvent event) throws IOException {
         if(event.getSource() == linkRes){
-            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceReservation.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceMyReservationList.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

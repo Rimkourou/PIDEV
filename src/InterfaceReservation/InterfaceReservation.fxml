@@ -190,8 +190,13 @@
                            <children>
                               <Label text="Places :" textFill="WHITE">
                                  <VBox.margin>
-                                    <Insets bottom="15.0" left="10.0" top="50.0" />
+                                    <Insets bottom="15.0" top="30.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Movie Room :" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -202,9 +207,11 @@
                            <children>
                               <TextField fx:id="tfPlace" prefHeight="32.0" prefWidth="100.0" promptText="Places">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" top="50.0" />
+                                    <Insets bottom="5.0" top="25.0" />
                                  </VBox.margin>
                               </TextField>
+                              <TextField fx:id="tfSalle" prefHeight="32.0" prefWidth="100.0" promptText="Movie Room :" />
+                              <TextField fx:id="tfIdUser" prefHeight="32.0" prefWidth="100.0" promptText="Movie Room :" />
                            </children>
                         </VBox>
                      </children>

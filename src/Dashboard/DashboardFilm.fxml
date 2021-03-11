@@ -309,37 +309,37 @@
                   </TableView>
                   <VBox prefHeight="695.0" prefWidth="392.0">
                      <children>
-                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="229.0">
+                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="278.0" promptText="ID">
                            <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="80.0" />
+                              <Insets left="40.0" right="120.0" top="100.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfTitle" prefHeight="43.0" prefWidth="278.0">
-                           <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="tfDescription" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfTitle" prefHeight="43.0" prefWidth="278.0" promptText="Title">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfAuthor" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfDescription" prefHeight="43.0" prefWidth="278.0" promptText="Description">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfCategory" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfAuthor" prefHeight="43.0" prefWidth="278.0" promptText="Author">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfType" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfCategory" prefHeight="43.0" prefWidth="278.0" promptText="Category">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="tfSalle" prefHeight="43.0" prefWidth="278.0">
+                        <TextField fx:id="tfType" prefHeight="43.0" prefWidth="278.0" promptText="Type">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="tfSalle" prefHeight="43.0" prefWidth="278.0" promptText="Movie Room">
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin>
