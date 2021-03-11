@@ -1,6 +1,7 @@
 package controller;
 
 import entitie.Reclamation;
+import entitie.SalleDeCinema;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -16,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import service.RecalamationService;
+import service.SaleDeCinemaService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,12 +46,18 @@ public class ReclamationControllerClient implements Initializable {
     @FXML
     private TableColumn<Reclamation, String> colState;
 
-    private RecalamationService recalamationService = new RecalamationService();
+    @FXML
+    private ComboBox<String> selectSalle;
 
+    private RecalamationService recalamationService = new RecalamationService();
+    private SaleDeCinemaService saleDeCinemaService = new SaleDeCinemaService();
     private int idReclamation;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> ols = saleDeCinemaService.salleDeCinemaListeName();
+            selectSalle.setItems(ols);
+
         showReclamationListe();
     }
 
@@ -72,10 +81,13 @@ public class ReclamationControllerClient implements Initializable {
     }
 
     public void handleAddReclamation(MouseEvent mouseEvent) {
+
+        ObservableList<SalleDeCinema> ols = saleDeCinemaService.rechercherSalleByName(selectSalle.getValue());
+//        System.out.println(ols.get(0).getId());
         Reclamation r = new Reclamation(tfObjectReclamation.getText(),
                 tfDesReclamation.getText(),
                 "pas encore",
-                1);
+                ols.get(0).getId());
         recalamationService.AddReclamation(r);
         showReclamationListe();
 

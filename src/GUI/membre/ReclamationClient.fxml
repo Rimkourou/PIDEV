@@ -358,6 +358,11 @@
                                         <Insets left="20.0" right="15.0" top="15.0" />
                                     </VBox.margin>
                                 </TextField>
+                        <ComboBox fx:id="selectSalle" prefWidth="150.0" promptText="selectSalle">
+                           <VBox.margin>
+                              <Insets left="20.0" right="15.0" top="15.0" />
+                           </VBox.margin>
+                        </ComboBox>
                                 <HBox fx:id="btnAddReclamation" alignment="BOTTOM_CENTER" onMouseClicked="#handleAddReclamation" prefHeight="37.0" prefWidth="250.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@../style/Dashboard.css">
                                     <children>
                                         <Label text="Ajouter" textFill="WHITE">

@@ -67,6 +67,24 @@ public class SaleDeCinemaService implements ISaleDeCinemaService{
     }
 
     @Override
+    public ObservableList<String> salleDeCinemaListeName() {
+        String req = "select * from salledecinema";
+
+        ObservableList<String> list = FXCollections.observableArrayList()    ;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                list.add(rs.getString("nom"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SaleDeCinemaService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
     public void deleteSalleDeCinema(int idSalleDeCinema) {
         String sql = "delete from salledecinema where id=? ";
         try {
