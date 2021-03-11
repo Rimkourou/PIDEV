@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlanningFilmControllerAdmin">
+
+    <children>
+        <BorderPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-colcolNomFilmor: #F0F0F0;">
+            <right>
+                <HBox prefHeight="0.0" prefWidth="909.0" stylesheets="@../style/Dashboard.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox prefHeight="626.0" prefWidth="645.0">
+                            <children>
+                                <HBox prefHeight="110.0" prefWidth="736.0">
+                                    <children>
+                                        <Label text="Dashboard &gt; Films">
+                                            <font>
+                                                <Font name="Cambria Bold" size="30.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="10.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="tvPlanningFilm" prefHeight="622.0" prefWidth="594.0">
+                                    <columns>
+                                        <TableColumn fx:id="colNomFilm" prefWidth="176.0" text="nom de film" />
+                                        <TableColumn fx:id="colDateFilm" prefWidth="125.0" text="date" />
+                                        <TableColumn fx:id="colHDFilm" prefWidth="138.0" text="heure début" />
+                                        <TableColumn fx:id="colHFFilm" prefWidth="195.0" text="heure fin" />
+                                    </columns>
+                                    <VBox.margin>
+                                        <Insets bottom="15.0" left="10.0" />
+                                    </VBox.margin>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+            </right>
+
+        </BorderPane>
+    </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
