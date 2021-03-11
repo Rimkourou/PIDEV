@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #141414;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.pkg2.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="pane_signup" layoutY="149.0" prefHeight="266.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="txt_username_up" layoutX="270.0" layoutY="22.0" prefHeight="30.0" prefWidth="200.0" promptText="Nom" />
+            <TextField fx:id="txt_password_up" layoutX="270.0" layoutY="144.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
+            <TextField fx:id="txt_email_up" layoutX="270.0" layoutY="103.0" prefHeight="30.0" prefWidth="200.0" promptText="Email" />
+            <Button fx:id="btn_signup" layoutX="29.0" layoutY="205.0" mnemonicParsing="false" onAction="#Otp" prefHeight="33.0" prefWidth="442.0" style="-fx-background-color: #a06672;" text="SignUp" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/m.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txt_prenom_up" layoutX="270.0" layoutY="63.0" prefHeight="30.0" prefWidth="200.0" promptText="Prenom" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_login" layoutY="150.0" prefHeight="266.0" prefWidth="500.0" style="-fx-background-color: #141414;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="txt_username" layoutX="25.0" layoutY="52.0" prefHeight="40.0" prefWidth="450.0" promptText="Entrer Votre Nom" />
+            <PasswordField fx:id="txt_password" layoutX="25.0" layoutY="120.0" prefHeight="40.0" prefWidth="450.0" promptText="Entrer Votre Password" />
+            <Button fx:id="btn_login" layoutX="113.0" layoutY="195.0" mnemonicParsing="false" onAction="#Login" prefHeight="54.0" prefWidth="284.0" style="-fx-background-color: #a06672;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <HBox layoutY="14.0" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #f0c1b3; -fx-border-width: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="login" mnemonicParsing="false" onAction="#Login_paneShow" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #a06672;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="sign_up" mnemonicParsing="false" onAction="#Signup_paneShow" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #989887;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="pane_otp" layoutY="13.0" prefHeight="387.0" prefWidth="500.0" style="-fx-background-color: #ffff;" visible="false">
+         <children>
+            <Label layoutX="98.0" layoutY="65.0" text="Your OTP will be sent to your Email ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="save" layoutX="175.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #a06672;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="enterOTP" layoutX="142.0" layoutY="136.0" prefHeight="25.0" prefWidth="218.0" promptText="Enter your otp" />
+            <TextField fx:id="hide" editable="false" layoutX="8.0" layoutY="111.0" prefHeight="25.0" prefWidth="78.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

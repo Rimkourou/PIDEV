@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="780.0" style="-fx-background-color: #141414;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.CPanelController">
+   <children>
+      <Label layoutX="240.0" layoutY="131.0" text="Welcome" textFill="#f5f0f0">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="46.0" prefHeight="662.0" prefWidth="227.0" style="-fx-background-color: #6f6a6a;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="93.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../login/src/login/tunishow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btn_acceuil" layoutX="14.0" layoutY="248.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="184.0" style="-fx-background-color: #a06672; -fx-background-radius: 10px;" text="Acceuil" textFill="#fffdfd">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_film" layoutX="14.0" layoutY="309.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="184.0" style="-fx-background-color: #a06672; -fx-background-radius: 10px;" text="Films" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_spectacle" layoutX="14.0" layoutY="369.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="184.0" style="-fx-background-color: #a06672; -fx-background-radius: 10px;" text="Spectacle" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_salles" layoutX="14.0" layoutY="428.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="184.0" style="-fx-background-color: #a06672; -fx-background-radius: 10px;" text="Salles" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="26.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/movie.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="26.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="24.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/movie.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="26.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/home.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="226.0" prefHeight="25.0" prefWidth="652.0" style="-fx-background-color: #141414;" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="226.0" prefHeight="107.0" prefWidth="652.0" style="-fx-background-color: #6f6a6a;">
+         <children>
+            <TextField fx:id="txt_recherche" layoutX="392.0" layoutY="54.0" promptText="Rechercher..." style="-fx-background-color: #141414;" />
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="580.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/bell.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="216.0" layoutY="172.0" prefHeight="401.0" prefWidth="662.0">
+         <children>
+            <ImageView fitHeight="214.0" fitWidth="144.0" layoutX="23.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/11.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="213.0" fitWidth="149.0" layoutX="180.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/2.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="214.0" fitWidth="144.0" layoutX="336.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/3.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="214.0" fitWidth="164.0" layoutX="494.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/4.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="65.0" layoutY="221.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="225.0" layoutY="221.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="381.0" layoutY="221.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="541.0" layoutY="220.0" text="movie name" textFill="WHITE" />
+            <ImageView fitHeight="214.0" fitWidth="144.0" layoutX="23.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="213.0" fitWidth="149.0" layoutX="180.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/6.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="214.0" fitWidth="144.0" layoutX="336.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/9.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="214.0" fitWidth="164.0" layoutX="494.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../login/src/login/10.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="65.0" layoutY="465.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="225.0" layoutY="465.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="381.0" layoutY="465.0" text="movie name" textFill="WHITE" />
+            <Label layoutX="541.0" layoutY="464.0" text="movie name" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
