@@ -144,7 +144,7 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
 
     public void handleNavReclamation(MouseEvent mouseEvent) throws IOException {
         Parent reclamationParent = FXMLLoader.load(getClass().getResource("../GUI/admin/ReclamationAdmin.fxml"));
-        Scene reclamationScene = new Scene(reclamationParent);
+        Scene reclamationScene = new Scene(reclamationParent, 1200, 680);
 
         Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(reclamationScene);

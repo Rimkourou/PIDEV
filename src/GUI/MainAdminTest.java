@@ -12,7 +12,7 @@ public class MainAdminTest extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("admin/SalledeCinemaAdmin.fxml"));
 //        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1200, 700));
+        primaryStage.setScene(new Scene(root, 1200, 680));
         primaryStage.show();
     }
 

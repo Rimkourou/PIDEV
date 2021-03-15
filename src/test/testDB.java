@@ -37,12 +37,12 @@ public class testDB {
 //        }
 
         //        test reclamationListe
-        RecalamationService rs = new RecalamationService();
-        List<Reclamation> listeReclamation = rs.reclamationListe(1);
-        System.out.println("liste size : " + listeReclamation.size());
-        for (Reclamation r:listeReclamation) {
-            System.out.println(r.toString());
-        }
+//        RecalamationService rs = new RecalamationService();
+//        List<Reclamation> listeReclamation = rs.reclamationListe(1);
+//        System.out.println("liste size : " + listeReclamation.size());
+//        for (Reclamation r:listeReclamation) {
+//            System.out.println(r.toString());
+//        }
 
 
 //        tester salle de cinema crud
