@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui;
+package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,16 +20,18 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author user
  */
-public class AfficherProduitController implements Initializable {
+public class AfficherCommandsController implements Initializable {
 
     @FXML
     private AnchorPane chercher;
     @FXML
     private TableView<?> table;
     @FXML
-    private TableColumn<?, ?> nom;
+    private TableColumn<?, ?> client;
     @FXML
-    private TableColumn<?, ?> prix;
+    private TableColumn<?, ?> date;
+    @FXML
+    private TableColumn<?, ?> montant;
     @FXML
     private TextField idClient;
 
@@ -42,11 +44,8 @@ public class AfficherProduitController implements Initializable {
     }    
 
     @FXML
-    private void AjouterAP(ActionEvent event) {
-    }
-
-    @FXML
-    private void ConsulterPanier(ActionEvent event) {
+    private void Telecharger(ActionEvent event) {
+        
     }
     
 }

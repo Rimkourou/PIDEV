@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@prod.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProdController">
+    
+   <children>
+      <VBox prefHeight="794.0" prefWidth="274.0" style="-fx-background-color: 2c3e50;" stylesheets="@prod.css">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/150937304_4080817231943099_1648160319076134588_n.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="25.0" right="15.0" top="55.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px; -fx-background-color: 2c3e50;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/157737221_461996034997463_9199395053619342563_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Users" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/158278673_1059469657880095_2613438585218530536_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="22.0" right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Movie Rooms" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/157518065_1726785984162280_7129388443423246411_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="25.0" right="8.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Movies" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/158274852_727219934538107_5074267643397260002_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="12.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Shows" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/158611066_3688948894488147_2709025724596078167_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="15.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Shop" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/158208217_445238986795670_6953511287993656369_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="32.0" right="13.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Complaints" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@prod.css">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Downloads/158613405_269462371306979_5776900429747434822_n.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Booking" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menu_hbox" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </HBox>
+            <VBox prefHeight="138.0" prefWidth="274.0" stylesheets="@prod.css">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@DashboardFilm.css" text="Settings" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="30.0" top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button_settings" />
+                        <String fx:value="cursor-hand" />
+                        <String fx:value="menu_hbox" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="277.0" layoutY="6.0" prefHeight="788.0" prefWidth="1531.0" style="-fx-background-color: #F0F0F0; -fx-background-radius: 25px 0px 0px 25px;">
+         <children>
+            <HBox prefHeight="25.0" prefWidth="1473.0" style="-fx-background-radius: 20px;">
+               <effect>
+                  <DropShadow height="7.0" radius="3.0" width="7.0">
+                     <color>
+                        <Color red="0.7394737005233765" green="0.7079775929450989" blue="0.7079775929450989" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <HBox prefHeight="94.0" prefWidth="446.0">
+                     <children>
+                        <TextField alignment="TOP_LEFT" prefHeight="38.0" prefWidth="342.0" promptText="Search" style="-fx-background-radius: 50;">
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" prefHeight="81.0" prefWidth="798.0" spacing="15.0">
+                     <children>
+                        <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="My Account" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@DashboardFilm.css">
+                           <HBox.margin>
+                              <Insets left="280.0" top="30.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                              <String fx:value="combo-box" />
+                           </styleClass>
+                        </ComboBox>
+                        <ImageView fitHeight="66.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Downloads/157657011_127352335970653_9218086757154532841_n.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="710.0" prefWidth="1531.0" stylesheets="@prod.css">
+               <children>
+                  <TableView prefHeight="690.0" prefWidth="930.0" stylesheets="@prod.css">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="ID" />
+                      <TableColumn prefWidth="153.60006713867188" text="Title" />
+                        <TableColumn prefWidth="186.3999481201172" text="Description" />
+                        <TableColumn prefWidth="128.800048828125" text="Author" />
+                        <TableColumn minWidth="4.79998779296875" prefWidth="117.60003662109375" text="Category" />
+                        <TableColumn minWidth="4.7999267578125" prefWidth="130.4000244140625" text="Type" />
+                        <TableColumn prefWidth="137.5999755859375" text="Movie Room" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" top="20.0" />
+                     </HBox.margin>
+                  </TableView>
+                  <VBox prefHeight="695.0" prefWidth="392.0">
+                     <children>
+                        <TextField prefHeight="43.0" prefWidth="229.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="80.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField prefHeight="43.0" prefWidth="278.0">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@DashboardFilm.css" text="Add" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                              <String fx:value="menu_hbox" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="40.0" top="40.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@DashboardFilm.css" text="Edit" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                              <String fx:value="menu_hbox" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="40.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="221.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@DashboardFilm.css" text="Delete" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                              <String fx:value="menu_hbox" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="40.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

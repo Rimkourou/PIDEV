@@ -90,8 +90,8 @@ public class ServicePanier {
             ResultSet rs3 = pt3.executeQuery();
             
             while (rs3.next()) { 
-
-                Produit P = new Produit(rs3.getInt(1),rs3.getString(2),rs3.getDouble(3),rs3.getInt(4),rs3.getInt(5));
+               
+                Produit P = new Produit(rs3.getInt(1),rs3.getString(2),rs3.getDouble(3),rs2.getInt(3),rs3.getInt(5));
                p.getProduits().add(P);
               
             }
@@ -152,6 +152,10 @@ public class ServicePanier {
 
         }
     }    
+
+    public Iterable<Produit> getPanierQte(Panier P) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
         
       

@@ -48,13 +48,13 @@ public class PIDEV1 {
         SP.AjouterProduit(pd,P,5);
         SP.AjouterProduit(pd2,P,3);
         SP.AjouterProduit(pd3,P,3);
-                            System.out.println("9bel suppresion");
+                            System.out.println("avant suppresion");
 
         for(Produit c1 : SP.getPanier(P)) {
             System.out.print(c1.getId()+ " ");
         }
         SP.effaceProduit(P, pd3);
-            System.out.println(" ba");
+            System.out.println(" aprés supp");
 
         for(Produit c1 : SP.getPanier(P)) {
             System.out.print(c1.getId()+ " ");
@@ -68,6 +68,6 @@ public class PIDEV1 {
        Sc.afficherCommandes();
          for(Produit c1 : SP.getPanier(P)) {
             System.out.print(c1.getId()+ " ");
-        }
-    }
+     }
+  }
 }

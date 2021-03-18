@@ -25,7 +25,7 @@ public class serviceprod  {
          
      public List<Produit> getListProd() throws SQLException{
 List<Produit> list = new ArrayList<>() ; 
-String r="SELECT * FROM `produit`" ; 
+String r="SELECT * FROM `Produit`" ; 
 try {
 Statement stt=cn.createStatement() ; 
 ResultSet rs=stt.executeQuery(r); 
@@ -33,9 +33,9 @@ while(rs.next()) {
     Produit p; 
      p = new Produit();
    
-     p.setPrix(rs.getDouble(2));
+     p.setPrix(rs.getDouble(3));
+     p.setNom(rs.getString(2));
      p.setId(rs.getInt(1));
-   System.out.print(p.getId());
     list.add(p) ; 
 }
 

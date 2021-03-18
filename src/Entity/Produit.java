@@ -34,7 +34,8 @@ public class Produit {
         this.idCategorie = idCategorie;
     }
 
-    public Produit(String nom, double prix, int idCategorie) {
+    public Produit(int id,String nom, double prix, int idCategorie) {
+        this.id = id ;
         this.nom = nom;
         this.prix = prix;
         this.idCategorie = idCategorie;

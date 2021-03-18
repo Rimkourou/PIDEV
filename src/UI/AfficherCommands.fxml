@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AfficherCommandsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AfficherCommandsController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@prod.css">
          <children>
             <AnchorPane id="AnchorPane" fx:id="chercher" layoutX="5.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0">
                <children>
@@ -26,7 +26,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TableView>
-                  <Button layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#Telecharger" text="Telecharger" />
+                  <Button layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#Telecharger" style="-fx-background-color: #eab3ac;" text="Telecharger" />
                   <TextField fx:id="idClient" editable="false" layoutX="400.0" layoutY="334.0" visible="false" />
                </children>
             </AnchorPane>

@@ -7,18 +7,19 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Gui.PasserCommandeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.PasserCommandeController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
          <stylesheets>
             <URL value="@consulterpanier.css" />
          </stylesheets>
          <children>
-            <AnchorPane id="AnchorPane" fx:id="chercher" layoutY="-8.0" prefHeight="400.0" prefWidth="600.0">
+            <AnchorPane id="AnchorPane" fx:id="chercher" layoutY="-8.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@prod.css">
                <children>
                   <TableView fx:id="table" layoutX="14.0" layoutY="59.0" prefHeight="257.0" prefWidth="560.0">
                      <columns>
@@ -34,20 +35,25 @@
                      </cursor>
                   </TableView>
                   <TextField fx:id="idClient" disable="true" editable="false" layoutX="200.0" layoutY="14.0" visible="false" />
-                  <Button layoutX="90.0" layoutY="347.0" mnemonicParsing="false" onAction="#Confirmer" text="Confirmer" />
+                  <Button layoutX="90.0" layoutY="347.0" mnemonicParsing="false" onAction="#Confirmer" style="-fx-background-color: #eab3ac;" text="Confirmer" />
                   <TextField fx:id="montant" disable="true" layoutX="415.0" layoutY="326.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </TextField>
                   <Label layoutX="304.0" layoutY="330.0" prefHeight="17.0" prefWidth="103.0" text="Montant Produits" />
-                  <Button fx:id="Retour" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#Annuler" text="Annuler" />
+                  <Button fx:id="Retour" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#Annuler" style="-fx-background-color: #eab3ac;" text="Annuler" />
                   <Label layoutX="304.0" layoutY="364.0" prefHeight="17.0" prefWidth="103.0" text="Montant Total" />
                   <TextField fx:id="montant1" disable="true" layoutX="415.0" layoutY="360.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </TextField>
+                  <ImageView fitHeight="49.0" fitWidth="172.0" layoutX="2.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/150937304_4080817231943099_1648160319076134588_n.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
