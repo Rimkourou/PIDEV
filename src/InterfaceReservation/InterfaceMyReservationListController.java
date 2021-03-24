@@ -160,7 +160,7 @@ public class InterfaceMyReservationListController implements Initializable {
     public void EditReservation(){
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()), java.sql.Date.valueOf(tfDate.getText()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
             rs.addReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation successfully updated");

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.SingletonConnection;
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,10 @@ public class FilmService implements IServiceFilm {
         conn = SingletonConnection.getInstance().getCnx();
     }
 
+
     @Override
     public void addFilm(Film f) {
-        String req = "insert into film (titre, description, auteur, categorie, genre, idSalle) values (?,?,?,?,?,?)";
+        String req = "insert into film (titre, description, auteur, categorie, genre, img) values (?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, f.getTitre());
@@ -32,8 +34,7 @@ public class FilmService implements IServiceFilm {
             pst.setString(3, f.getAuteur());
             pst.setString(4, f.getCategorie());
             pst.setString(5, f.getGenre());
-            //pst.setInt(6, f.getIdUser());
-            pst.setInt(6, f.getIdSalle());
+            pst.setString(6, f.getImg());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -42,7 +43,7 @@ public class FilmService implements IServiceFilm {
     }
 
     public void editFilm(Film f){
-        String req = "update film SET titre= ?, description=?, auteur=?, categorie=?, genre=?, idSalle=? where id=?";
+        String req = "update film SET titre= ?, description=?, auteur=?, categorie=?, genre=?, img=? where id=?";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, f.getTitre());
@@ -50,8 +51,7 @@ public class FilmService implements IServiceFilm {
             pst.setString(3, f.getAuteur());
             pst.setString(4, f.getCategorie());
             pst.setString(5, f.getGenre());
-            //pst.setInt(6, f.getIdUser());
-            pst.setInt(6, f.getIdSalle());
+            pst.setString(6, f.getImg());
             pst.setInt(7, f.getId());
 
             pst.executeUpdate();
@@ -76,9 +76,9 @@ public class FilmService implements IServiceFilm {
                         rs.getString("auteur"),
                         rs.getString("categorie"),
                         rs.getString("genre"),
-                        //rs.getInt("idUser"),
-                        rs.getInt("idSalle")
+                        rs.getString("img")
                 ));
+
             }
 
         } catch (SQLException ex) {
@@ -103,35 +103,68 @@ public class FilmService implements IServiceFilm {
 
     }
 
-    public List <Film>filmSalleList() {
-        String req = "select * from film INNER JOIN salledecinema ON film.idSalle = salledecinema.id";
-
-        List<Film> list = new ArrayList<>();
+    @Override
+    public ObservableList<Film> searchFilmByType(String genre) {
+        String req = "select * from film where genre like ?";
+        ObservableList<Film> list = FXCollections.observableArrayList();
         try {
-            ste = conn.createStatement();
-            rs = ste.executeQuery(req);
+
+            pst = conn.prepareStatement(req);
+            pst.setString(1,"%" + genre + "%");
+            rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new Film(rs.getInt("id"),
-                        rs.getString("titre"),
-                        rs.getString("description"),
-                        rs.getString("auteur"),
-                        rs.getString("categorie"),
-                        rs.getString("genre"),
-                        //rs.getInt("idUser"),
-                        rs.getInt("idSalle")
-                ));
+                list.add(
+                        new Film(
+                                rs.getInt("id"),
+                                rs.getString("titre"),
+                                rs.getString("description"),
+                                rs.getString("auteur"),
+                                rs.getString("categorie"),
+                                rs.getString("genre"),
+                                rs.getString("img")
+                        )
+                );
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FilmService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-
     }
 
-    public List<Film> SearchFilmByTitle(String titre) {
+    @Override
+    public ObservableList<Film> searchFilmByCategory(String categorie) {
+        String req = "select * from film where categorie like ?";
+        ObservableList<Film> list = FXCollections.observableArrayList();
+        try {
+
+            pst = conn.prepareStatement(req);
+            pst.setString(1,"%" + categorie + "%");
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(
+                        new Film(
+                                rs.getInt("id"),
+                                rs.getString("titre"),
+                                rs.getString("description"),
+                                rs.getString("auteur"),
+                                rs.getString("categorie"),
+                                rs.getString("genre"),
+                                rs.getString("img")
+                        )
+                );
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FilmService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public ObservableList<Film> searchFilmByTitle(String titre) {
         String req = "select * from film where titre like ?";
-        List<Film> list = new ArrayList<Film>();
+        ObservableList<Film> list = FXCollections.observableArrayList();
         try {
 
             pst = conn.prepareStatement(req);
@@ -146,37 +179,7 @@ public class FilmService implements IServiceFilm {
                                 rs.getString("auteur"),
                                 rs.getString("categorie"),
                                 rs.getString("genre"),
-                                //rs.getInt("idUser"),
-                                rs.getInt("idSalle")
-                        )
-                );
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FilmService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
-
-    public List<Film> SearchFilmByAuthor(String auteur) {
-        String req = "select * from film where auteur like ?";
-        List<Film> list = new ArrayList<Film>();
-        try {
-
-            pst = conn.prepareStatement(req);
-            pst.setString(1,"%" + auteur + "%");
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                list.add(
-                        new Film(
-                                rs.getInt("id"),
-                                rs.getString("titre"),
-                                rs.getString("description"),
-                                rs.getString("auteur"),
-                                rs.getString("categorie"),
-                                rs.getString("genre"),
-                                //rs.getInt("idUser"),
-                                rs.getInt("idSalle")
+                                rs.getString("img")
                         )
                 );
             }

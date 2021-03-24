@@ -32,6 +32,6 @@
 .cursor-hand{
     -fx-cursor: hand;
 }
-.combo-box .cell{
+/*.combo-box .cell{
     -fx-text-fill: white;
-}
+}*/

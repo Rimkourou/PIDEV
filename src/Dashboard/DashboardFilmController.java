@@ -1,27 +1,32 @@
 package Dashboard;
 
 import entites.Film;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 import services.FilmService;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Blob;
@@ -55,7 +60,7 @@ public class DashboardFilmController implements Initializable {
     private TableColumn<Film, String> colType;
 
     @FXML
-    private TableColumn<Film, Integer> colSalle;
+    private TableColumn<Film, String> colPic;
 
     @FXML
     public TextField tfId;
@@ -70,13 +75,16 @@ public class DashboardFilmController implements Initializable {
     public TextField tfAuthor;
 
     @FXML
-    public TextField tfCategory;
+    private ComboBox comboCateory;
 
     @FXML
-    public TextField tfType;
+    private ComboBox comboType;
 
     @FXML
-    public TextField tfSalle;
+    private ComboBox comboCategory;
+
+    @FXML
+    private ComboBox comboType1;
 
     @FXML
     public TextField tfSearch;
@@ -91,7 +99,15 @@ public class DashboardFilmController implements Initializable {
     private Button btnDelete;
 
     @FXML
+    private Button btnPic;
+
+    @FXML
+    private ImageView picId;
+
+    @FXML
     private HBox linkRes;
+
+    String picName;
 
     @FXML
     void handleButtonAction(ActionEvent event) {
@@ -116,15 +132,19 @@ public class DashboardFilmController implements Initializable {
         tfTitle.setText(colTitle.getCellData(index));
         tfDescription.setText(colDescription.getCellData(index));
         tfAuthor.setText(colAuthor.getCellData(index));
-        tfCategory.setText(colCategory.getCellData(index));
-        tfType.setText(colType.getCellData(index));
-        tfSalle.setText(colSalle.getCellData(index).toString());
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showFilm();
         searchFilm();
+        comboCateory.getItems().addAll("Long Movie", "Short Movie");
+        comboType.getItems().addAll("Action","Animation","Comedy","Documentary","Drama","Horror");
+        ObservableList<String> CategoryList= FXCollections.observableArrayList("Long Movie", "Short Movie");
+        comboCategory.setItems(CategoryList);
+        ObservableList<String> TypeList= FXCollections.observableArrayList("Action","Animation","Comedy","Documentary","Drama","Horror");
+        comboType1.setItems(TypeList);
     }
 
     public void showFilm(){
@@ -135,13 +155,13 @@ public class DashboardFilmController implements Initializable {
         colAuthor.setCellValueFactory(new PropertyValueFactory<Film, String>("auteur"));
         colCategory.setCellValueFactory(new PropertyValueFactory<Film, String>("categorie"));
         colType.setCellValueFactory(new PropertyValueFactory<Film, String>("genre"));
-        colSalle.setCellValueFactory(new PropertyValueFactory<Film, Integer>("idSalle"));
+        colPic.setCellValueFactory(new PropertyValueFactory<Film, String>("img"));
         tvFilm.setItems(list);
     }
 
     public void AddFilm() {
         try {
-            Film f = new Film(tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(),tfCategory.getText(),tfType.getText(),Integer.parseInt(tfSalle.getText()));
+            Film f = new Film(tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(),comboCateory.getValue().toString(),comboType.getValue().toString(),picName);
             FilmService fs = new FilmService();
             fs.addFilm(f);
             showFilm();
@@ -153,7 +173,11 @@ public class DashboardFilmController implements Initializable {
 
     public void EditFilm(){
         try {
-            Film f = new Film(Integer.parseInt(tfId.getText()), tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(), tfCategory.getText(), tfType.getText(), Integer.parseInt(tfSalle.getText()));
+            /*FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(null);
+            URL url = file.toURI().toURL();
+            picId.setImage(new Image(url.toExternalForm()));*/
+            Film f = new Film(Integer.parseInt(tfId.getText()), tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(), comboCateory.getValue().toString(), comboType.getValue().toString(),picName);
             FilmService fs = new FilmService();
             fs.editFilm(f);
             showFilm();
@@ -199,6 +223,57 @@ public class DashboardFilmController implements Initializable {
             tvFilm.setItems(sortedList);
         });
     }
+    public void selectCategory(ActionEvent event) {
+        ObservableList<Film> list = fs.searchFilmByCategory(comboCategory.getValue().toString());
+        showFilmByCategory();
+    }
+
+    public void selectType(ActionEvent event) {
+        ObservableList<Film> list = fs.searchFilmByType(comboType1.getValue().toString());
+        searchFilmByType();
+    }
+
+    public void searchFilmByType(){
+        ObservableList<Film> list= fs.searchFilmByType(comboType1.getValue().toString());
+        colId.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<Film, String>("titre"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<Film, String>("description"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<Film, String>("auteur"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<Film, String>("categorie"));
+        colType.setCellValueFactory(new PropertyValueFactory<Film, String>("genre"));
+        colPic.setCellValueFactory(new PropertyValueFactory<Film, String>("img"));
+        tvFilm.setItems(list);
+    }
+
+    public void showFilmByCategory(){
+        ObservableList<Film> list= fs.searchFilmByCategory(comboCategory.getValue().toString());
+        colId.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<Film, String>("titre"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<Film, String>("description"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<Film, String>("auteur"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<Film, String>("categorie"));
+        colType.setCellValueFactory(new PropertyValueFactory<Film, String>("genre"));
+        colPic.setCellValueFactory(new PropertyValueFactory<Film, String>("img"));
+        tvFilm.setItems(list);
+    }
+
+    public void setOnAction() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+        File file = fileChooser.showOpenDialog(null);
+        picName = file.getAbsolutePath();
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+            picId.setImage(image);
+        } catch (IOException ignored) {
+
+        }
+    }
+
     @FXML
     private AnchorPane reservationPage;
 
@@ -211,5 +286,4 @@ public class DashboardFilmController implements Initializable {
 
         }
     }
-
 }

@@ -209,10 +209,10 @@ public class ReservationService implements IServiceReservation {
 
     }
 
-    /*public List<Reservation> reservationSalleList() {
+    /*public ObservableList<Reservation> reservationSalleList() {
         String req = "select * from planning p INNER JOIN salledecinema s ON p.idSalle=s.id INNER JOIN film f ON f.idSalle = s.id";
 
-        List<Reservation> list = new ArrayList<>();
+        ObservableList<Reservation> list =  FXCollections.observableArrayList();
         try {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
@@ -220,8 +220,9 @@ public class ReservationService implements IServiceReservation {
                 list.add(new Reservation(rs.getInt("id"),
                         rs.getDate("dateReservation"),
                         rs.getInt("idUser"),
-                        rs.getInt("idSalle"),
-                        rs.getInt("nbrPlaceRes")
+                        rs.getInt("nbrPlaceRes"),
+                        rs.getString("s1"),
+                        rs.getString("f1")
                 ));
             }
 

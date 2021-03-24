@@ -1,5 +1,7 @@
 package entites;
 
+import javafx.scene.control.Button;
+
 import java.sql.Blob;
 
 public class Film {
@@ -9,31 +11,35 @@ public class Film {
     private String auteur;
     private String categorie;
     private String genre;
-    //int idUser;
-    int idSalle;
+    private String img;
 
     public Film() {
     }
 
-    public Film(String titre, String description, String auteur, String categorie, String genre, int idSalle) {
+    public Film(String titre, String description, String auteur, String categorie, String genre, String img) {
         this.titre = titre;
         this.description = description;
         this.auteur = auteur;
         this.categorie = categorie;
         this.genre = genre;
-        //this.idUser = idUser;
-        this.idSalle = idSalle;
+        this.img=img;
     }
 
-    public Film(int id, String titre, String description, String auteur, String categorie, String genre, int idSalle) {
+    public Film(int id, String titre, String description, String auteur, String categorie, String genre, String img) {
         this.id = id;
         this.titre = titre;
         this.description = description;
         this.auteur = auteur;
         this.categorie = categorie;
         this.genre = genre;
-        //this.idUser = idUser;
-        this.idSalle = idSalle;
+        this.img=img;
+    }
+
+    public Film(int id, String titre, String description, String genre) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -60,13 +66,6 @@ public class Film {
         return genre;
     }
 
-    /*public int getIdUser() {
-        return idUser;
-    }*/
-
-    public int getIdSalle() {
-        return idSalle;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -92,12 +91,12 @@ public class Film {
         this.genre = genre;
     }
 
-    /*public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }*/
+    public String getImg() {
+        return img;
+    }
 
-    public void setIdSalle(int idSalle) {
-        this.idSalle = idSalle;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override
@@ -109,7 +108,7 @@ public class Film {
                 ", auteur='" + auteur + '\'' +
                 ", categorie='" + categorie + '\'' +
                 ", genre='" + genre + '\'' +
-                ", idSalle=" + idSalle +
+                ", img='" + img + '\'' +
                 '}';
     }
 }
