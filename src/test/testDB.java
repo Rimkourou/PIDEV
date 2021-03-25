@@ -1,9 +1,7 @@
 package test;
 
-import entitie.JavaMailTransaction;
-import entitie.PlanningFilm;
-import entitie.Reclamation;
-import entitie.SalleDeCinema;
+import entitie.*;
+import service.MapService;
 import service.RecalamationService;
 import service.SaleDeCinemaService;
 import utils.SingletonConnection;
@@ -12,6 +10,13 @@ import java.util.List;
 
 public class testDB {
     public static void main(String[] args) throws Exception {
+        MapService mp = new MapService();
+        MapSelect ms = mp.salleInfoByName("aa");
+        System.out.println(ms.toString());
+//        double lat = 36.79940203359503;
+//        double lon = 10.181735529944277;
+//        Mapa temp = new Mapa("cinema abc", lon, lat);
+
 //        JavaMailTransaction.sendMail("tunishow.tn@gmail.com", "hazem", "reclamation solved");
 //                  tester reclamation crud
 

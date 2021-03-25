@@ -21,6 +21,7 @@ public class RecalamationService implements IRecalamationService {
     private Connection conn;
 
     public RecalamationService() {
+
         conn = SingletonConnection.getInstance().getCnx();
     }
 

@@ -333,6 +333,19 @@
                                         <Insets left="40.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
+                        <Button fx:id="btnDelete12" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="210.0" mnemonicParsing="false" onAction="#showInMaps" prefHeight="44.0" prefWidth="221.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../style/style.css" text="show on Maps" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button_settings" />
+                              <String fx:value="cursor-hand" />
+                              <String fx:value="menu_hbox" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets left="40.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
                             </children>
                         </VBox>
                     </children>
