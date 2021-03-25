@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -311,6 +312,11 @@
                               <Insets left="40.0" right="120.0" top="100.0" />
                            </VBox.margin>
                         </ComboBox>
+                        <TextArea fx:id="tfDescriptionMail" prefHeight="200.0" prefWidth="200.0" promptText="Description">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="40.0" />
+                           </VBox.margin>
+                        </TextArea>
                                 <Button fx:id="btnEdit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handleUpdateReclamation" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../style/style.css" text="Edit" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri Bold" size="24.0" />

@@ -1,5 +1,6 @@
 package controller;
 
+import entitie.JavaMailTransaction;
 import entitie.Reclamation;
 import entitie.SalleDeCinema;
 import javafx.collections.FXCollections;
@@ -10,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +44,8 @@ public class ReclamationControllerAdmin implements Initializable {
     @FXML
     private ComboBox<String> selectState;
 
+    @FXML
+    private TextArea tfDescriptionMail;
     private RecalamationService recalamationService = new RecalamationService();
 
     private int idReclamation;
@@ -87,17 +87,41 @@ public class ReclamationControllerAdmin implements Initializable {
 //
 //    }
 
-    public void handleUpdateReclamation(MouseEvent mouseEvent) {
+    public void handleUpdateReclamation(MouseEvent mouseEvent) throws Exception {
         System.out.println(idReclamation);
-
+//        System.out.println("tt : " + tfDescriptionMail.getText());
         Reclamation reclamation = recalamationService.getReclamationById(idReclamation);
         System.out.println(reclamation.toString());
-        Reclamation r = new Reclamation(reclamation.getId(),
-                reclamation.getObjet(),
-                reclamation.getDescription(),
-                selectState.getValue(),
-                reclamation.getIdSalle());
-        recalamationService.updateReclamation(r);
+        // text if state changed or not
+        System.out.println(selectState.getValue());
+//            if (selectState.getValue().trim().equals(reclamation.getState())){
+//                System.out.println("meme stage");
+//            }
+
+        if (selectState.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning"); //affichage dans la barre de titre
+            alert.setHeaderText("you must change state");
+            alert.showAndWait();
+        }else {
+            Reclamation r = new Reclamation(reclamation.getId(),
+                    reclamation.getObjet(),
+                    reclamation.getDescription(),
+                    selectState.getValue(),
+                    reclamation.getIdSalle());
+            recalamationService.updateReclamation(r);
+
+            if (tfDescriptionMail.getText().isEmpty()) {
+                JavaMailTransaction.sendMail("tunishow.tn@gmail.com", "reply to your complaint id :"+String.valueOf(r.getId()), "your complaint state changed to "+selectState.getValue());
+            }else {
+                JavaMailTransaction.sendMail("tunishow.tn@gmail.com", "hazem", "your complaint state changed to "+selectState.getValue() + "<br><br>" +tfDescriptionMail.getText());
+            }
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Succes"); //affichage dans la barre de titre
+            alert.setHeaderText("you state has been changed ");
+            alert.showAndWait();
+            tfDescriptionMail.setText("");
+        }
         showReclamationListe();
     }
 

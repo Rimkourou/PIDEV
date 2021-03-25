@@ -1,5 +1,6 @@
 package test;
 
+import entitie.JavaMailTransaction;
 import entitie.PlanningFilm;
 import entitie.Reclamation;
 import entitie.SalleDeCinema;
@@ -10,7 +11,8 @@ import utils.SingletonConnection;
 import java.util.List;
 
 public class testDB {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+//        JavaMailTransaction.sendMail("tunishow.tn@gmail.com", "hazem", "reclamation solved");
 //                  tester reclamation crud
 
 //         test DB conn
