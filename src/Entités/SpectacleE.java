@@ -1,5 +1,8 @@
 package Entités;
 
+import javafx.scene.image.ImageView;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class SpectacleE {
@@ -7,39 +10,39 @@ public class SpectacleE {
     private String titre;
     private Date date;
     private String genre ;
+    private ImageView image;
     private int idUser;
-    private int idSalle;
 
 
-    public SpectacleE(int id, Date date, String genre, int idUser, int idSalle) {
+    public SpectacleE() {
     }
 
-    public SpectacleE(String titre, Date date, String genre, int idUser, int idSalle) {
+    public SpectacleE(String titre, Date date, String genre,  int idUser, ImageView image) {
         this.titre = titre;
         this.date = date;
         this.genre = genre;
+        this.image = image;
         this.idUser = idUser;
-        this.idSalle =idSalle;
     }
 
-    public SpectacleE(int id, String titre, Date date, String genre, int idUser, int idSalle) {
+    public SpectacleE(int id, String titre, Date date, String genre, int idUser, ImageView image) {
         this.id = id;
         this.titre = titre;
         this.date = date;
         this.genre = genre;
+        this.image = image;
         this.idUser = idUser;
-        this.idSalle = idSalle;
     }
 
     @Override
     public String toString() {
         return "SpectacleE{" +
                 "id=" + id +
+                " image path='"+ image.getImage().getUrl().substring(6)+ "'" +
                 ", titre='" + titre + '\'' +
                 ", date=" + date +
                 ", genre='" + genre + '\'' +
                 ", idUser=" + idUser +
-                ", idSalle=" + idSalle +
                 '}';
     }
 
@@ -67,6 +70,14 @@ public class SpectacleE {
         this.date = date;
     }
 
+    public ImageView getImage() {
+        return image;
+    }
+
+    public void setImage(ImageView image) {
+        this.image = image;
+    }
+
     public String getGenre() {
         return genre;
     }
@@ -83,12 +94,6 @@ public class SpectacleE {
         this.idUser = idUser;
     }
 
-    public int getIdSalle() {
-        return idSalle;
-    }
 
-    public void setIdSalle(int idSalle) {
-        this.idSalle = idSalle;
-    }
 
 }
