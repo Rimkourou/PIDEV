@@ -83,13 +83,14 @@ public class RecalamationService implements IRecalamationService {
 
     @Override
     public void updateReclamation(Reclamation r) {
-        String req = "update reclamation SET objet= ?, descripton=?, state=? where id=?";
+        String req = "update reclamation SET objet= ?, descripton=?, state=?, idSalle=? where id=?";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, r.getObjet());
             pst.setString(2, r.getDescription());
             pst.setString(3, r.getState());
-            pst.setInt(4, r.getId());
+            pst.setInt(4, r.getIdSalle());
+            pst.setInt(5, r.getId());
             pst.executeUpdate();
             System.out.println("update done");
 

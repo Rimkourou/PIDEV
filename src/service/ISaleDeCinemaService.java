@@ -17,5 +17,6 @@ public interface ISaleDeCinemaService {
     ObservableList<PlanningFilm> afficherPlanningFilm(int idSalleDeCinema);
     ObservableList<PlanningSpectacle> afficherPlanningSpectacle(int idSalleDeCinema);
     ObservableList<SalleDeCinema> rechercherSalleByName(String name);
+    SalleDeCinema getSalleById(int idSalle);
 
 }

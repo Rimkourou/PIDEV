@@ -2,7 +2,9 @@ package controller;
 
 import entitie.Reclamation;
 import entitie.SalleDeCinema;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -49,6 +52,11 @@ public class ReclamationControllerClient implements Initializable {
     @FXML
     private ComboBox<String> selectSalle;
 
+    @FXML
+    private ComboBox<String> selectState;
+
+
+
     private RecalamationService recalamationService = new RecalamationService();
     private SaleDeCinemaService saleDeCinemaService = new SaleDeCinemaService();
     private int idReclamation;
@@ -57,7 +65,7 @@ public class ReclamationControllerClient implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> ols = saleDeCinemaService.salleDeCinemaListeName();
             selectSalle.setItems(ols);
-
+            selectState.setItems(FXCollections.observableArrayList("All", "pas encore", "en cours","resolu"));
         showReclamationListe();
     }
 
@@ -77,13 +85,17 @@ public class ReclamationControllerClient implements Initializable {
 //            System.out.println(idCelle);
             tfObjectReclamation.setText(colObject.getCellData(index));
             tfDesReclamation.setText(colDescription.getCellData(index));
+            Reclamation r = recalamationService.getReclamationById(colId.getCellData(index));
+//            System.out.println(r.toString());
+            SalleDeCinema s = saleDeCinemaService.getSalleById(r.getIdSalle());
+//            System.out.println(s.toString());
+            selectSalle.getSelectionModel().select(s.getNom());
         }
     }
 
     public void handleAddReclamation(MouseEvent mouseEvent) {
 
         ObservableList<SalleDeCinema> ols = saleDeCinemaService.rechercherSalleByName(selectSalle.getValue());
-//        System.out.println(ols.get(0).getId());
         Reclamation r = new Reclamation(tfObjectReclamation.getText(),
                 tfDesReclamation.getText(),
                 "pas encore",
@@ -95,12 +107,14 @@ public class ReclamationControllerClient implements Initializable {
 
     public void handleUpdateReclamation(MouseEvent mouseEvent) {
         System.out.println(idReclamation);
+        ObservableList<SalleDeCinema> s = saleDeCinemaService.rechercherSalleByName(selectSalle.getValue());
+        System.out.println(s.get(0).toString());
         Reclamation reclamation = recalamationService.getReclamationById(idReclamation);
         Reclamation r = new Reclamation(reclamation.getId(),
                 tfObjectReclamation.getText(),
                 tfDesReclamation.getText(),
                 reclamation.getState(),
-                reclamation.getIdSalle());
+                s.get(0).getId());
         recalamationService.updateReclamation(r);
         showReclamationListe();
     }
@@ -128,6 +142,15 @@ public class ReclamationControllerClient implements Initializable {
         colState.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("state"));
         tvReclamation.setItems(pf);
 
+
+    }
+
+
+    public void handleSearchByState(ActionEvent actionEvent) {
+        String state = selectState.getValue();
+        if (state == "All") {
+            showReclamationListe();
+        }
 
     }
 }

@@ -306,11 +306,11 @@
                         </TableView>
                         <VBox prefHeight="400.0" prefWidth="392.0">
                             <children>
-                                <TextField fx:id="tfStateReclamation" prefHeight="43.0" prefWidth="100.0" promptText="State">
-                                    <VBox.margin>
-                                        <Insets left="40.0" right="120.0" top="100.0" />
-                                    </VBox.margin>
-                                </TextField>
+                        <ComboBox fx:id="selectState" prefHeight="25.0" prefWidth="240.0" promptText="selectState">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="100.0" />
+                           </VBox.margin>
+                        </ComboBox>
                                 <Button fx:id="btnEdit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#handleUpdateReclamation" prefHeight="44.0" prefWidth="226.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../style/style.css" text="Edit" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri Bold" size="24.0" />

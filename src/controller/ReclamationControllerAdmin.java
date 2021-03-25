@@ -2,6 +2,7 @@ package controller;
 
 import entitie.Reclamation;
 import entitie.SalleDeCinema;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,8 +26,6 @@ import java.util.ResourceBundle;
 
 public class ReclamationControllerAdmin implements Initializable {
 
-    @FXML
-    private TextField tfStateReclamation;
 
     @FXML
     private TextField tfSearchR;
@@ -43,6 +43,9 @@ public class ReclamationControllerAdmin implements Initializable {
     @FXML
     private TableColumn<Reclamation, String> colState;
 
+    @FXML
+    private ComboBox<String> selectState;
+
     private RecalamationService recalamationService = new RecalamationService();
 
     private int idReclamation;
@@ -59,6 +62,7 @@ public class ReclamationControllerAdmin implements Initializable {
         colDescription.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("description"));
         colState.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("state"));
         tvReclamation.setItems(pf);
+        selectState.setItems(FXCollections.observableArrayList("pas encore", "en cours","resolu"));
     }
 
     public void handleReclamationDetail(MouseEvent mouseEvent) {
@@ -69,7 +73,7 @@ public class ReclamationControllerAdmin implements Initializable {
 //            System.out.println(colState.getCellData(index));
 //            tfObjectReclamation.setText(colObject.getCellData(index));
 //            tfDesReclamation.setText(colDescription.getCellData(index));
-            tfStateReclamation.setText(colState.getCellData(index));
+            selectState.getSelectionModel().select(colState.getCellData(index));
         }
     }
 
@@ -91,7 +95,7 @@ public class ReclamationControllerAdmin implements Initializable {
         Reclamation r = new Reclamation(reclamation.getId(),
                 reclamation.getObjet(),
                 reclamation.getDescription(),
-                tfStateReclamation.getText(),
+                selectState.getValue(),
                 reclamation.getIdSalle());
         recalamationService.updateReclamation(r);
         showReclamationListe();

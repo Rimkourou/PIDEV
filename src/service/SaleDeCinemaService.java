@@ -2,6 +2,7 @@ package service;
 
 import entitie.PlanningFilm;
 import entitie.PlanningSpectacle;
+import entitie.Reclamation;
 import entitie.SalleDeCinema;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,7 @@ public class SaleDeCinemaService implements ISaleDeCinemaService{
     private Connection conn;
 
     public SaleDeCinemaService() {
+
         conn = SingletonConnection.getInstance().getCnx();
     }
 
@@ -207,5 +209,29 @@ public class SaleDeCinemaService implements ISaleDeCinemaService{
             Logger.getLogger(SaleDeCinemaService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return sc;
+    }
+
+    @Override
+    public SalleDeCinema getSalleById(int idSalle) {
+        String req = "select * FROM salledecinema WHERE id=?";
+
+        SalleDeCinema s = new SalleDeCinema();
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setInt(1, idSalle);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                s.setId(rs.getInt("id"));
+                s.setNom(rs.getString("nom"));
+                s.setNbrPlace(Integer.parseInt(rs.getString("nbrPlace")));
+                s.setDescription(rs.getString("Description"));
+                s.setAdresse(rs.getString("adresse"));
+                s.setIdUser(rs.getInt("idUser"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RecalamationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
     }
 }

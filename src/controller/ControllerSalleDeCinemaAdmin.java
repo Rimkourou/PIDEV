@@ -57,9 +57,9 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         showSalleSpectacle();
     }
-
 
 
     public void showSalleSpectacle() {
@@ -75,14 +75,47 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
 
     }
 
+    private int checkInt(String nombre) {
+        for (int i=0; i<nombre.length(); i++){
+            System.out.println((int) nombre.charAt(i));
+            if ((int) nombre.charAt(i) < 30 || (int) nombre.charAt(i) > 39) {
+                return -1;
+            }
+
+        }
+        return 1;
+    }
     public void handleAddSalle(MouseEvent mouseEvent) {
-        SalleDeCinema salle = new SalleDeCinema(tfTitreSalle.getText(),
-                Integer.parseInt(tfNbrPlace.getText()),
-                tfDescriptipn.getText(),
-                tfAdresse.getText(),
-                1);
-        saleDeCinemaService.AddSalle(salle);
-        showSalleSpectacle();
+
+//        System.out.println(checkInt(tfNbrPlace.getText()));
+
+        if (tfTitreSalle.getText().trim().isEmpty() ||
+                tfAdresse.getText().trim().isEmpty() ||
+                tfDescriptipn.getText().trim().isEmpty() ||
+                tfNbrPlace.getText().trim().isEmpty()) {
+            /*****affichage d'un alerte : vous devez remplir tt les champs******/
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning"); //affichage dans la barre de titre
+            alert.setHeaderText("tous les champs sont obligatoires");
+            alert.showAndWait();
+        } else {
+            if( checkInt(tfNbrPlace.getText()) == -1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning"); //affichage dans la barre de titre
+                alert.setHeaderText("le champs nombre de place doit être un nombre");
+                alert.showAndWait();
+            }else {
+                SalleDeCinema salle = new SalleDeCinema(tfTitreSalle.getText(),
+                        Integer.parseInt(tfNbrPlace.getText()),
+                        tfDescriptipn.getText(),
+                        tfAdresse.getText(),
+                        1);
+                saleDeCinemaService.AddSalle(salle);
+                showSalleSpectacle();
+            }
+
+        }
+
     }
 
     public void handleUpdateSalle(MouseEvent mouseEvent) {
@@ -146,7 +179,7 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
         Parent reclamationParent = FXMLLoader.load(getClass().getResource("../GUI/admin/ReclamationAdmin.fxml"));
         Scene reclamationScene = new Scene(reclamationParent, 1200, 680);
 
-        Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         window.setScene(reclamationScene);
         window.show();
     }
@@ -157,7 +190,7 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
 
     public void handleSearchSalle(KeyEvent keyEvent) {
         System.out.println("on change");
-        ObservableList<SalleDeCinema> listSalle= saleDeCinemaService.rechercherSalleByName(tfSearch.getText());
+        ObservableList<SalleDeCinema> listSalle = saleDeCinemaService.rechercherSalleByName(tfSearch.getText());
         colId.setCellValueFactory(new PropertyValueFactory<SalleDeCinema, Integer>("id"));
         colTitre.setCellValueFactory(new PropertyValueFactory<SalleDeCinema, String>("nom"));
         colNbrPlace.setCellValueFactory(new PropertyValueFactory<SalleDeCinema, Integer>("nbrPlace"));

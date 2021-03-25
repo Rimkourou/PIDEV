@@ -24,6 +24,7 @@ public class testDB {
 //        RecalamationService rs = new RecalamationService();
 //        rs.AddReclamation(r);
 
+
         //        test delete reclamation
 //        RecalamationService rs = new RecalamationService();
 //            rs.deleteReclamation(3);
@@ -50,7 +51,7 @@ public class testDB {
 
 //  test AddSalle
 
-//        SalleDeCinema s = new SalleDeCinema("salle B", 20, "salle B", "adresse", 1);
+//        SalleDeCinema s = new SalleDeCinema("salle cc", 40, "ccccccc B", "adresse", 1);
 //        SaleDeCinemaService sc = new SaleDeCinemaService();
 //        sc.AddSalle(s);
 

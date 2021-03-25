@@ -264,8 +264,13 @@
                                 </TextField>
                             </children>
                         </HBox>
-                        <HBox alignment="TOP_RIGHT" prefHeight="81.0" prefWidth="798.0" spacing="15.0">
+                        <HBox alignment="TOP_RIGHT" prefHeight="79.0" prefWidth="1149.0" spacing="15.0">
                             <children>
+                        <ComboBox fx:id="selectState" onAction="#handleSearchByState" prefHeight="35.0" prefWidth="181.0" promptText="select state">
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </ComboBox>
                                 <ComboBox prefHeight="38.0" prefWidth="112.0" promptText="My Account" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../style/style.css">
                                     <HBox.margin>
                                         <Insets left="280.0" top="30.0" />
@@ -293,7 +298,7 @@
                 </HBox>
                 <HBox prefHeight="527.0" prefWidth="1035.0">
                     <children>
-                        <TableView fx:id="tvReclamation" onMouseClicked="#handleReclamationDetail" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/style.css">
+                        <TableView fx:id="tvReclamation" onMouseReleased="#handleReclamationDetail" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/style.css">
                             <columns>
                                 <TableColumn fx:id="colId" prefWidth="55.0" text="ID" />
                                 <TableColumn fx:id="colObject" prefWidth="157.0" text="Object" />
