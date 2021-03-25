@@ -1,33 +1,42 @@
 package Entités;
 
+import javafx.scene.image.ImageView;
+
+import java.sql.Time;
 import java.util.Date;
 
 public class Planning {
     private int id;
+    private String type;
+    private Integer idEvent;
+    private ImageView imageEvent;
+    private int idSalle;
     private Date date;
-    private Date dateDebut;
-    private Date dateFin;
-    private int idFilm;
-    private int idSpectacle;
+    private Time heureDebut;
+    private Time heureFin;
 
     public Planning() {
     }
 
-    public Planning(Date date, Date dateDebut, Date dateFin, int idFilm, int idSpectacle) {
-        this.date = date;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.idFilm = idFilm;
-        this.idSpectacle = idSpectacle;
+    public Planning(String type, Integer idEvent, ImageView img, int idS, Date dte, Time hDeb, Time hFin) {
+        this.type = type;
+        this.idEvent = idEvent;
+        this.imageEvent = img;
+        this.idSalle = idS;
+        this.date = dte;
+        this.heureDebut = hDeb;
+        this.heureFin = hFin;
     }
 
-    public Planning(int id, Date date, Date dateDebut, Date dateFin, int idFilm, int idSpectacle) {
+    public Planning(int id, String type, Integer idEvent, ImageView img, int idS, Date dte, Time hDeb, Time hFin) {
         this.id = id;
-        this.date = date;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.idFilm = idFilm;
-        this.idSpectacle = idSpectacle;
+        this.type = type;
+        this.idEvent = idEvent;
+        this.imageEvent = img;
+        this.idSalle = idS;
+        this.date = dte;
+        this.heureDebut = hDeb;
+        this.heureFin = hFin;
     }
 
 
@@ -47,52 +56,83 @@ public class Planning {
         this.date = date;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public Time getheureDebut() {
+        return heureDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setheureDebut(Time heureDebut) {
+        this.heureDebut = heureDebut;
     }
 
-    public Date getDateFin() {
-        return dateFin;
+    public Time getheureFin() {
+        return heureFin;
     }
 
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+    public void setheureFin(Time heureFin) {
+        this.heureFin = heureFin;
     }
 
-    public int getIdFilm() {
-        return idFilm;
+    public String getType() {
+        return type;
     }
 
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getIdSpectacle() {
-        return idSpectacle;
+    public Integer getIdEvent() {
+        return idEvent;
     }
 
-    public void setIdSpectacle(int idSpectacle) {
-        this.idSpectacle = idSpectacle;
+    public void setIdEvent(Integer idEvent) {
+        this.idEvent = idEvent;
+    }
+
+    public ImageView getImageEvent() {
+        return imageEvent;
+    }
+
+    public void setImageEvent(ImageView imageEvent) {
+        this.imageEvent = imageEvent;
+    }
+
+    public int getIdSalle() {
+        return idSalle;
+    }
+
+    public void setIdSalle(int idSalle) {
+        this.idSalle = idSalle;
+    }
+
+    public Time getHeureDebut() {
+        return heureDebut;
+    }
+
+    public void setHeureDebut(Time heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+
+    public Time getHeureFin() {
+        return heureFin;
+    }
+
+    public void setHeureFin(Time heureFin) {
+        this.heureFin = heureFin;
     }
 
     @Override
     public String toString() {
         return "Planning{" +
                 "id=" + id +
+                ", type=" + type +
+                ", idEvent=" + idEvent +
+                ", image path='"+ imageEvent.getImage().getUrl().substring(6)+ "'" +
+                ", idSalle=" + idSalle +
                 ", date=" + date +
-                ", dateDebut=" + dateDebut +
-                ", dateFin=" + dateFin +
-                ", idFilm=" + idFilm +
-                ", idSpectacle=" + idSpectacle +
+                ", heureDebut=" + heureDebut +
+                ", heureFin=" + heureFin +
                 '}';
     }
 }
-
-
-
 
 
