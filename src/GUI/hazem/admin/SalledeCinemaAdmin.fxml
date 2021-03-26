@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="80.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Data/logo.png" />
+                  <Image url="@../../../Data/logo.png" />
                </image>
                <VBox.margin>
                   <Insets left="25.0" right="15.0" top="55.0" />
@@ -33,7 +33,7 @@
                <children>
                   <ImageView fitHeight="35.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/users.png" />
+                        <Image url="@../../../Data/users.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="15.0" top="15.0" />
@@ -61,7 +61,7 @@
                <children>
                   <ImageView fitHeight="45.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/salle.png" />
+                        <Image url="@../../../Data/salle.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="22.0" right="5.0" />
@@ -89,7 +89,7 @@
                <children>
                   <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/film.png" />
+                        <Image url="@../../../Data/film.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="25.0" right="8.0" top="2.0" />
@@ -117,7 +117,7 @@
                <children>
                   <ImageView fitHeight="35.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/spectacle.png" />
+                        <Image url="@../../../Data/spectacle.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="12.0" top="15.0" />
@@ -145,7 +145,7 @@
                <children>
                   <ImageView fitHeight="45.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/panier.png" />
+                        <Image url="@../../../Data/panier.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="15.0" top="10.0" />
@@ -173,7 +173,7 @@
                <children>
                   <ImageView fitHeight="43.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/reclamation.png" />
+                        <Image url="@../../../Data/reclamation.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="32.0" right="13.0" top="15.0" />
@@ -201,7 +201,7 @@
                <children>
                   <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/reservation.png" />
+                        <Image url="@../../../Data/reservation.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" top="10.0" />
@@ -278,7 +278,7 @@
                         </ComboBox>
                         <ImageView fitHeight="66.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Data/user.png" />
+                              <Image url="@../../../Data/user.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="280.0" top="15.0" />

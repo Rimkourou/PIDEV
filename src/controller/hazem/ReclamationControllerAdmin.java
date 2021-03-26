@@ -132,7 +132,7 @@ public class ReclamationControllerAdmin implements Initializable {
 
     public void handleSalle(MouseEvent mouseEvent) throws IOException {
         System.out.println("handle salle");
-        Parent salleDeCinemaParent = FXMLLoader.load(getClass().getResource("../GUI/admin/SalledeCinemaAdmin.fxml"));
+        Parent salleDeCinemaParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/admin/SalledeCinemaAdmin.fxml"));
         Scene salleDeCinemaScene = new Scene(salleDeCinemaParent);
 
         Stage window = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();

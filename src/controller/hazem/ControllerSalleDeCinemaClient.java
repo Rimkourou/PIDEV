@@ -85,7 +85,7 @@ public class ControllerSalleDeCinemaClient implements Initializable {
     }
 
     public void handlePlanningFilm(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../GUI/share/PlanningFilmClient.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../GUI/hazem/membre/PlanningFilmClient.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Planning Film");
@@ -104,7 +104,7 @@ public class ControllerSalleDeCinemaClient implements Initializable {
     }
 
     public void handleNavReclamation(MouseEvent mouseEvent) throws IOException {
-        Parent reclamationParent = FXMLLoader.load(getClass().getResource("../GUI/membre/ReclamationClient.fxml"));
+        Parent reclamationParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre/ReclamationClient.fxml"));
         Scene reclamationScene = new Scene(reclamationParent);
 
         Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
