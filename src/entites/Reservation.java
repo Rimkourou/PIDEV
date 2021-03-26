@@ -9,8 +9,6 @@ public class Reservation {
     int idSalle;
     int idFilm;
     private int nbrPlaceRes;
-    SalleDeCinema s;
-    Film f;
 
     public Reservation() {
     }
@@ -30,23 +28,6 @@ public class Reservation {
         this.idSalle = idSalle;
         this.idFilm=idFilm;
         this.nbrPlaceRes = nbrPlaceRes;
-    }
-
-    public Reservation(int id, Date dateReservation, int idSalle, int idFilm, int nbrPlaceRes) {
-        this.id = id;
-        this.dateReservation = dateReservation;
-        this.idSalle = idSalle;
-        this.idFilm = idFilm;
-        this.nbrPlaceRes = nbrPlaceRes;
-    }
-
-    public Reservation(int id, Date dateReservation, int idUser, int nbrPlaceRes, String s1, String f1) {
-        this.id = id;
-        this.dateReservation = dateReservation;
-        this.idUser = idUser;
-        this.nbrPlaceRes = nbrPlaceRes;
-        s1 = s.getNom();
-        f1 = f.getTitre();
     }
 
     public int getId() {

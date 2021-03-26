@@ -2,6 +2,7 @@ package InterfaceReservation;
 
 
 import Dashboard.DashboardFilmController;
+import entites.Planning;
 import entites.Reservation;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,12 +18,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import services.FilmService;
 import services.ReservationService;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,7 +64,7 @@ public class InterfaceMyReservationListController implements Initializable {
     private TextField tfDate;
 
     @FXML
-    private TextField tfUser;
+    private TextField tfIdUser;
 
     @FXML
     private TextField tfFilm;
@@ -83,15 +85,19 @@ public class InterfaceMyReservationListController implements Initializable {
     private Button btnDelete;
 
     @FXML
+    private Button btnMovies;
+
+    private Planning currentReservation = null;
+
+   /* public void test (Planning data){
+        currentReservation = data;
+        tfFilm.setText(String.valueOf(data.getIdFilm()));
+        tfSalle.setText(String.valueOf(data.getIdSalle()));
+    }*/
+
+    @FXML
     void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnAdd){
-            AddReservation();
-            Parent fxml = FXMLLoader.load(getClass().getResource("InterfacePaiement.fxml"));
-            reservationPage.getChildren().removeAll();
-            reservationPage.getChildren().setAll(fxml);
-        } else if (event.getSource() == btnEdit) {
-            EditReservation();
-        } else {
+        if (event.getSource() == btnDelete) {
             DeleteReservation();
         }
     }
@@ -103,12 +109,6 @@ public class InterfaceMyReservationListController implements Initializable {
 
             return;
         }
-        tfId.setText(colId.getCellData(index).toString());
-        tfDate.setText(colDate.getCellData(index).toString());
-        tfUser.setText(colUser.getCellData(index).toString());
-        tfSalle.setText(colSalle.getCellData(index).toString());
-        tfFilm.setText(colFilm.getCellData(index).toString());
-        tfPlace.setText(colPlace.getCellData(index).toString());
     }
 
     private void showFilm() {
@@ -144,36 +144,11 @@ public class InterfaceMyReservationListController implements Initializable {
         });
     }*/
 
-    public void AddReservation() {
-        try {
-            java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
-            ReservationService rs = new ReservationService();
-            rs.addReservation(r);
-            showFilm();
-            JOptionPane.showMessageDialog(null, "reservation added successfully");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-
-    public void EditReservation(){
-        try {
-            java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
-            rs.addReservation(r);
-            showFilm();
-            JOptionPane.showMessageDialog(null, "reservation successfully updated");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            Logger.getLogger(DashboardFilmController.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-
     public void DeleteReservation(){
         try {
-            java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
+            ReservationService rs = new ReservationService();
+            int index = tvReservation.getSelectionModel().getSelectedIndex();
+            Reservation r = tvReservation.getItems().get(index);
             rs.deleteReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation deleted successfully");
@@ -192,7 +167,12 @@ public class InterfaceMyReservationListController implements Initializable {
     @FXML
     void lier(ActionEvent event) throws IOException {
         if(event.getSource() == linkRes){
-            Parent fxml = FXMLLoader.load(getClass().getResource("/InterfaceFilm/InterfaceDetailFilm.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceReservation.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        } else if (event.getSource() == btnMovies){
+            Parent fxml = FXMLLoader.load(getClass().getResource("/InterfaceFilm/InterfaceFilm.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

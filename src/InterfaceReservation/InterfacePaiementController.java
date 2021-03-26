@@ -53,6 +53,15 @@ public class InterfacePaiementController implements Initializable {
 
     private static Charge charge;
 
+    @FXML
+    private Button linkRes;
+
+    @FXML
+    private Button btnMovies;
+
+    @FXML
+    private AnchorPane reservationPage;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tfCcNum.textProperty().addListener(new ChangeListener<String>() {
@@ -152,15 +161,13 @@ public class InterfacePaiementController implements Initializable {
     }
 
     @FXML
-    private Button linkRes;
-
-    @FXML
-    private AnchorPane reservationPage;
-
-    @FXML
     void lier(ActionEvent event) throws IOException {
         if(event.getSource() == linkRes){
-            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceMyReservationList.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("InterfaceReservation.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+        }else if (event.getSource() == btnMovies){
+            Parent fxml = FXMLLoader.load(getClass().getResource("/InterfaceFilm/InterfaceFilm.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

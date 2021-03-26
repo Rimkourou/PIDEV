@@ -32,7 +32,7 @@
                   <Insets left="110.0" />
                </HBox.margin>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfaceFilm.css" text="Home" textFill="WHITE">
+                  <Button  mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfaceFilm.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="24.0" />
                      </font>

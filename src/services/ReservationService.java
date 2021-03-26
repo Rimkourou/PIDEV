@@ -129,30 +129,6 @@ public class ReservationService implements IServiceReservation {
 
     }
 
-    public ObservableList<Reservation> ListR() {
-
-        String req = "select * from Reservation";
-
-        ObservableList<Reservation> list =  FXCollections.observableArrayList();
-        try {
-            ste = conn.createStatement();
-            rs = ste.executeQuery(req);
-            while (rs.next()) {
-                list.add(new Reservation(rs.getInt("id"),
-                        rs.getDate("dateReservation"),
-                        rs.getInt("idSalle"),
-                        rs.getInt("idFilm"),
-                        rs.getInt("nbrPlaceRes")
-                ));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-
-    }
-
 
     @Override
     public void deleteReservation(Reservation r) {
@@ -182,53 +158,5 @@ public class ReservationService implements IServiceReservation {
 
     }
 
-    public Planning getPlanningById(int id){
-        String req = "select * from planning where id =?";
-        Planning p = new Planning();
-        try {
 
-            pst = conn.prepareStatement(req);
-            pst.setInt(1, id );
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                p= new  Planning(
-                        rs.getInt("id"),
-                        rs.getTimestamp("date"),
-                        rs.getTimestamp("dateDebut"),
-                        rs.getTimestamp("dateFin"),
-                        rs.getInt("idFilm"),
-                        rs.getInt("idSpectacle"),
-                        rs.getInt("idSalle")
-                );
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return p;
-
-    }
-
-    /*public ObservableList<Reservation> reservationSalleList() {
-        String req = "select * from planning p INNER JOIN salledecinema s ON p.idSalle=s.id INNER JOIN film f ON f.idSalle = s.id";
-
-        ObservableList<Reservation> list =  FXCollections.observableArrayList();
-        try {
-            ste = conn.createStatement();
-            rs = ste.executeQuery(req);
-            while (rs.next()) {
-                list.add(new Reservation(rs.getInt("id"),
-                        rs.getDate("dateReservation"),
-                        rs.getInt("idUser"),
-                        rs.getInt("nbrPlaceRes"),
-                        rs.getString("s1"),
-                        rs.getString("f1")
-                ));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }*/
 }
