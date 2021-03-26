@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="controller.hazem.PlanningSpectacleControllerAdmin"
+          prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <BorderPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-colcolNomFilmor: #F0F0F0;">
+            <right>
+                <HBox prefHeight="0.0" prefWidth="909.0" stylesheets="@../style/Dashboard.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox prefHeight="626.0" prefWidth="645.0">
+                            <children>
+                                <HBox prefHeight="110.0" prefWidth="736.0">
+                                    <children>
+                                        <Label text="Dashboard &gt; Films">
+                                            <font>
+                                                <Font name="Cambria Bold" size="30.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="10.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="tvPlanningSpectacle" prefHeight="622.0" prefWidth="594.0">
+                                    <columns>
+                                        <TableColumn fx:id="colNomSpectacle" prefWidth="176.0" text="nom de film" />
+                                        <TableColumn fx:id="colDateSpectacle" prefWidth="125.0" text="date" />
+                                        <TableColumn fx:id="colHDSpectacle" prefWidth="138.0" text="heure début" />
+                                        <TableColumn fx:id="colHFSpectacle" prefWidth="195.0" text="heure fin" />
+                                    </columns>
+                                    <VBox.margin>
+                                        <Insets bottom="15.0" left="10.0" />
+                                    </VBox.margin>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+            </right>
+
+        </BorderPane>
+    </children>
+
+</GridPane>
