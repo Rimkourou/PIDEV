@@ -6,14 +6,14 @@ public class Reservation {
     private int id;
     private Date dateReservation;
     int idUser;
-    int idSalle;
-    int idFilm;
+    String idSalle;
+    String idFilm;
     private int nbrPlaceRes;
 
     public Reservation() {
     }
 
-    public Reservation(Date dateReservation, int idUser, int idSalle, int idFilm, int nbrPlaceRes) {
+    public Reservation(Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes) {
         this.dateReservation = dateReservation;
         this.idUser = idUser;
         this.idSalle = idSalle;
@@ -21,7 +21,7 @@ public class Reservation {
         this.nbrPlaceRes = nbrPlaceRes;
     }
 
-    public Reservation(int id, Date dateReservation, int idUser, int idSalle, int idFilm, int nbrPlaceRes) {
+    public Reservation(int id, Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes) {
         this.id = id;
         this.dateReservation = dateReservation;
         this.idUser = idUser;
@@ -54,11 +54,11 @@ public class Reservation {
         this.idUser = idUser;
     }
 
-    public int getIdSalle() {
+    public String getIdSalle() {
         return idSalle;
     }
 
-    public void setIdSalle(int idSalle) {
+    public void setIdSalle(String idSalle) {
         this.idSalle = idSalle;
     }
 
@@ -70,11 +70,11 @@ public class Reservation {
         this.nbrPlaceRes = nbrPlaceRes;
     }
 
-    public int getIdFilm() {
+    public String getIdFilm() {
         return idFilm;
     }
 
-    public void setIdFilm(int idFilm) {
+    public void setIdFilm(String idFilm) {
         this.idFilm = idFilm;
     }
 

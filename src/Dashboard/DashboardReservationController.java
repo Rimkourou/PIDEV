@@ -148,7 +148,7 @@ public class DashboardReservationController implements Initializable {
     public void AddReservation() {
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
             ReservationService rs = new ReservationService();
             rs.addReservation(r);
             showFilm();
@@ -161,7 +161,7 @@ public class DashboardReservationController implements Initializable {
     public void EditReservation(){
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
             rs.addReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation successfully updated");
@@ -174,7 +174,7 @@ public class DashboardReservationController implements Initializable {
     public void DeleteReservation(){
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), Integer.parseInt(tfSalle.getText()), Integer.parseInt(tfFilm.getText()), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
             rs.deleteReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation deleted successfully");
@@ -188,12 +188,28 @@ public class DashboardReservationController implements Initializable {
     private HBox linkRes;
 
     @FXML
+    private HBox linkShows;
+
+    @FXML
+    private HBox linkPlanning;
+
+    @FXML
     private AnchorPane reservationPage;
 
     @FXML
     void lier(MouseEvent event) throws IOException {
         if(event.getSource() == linkRes){
             Parent fxml = FXMLLoader.load(getClass().getResource("DashboardFilm.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        } else if (event.getSource() == linkShows){
+            Parent fxml = FXMLLoader.load(getClass().getResource("Spectacle.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        } else if(event.getSource() == linkPlanning){
+            Parent fxml = FXMLLoader.load(getClass().getResource("Planning.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

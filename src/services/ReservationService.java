@@ -35,8 +35,8 @@ public class ReservationService implements IServiceReservation {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
             pst.setInt(2, r.getIdUser());
-            pst.setInt(3, r.getIdSalle());
-            pst.setInt(4, r.getIdFilm());
+            pst.setString(3, r.getIdSalle());
+            pst.setString(4, r.getIdFilm());
             pst.setInt(5, r.getNbrPlaceRes());
             pst.executeUpdate();
             pst.close();
@@ -53,13 +53,13 @@ public class ReservationService implements IServiceReservation {
         }}
 
 
-    public SalleDeCinema getSalleById(int id){
-        String req = "select * from salledecinema where id =?";
+    public SalleDeCinema getSalleById(String nom){
+        String req = "select * from salledecinema where nom =?";
         SalleDeCinema sc = new SalleDeCinema();
         try {
 
             pst = conn.prepareStatement(req);
-            pst.setInt(1, id );
+            pst.setString(1, nom );
             rs = pst.executeQuery();
             while (rs.next()) {
                 sc= new  SalleDeCinema(
@@ -85,13 +85,13 @@ public class ReservationService implements IServiceReservation {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
             pst.setInt(2, r.getIdUser());
-            pst.setInt(3, r.getIdSalle());
-            pst.setInt(4, r.getIdFilm());
+            pst.setString(3, r.getIdSalle());
+            pst.setString(4, r.getIdFilm());
             pst.setInt(5, r.getNbrPlaceRes());
             pst.setInt(6, r.getId());
             pst.executeUpdate();
 
-            String req2 = "update salledecinema SET nbrPlace=? where id=?";
+            String req2 = "update salledecinema SET nbrPlace=? where nom=?";
             SalleDeCinema s = getSalleById(r.getIdSalle());
             pst1=conn.prepareStatement(req2);
             pst1.setInt(1,s.getNbrPlace());
@@ -116,8 +116,8 @@ public class ReservationService implements IServiceReservation {
                 list.add(new Reservation(rs.getInt("id"),
                         rs.getDate("dateReservation"),
                         rs.getInt("idUser"),
-                        rs.getInt("idSalle"),
-                        rs.getInt("idFilm"),
+                        rs.getString("idSalle"),
+                        rs.getString("idFilm"),
                         rs.getInt("nbrPlaceRes")
                 ));
             }
@@ -143,11 +143,11 @@ public class ReservationService implements IServiceReservation {
             pst.executeUpdate();
             System.out.println("reservation deleted successfully");
 
-            String req2 = "update salledecinema SET nbrPlace=? where id=?";
+            String req2 = "update salledecinema SET nbrPlace=? where nom=?";
             SalleDeCinema s = getSalleById(r.getIdSalle());
             pst1=conn.prepareStatement(req2);
             pst1.setInt(1,s.getNbrPlace()+r.getNbrPlaceRes());
-            pst1.setInt(2,s.getId());
+            pst1.setString(2,s.getNom());
             pst1.executeUpdate();
            /* }else {
                 System.out.println("erreur");

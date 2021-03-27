@@ -107,6 +107,18 @@ public class DashboardFilmController implements Initializable {
     @FXML
     private HBox linkRes;
 
+    @FXML
+    private HBox linkMovies;
+
+    @FXML
+    private HBox linkShows;
+
+    @FXML
+    private HBox linkPlanning;
+
+    @FXML
+    private AnchorPane reservationPage;
+
     String picName;
 
     @FXML
@@ -275,12 +287,19 @@ public class DashboardFilmController implements Initializable {
     }
 
     @FXML
-    private AnchorPane reservationPage;
-
-    @FXML
     void lier(MouseEvent event) throws IOException {
         if(event.getSource() == linkRes){
             Parent fxml = FXMLLoader.load(getClass().getResource("DashboardReservation.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        } else if(event.getSource() == linkPlanning){
+            Parent fxml = FXMLLoader.load(getClass().getResource("Planning.fxml"));
+            reservationPage.getChildren().removeAll();
+            reservationPage.getChildren().setAll(fxml);
+
+        } else if(event.getSource() == linkShows){
+            Parent fxml = FXMLLoader.load(getClass().getResource("Spectacle.fxml"));
             reservationPage.getChildren().removeAll();
             reservationPage.getChildren().setAll(fxml);
 

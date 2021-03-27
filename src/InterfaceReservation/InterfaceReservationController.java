@@ -61,14 +61,14 @@ public class InterfaceReservationController implements Initializable {
         this.tfPlace.setValueFactory(tfPlace);
     }
 
-    public void test (Planning data){
-        currentReservation = data;
-        tfFilm.setText(String.valueOf(data.getIdFilm()));
-        tfSalle.setText(String.valueOf(data.getIdSalle()));
+    public void test (Planning p){
+        currentReservation = p;
+        tfFilm.setText(String.valueOf(p.getTitreEvent()));
+        tfSalle.setText(String.valueOf(p.getNomSalle()));
     }
     public void AddReservation() {
         try {
-            Reservation r = new Reservation( Date.valueOf(tfDate.getText()),Integer.parseInt(tfIdUser.getText()),Integer.parseInt(tfSalle.getText()),Integer.parseInt(tfFilm.getText()),Integer.parseInt(tfPlace.getValue().toString()));
+            Reservation r = new Reservation( Date.valueOf(tfDate.getText()),Integer.parseInt(tfIdUser.getText()),tfSalle.getText(),tfFilm.getText(),Integer.parseInt(tfPlace.getValue().toString()));
             ReservationService rs = new ReservationService();
             rs.addReservation(r);
             JOptionPane.showMessageDialog(null, "reservation added successfully");

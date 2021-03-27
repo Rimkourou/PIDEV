@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SingletonConnection {
-    private String url="jdbc:mysql://127.0.0.1/project";
+    private String url="jdbc:mysql://127.0.0.1/project1";
     private String login="root";
     private String pwd="";
 
