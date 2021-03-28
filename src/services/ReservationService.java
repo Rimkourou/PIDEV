@@ -30,7 +30,7 @@ public class ReservationService implements IServiceReservation {
 
     @Override
     public void addReservation(Reservation r){
-        String req = "insert into reservation (dateReservation, idUser, idSalle, idFilm, nbrPlaceRes) values (?,?,?,?,?)";
+        String req = "insert into reservation (dateReservation, idUser, idSalle, idFilm, nbrPlaceRes, idSpectacle) values (?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
@@ -38,6 +38,7 @@ public class ReservationService implements IServiceReservation {
             pst.setString(3, r.getIdSalle());
             pst.setString(4, r.getIdFilm());
             pst.setInt(5, r.getNbrPlaceRes());
+            pst.setString(6, r.getIdSpectacle());
             pst.executeUpdate();
             pst.close();
 
@@ -80,7 +81,7 @@ public class ReservationService implements IServiceReservation {
     }
 
     public void editReservation(Reservation r){
-        String req = "update reservation SET dateReservation= ?, idUser=?, idSalle=?, idFilm=?, nbrPlaceRes=? where id=?";
+        String req = "update reservation SET dateReservation= ?, idUser=?, idSalle=?, idFilm=?, nbrPlaceRes=?, idSpectacle=? where id=?";
         try {
             pst = conn.prepareStatement(req);
             pst.setDate(1, (Date) r.getDateReservation());
@@ -88,7 +89,8 @@ public class ReservationService implements IServiceReservation {
             pst.setString(3, r.getIdSalle());
             pst.setString(4, r.getIdFilm());
             pst.setInt(5, r.getNbrPlaceRes());
-            pst.setInt(6, r.getId());
+            pst.setString(6, r.getIdSalle());
+            pst.setInt(7, r.getId());
             pst.executeUpdate();
 
             String req2 = "update salledecinema SET nbrPlace=? where nom=?";
@@ -118,7 +120,8 @@ public class ReservationService implements IServiceReservation {
                         rs.getInt("idUser"),
                         rs.getString("idSalle"),
                         rs.getString("idFilm"),
-                        rs.getInt("nbrPlaceRes")
+                        rs.getInt("nbrPlaceRes"),
+                        rs.getString("idSpectacle")
                 ));
             }
 

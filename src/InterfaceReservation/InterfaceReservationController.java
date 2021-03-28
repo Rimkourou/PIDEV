@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -49,10 +46,10 @@ public class InterfaceReservationController implements Initializable {
     private TextField tfFilm;
 
     @FXML
-    private TextField tfDate;
+    private Button btnMovies;
 
     @FXML
-    private Button btnMovies;
+    private DatePicker tfDate;
 
 
     @Override
@@ -68,7 +65,7 @@ public class InterfaceReservationController implements Initializable {
     }
     public void AddReservation() {
         try {
-            Reservation r = new Reservation( Date.valueOf(tfDate.getText()),Integer.parseInt(tfIdUser.getText()),tfSalle.getText(),tfFilm.getText(),Integer.parseInt(tfPlace.getValue().toString()));
+            Reservation r = new Reservation( Date.valueOf(tfDate.getValue()),Integer.parseInt(tfIdUser.getText()),tfSalle.getText(),tfFilm.getText(),Integer.parseInt(tfPlace.getValue().toString()), tfFilm.getText());
             ReservationService rs = new ReservationService();
             rs.addReservation(r);
             JOptionPane.showMessageDialog(null, "reservation added successfully");

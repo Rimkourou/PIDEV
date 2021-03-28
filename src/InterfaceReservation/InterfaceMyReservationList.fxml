@@ -130,10 +130,13 @@
          <children>
             <HBox prefHeight="101.0" prefWidth="1518.0">
                <children>
-                  <TextField fx:id="tfSearch" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="270.0" promptText="Search" style="-fx-background-radius: 50;">
+                  <TextField fx:id="tfSearch" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#searchReservation" prefHeight="38.0" prefWidth="270.0" promptText="Search" style="-fx-background-radius: 50;">
                      <HBox.margin>
                         <Insets left="290.0" top="20.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </TextField>
                   <Button fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="148.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../Dashboard/DashboardFilm.css" text="Delete" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -171,7 +174,7 @@
                   <TableColumn fx:id="colId" prefWidth="115.20001524686813" text="ID" />
                   <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="132.0" text="Date" />
                   <TableColumn fx:id="colUser" prefWidth="137.59996032714844" text="User" />
-                  <TableColumn fx:id="colFilm" prefWidth="142.4000244140625" text="Movie" />
+                  <TableColumn fx:id="colFilm" prefWidth="142.4000244140625" text="Movie/Show" />
                   <TableColumn fx:id="colSalle" prefWidth="190.4000244140625" text="Movie Room" />
                   <TableColumn fx:id="colPlace" prefWidth="215.20001220703125" text="Places" />
                </columns>

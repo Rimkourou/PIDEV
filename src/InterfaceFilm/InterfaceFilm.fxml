@@ -32,7 +32,7 @@
                   <Insets left="110.0" />
                </HBox.margin>
                <children>
-                  <Button  mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfaceFilm.css" text="Home" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" style="-fx-background-radius: 50; -fx-background-radius: 50;" stylesheets="@InterfaceFilm.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="24.0" />
                      </font>
@@ -137,6 +137,9 @@
                      <HBox.margin>
                         <Insets left="15.0" top="20.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
                   </TextField>
                   <ComboBox fx:id="comboCategory" onAction="#selectCategory" prefHeight="38.0" prefWidth="112.0" promptText="CATEGORY" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@../Dashboard/DashboardFilm.css">
                      <styleClass>

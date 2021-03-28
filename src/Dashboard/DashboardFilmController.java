@@ -140,10 +140,14 @@ public class DashboardFilmController implements Initializable {
 
             return;
         }
-        tfId.setText(colId.getCellData(index).toString());
+        tfId.setText(colPic.getCellData(index));
         tfTitle.setText(colTitle.getCellData(index));
         tfDescription.setText(colDescription.getCellData(index));
         tfAuthor.setText(colAuthor.getCellData(index));
+        tfId.setText(colPic.getCellData(index));
+        File file = new File(tfId.getText());
+        Image image = new Image(file.toURI().toString());
+        picId.setImage(image);
     }
 
 
@@ -185,11 +189,10 @@ public class DashboardFilmController implements Initializable {
 
     public void EditFilm(){
         try {
-            /*FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showOpenDialog(null);
-            URL url = file.toURI().toURL();
-            picId.setImage(new Image(url.toExternalForm()));*/
-            Film f = new Film(Integer.parseInt(tfId.getText()), tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(), comboCateory.getValue().toString(), comboType.getValue().toString(),picName);
+            File file = new File(tfId.getText());
+            Image image = new Image(file.toURI().toString());
+            picId.setImage(image);
+            Film f = new Film( tfTitle.getText(), tfDescription.getText(), tfAuthor.getText(), comboCateory.getValue().toString(), comboType.getValue().toString(),tfId.getText());
             FilmService fs = new FilmService();
             fs.editFilm(f);
             showFilm();
@@ -202,7 +205,9 @@ public class DashboardFilmController implements Initializable {
 
     public void DeleteFilm(){
         try {
-            int id =Integer.parseInt(tfId.getText());
+            int index = tvFilm.getSelectionModel().getSelectedIndex();
+            int id = colId.getCellData(index);
+            /*int id =Integer.parseInt(tfId.getText());*/
             FilmService fs = new FilmService();
             fs.deleteFilm(id);
             showFilm();

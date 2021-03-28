@@ -264,10 +264,13 @@
                <children>
                   <HBox prefHeight="94.0" prefWidth="446.0">
                      <children>
-                        <TextField fx:id="tfSearch" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="342.0" promptText="Search" style="-fx-background-radius: 50;">
+                        <TextField fx:id="tfSearch" alignment="TOP_LEFT" onAction="#searchReservation" prefHeight="38.0" prefWidth="342.0" promptText="Search" style="-fx-background-radius: 50;">
                            <HBox.margin>
                               <Insets left="20.0" top="30.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </TextField>
                      </children>
                   </HBox>
@@ -305,7 +308,7 @@
                       <TableColumn fx:id="colId" prefWidth="115.20001524686813" text="ID" />
                       <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="163.9999237060547" text="Date" />
                         <TableColumn fx:id="colUser" prefWidth="128.79998779296875" text="User" />
-                        <TableColumn fx:id="colFilm" prefWidth="153.5999755859375" text="Movie" />
+                        <TableColumn fx:id="colFilm" prefWidth="153.5999755859375" text="Movie/Show" />
                         <TableColumn fx:id="colSalle" prefWidth="169.5999755859375" text="Movie Room" />
                         <TableColumn fx:id="colPlace" prefWidth="197.60001220703123" text="Places" />
                     </columns>

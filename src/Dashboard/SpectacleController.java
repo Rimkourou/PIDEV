@@ -238,7 +238,7 @@ public class SpectacleController implements Initializable {
     //manipuler l'affichage de fentre  user ou admin
     @FXML
     public void hideAdminFeaturesSpec(String role) {
-        if (role.trim().equalsIgnoreCase("simpleUser")) {
+        if (role.trim().equalsIgnoreCase("membre")) {
             System.out.println("ici user");
             vBoxCruds.setVisible(false); //ya5o l blasa eli fiha el tableau lkol w bech yina7ih
             tableauSpectacles.setPrefWidth(1115);

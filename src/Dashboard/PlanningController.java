@@ -145,7 +145,7 @@ public class PlanningController  implements Initializable{
     @FXML
     //TODO: change with the id of the current user
     //admin: id=1 || user: id=2
-    private Integer idCurrentUser = 1;
+    private Integer idCurrentUser = 2;
 
 
     //appel au service
@@ -358,7 +358,7 @@ public class PlanningController  implements Initializable{
 
     @FXML
     public void hideAdminFeaturesPlan(String role) {
-        if (role.trim().equalsIgnoreCase("simpleUser")) {
+        if (role.trim().equalsIgnoreCase("membre")) {
             tfType.setVisible(false);
             tfNomSalle.setVisible(false);
             tfTitreEvent.setVisible(false);

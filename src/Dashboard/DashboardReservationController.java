@@ -2,6 +2,8 @@ package Dashboard;
 
 import entites.Reservation;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,10 +83,22 @@ public class DashboardReservationController implements Initializable {
     @FXML
     private Button btnDelete;
 
+    @FXML
+    private HBox linkRes;
+
+    @FXML
+    private HBox linkShows;
+
+    @FXML
+    private HBox linkPlanning;
+
+    @FXML
+    private AnchorPane reservationPage;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showFilm();
-        //searchReservation();
+        searchReservation();
     }
 
     @FXML
@@ -123,7 +138,7 @@ public class DashboardReservationController implements Initializable {
         tvReservation.setItems(list);
     }
 
-    /*@FXML
+    @FXML
     void searchReservation() {
         FilteredList<Reservation> filteredData = new FilteredList<>(rs.reservationList(), b -> true);
         tfSearch.setOnKeyReleased(b -> {
@@ -133,9 +148,13 @@ public class DashboardReservationController implements Initializable {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if(reservation.getValidation().toLowerCase().contains(lowerCaseFilter)){
+                    if(reservation.getIdSalle().toLowerCase().contains(lowerCaseFilter)){
                         return true;
-                    }
+                    }else if(reservation.getIdFilm().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }else if(reservation.getIdSpectacle().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }else
                     return false;
                 });
             });
@@ -143,12 +162,12 @@ public class DashboardReservationController implements Initializable {
             sortedList.comparatorProperty().bind(tvReservation.comparatorProperty());
             tvReservation.setItems(sortedList);
         });
-    }*/
+    }
 
     public void AddReservation() {
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()), tfFilm.getText());
             ReservationService rs = new ReservationService();
             rs.addReservation(r);
             showFilm();
@@ -161,7 +180,7 @@ public class DashboardReservationController implements Initializable {
     public void EditReservation(){
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()), tfFilm.getText());
             rs.addReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation successfully updated");
@@ -174,7 +193,7 @@ public class DashboardReservationController implements Initializable {
     public void DeleteReservation(){
         try {
             java.util.Date date_util = new java.util.Date();
-            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()));
+            Reservation r = new Reservation(Integer.parseInt(tfId.getText()),new java.sql.Date(date_util.getTime()), Integer.parseInt(tfUser.getText()), tfSalle.getText(), tfFilm.getText(), Integer.parseInt(tfPlace.getText()), tfFilm.getText());
             rs.deleteReservation(r);
             showFilm();
             JOptionPane.showMessageDialog(null, "reservation deleted successfully");
@@ -183,18 +202,6 @@ public class DashboardReservationController implements Initializable {
             Logger.getLogger(DashboardFilmController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
-    @FXML
-    private HBox linkRes;
-
-    @FXML
-    private HBox linkShows;
-
-    @FXML
-    private HBox linkPlanning;
-
-    @FXML
-    private AnchorPane reservationPage;
 
     @FXML
     void lier(MouseEvent event) throws IOException {

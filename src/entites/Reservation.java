@@ -9,25 +9,28 @@ public class Reservation {
     String idSalle;
     String idFilm;
     private int nbrPlaceRes;
+    String idSpectacle;
 
     public Reservation() {
     }
 
-    public Reservation(Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes) {
+    public Reservation(Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes, String idSpectacle) {
         this.dateReservation = dateReservation;
         this.idUser = idUser;
         this.idSalle = idSalle;
         this.idFilm=idFilm;
         this.nbrPlaceRes = nbrPlaceRes;
+        this.idSpectacle = idSpectacle;
     }
 
-    public Reservation(int id, Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes) {
+    public Reservation(int id, Date dateReservation, int idUser, String idSalle, String idFilm, int nbrPlaceRes, String idSpectacle) {
         this.id = id;
         this.dateReservation = dateReservation;
         this.idUser = idUser;
         this.idSalle = idSalle;
         this.idFilm=idFilm;
         this.nbrPlaceRes = nbrPlaceRes;
+        this.idSpectacle = idSpectacle;
     }
 
     public int getId() {
@@ -78,15 +81,24 @@ public class Reservation {
         this.idFilm = idFilm;
     }
 
+    public String getIdSpectacle() {
+        return idSpectacle;
+    }
+
+    public void setIdSpectacle(String idSpectacle) {
+        this.idSpectacle = idSpectacle;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "id=" + id +
                 ", dateReservation=" + dateReservation +
                 ", idUser=" + idUser +
-                ", idSalle=" + idSalle +
-                ", idFilm=" + idFilm +
+                ", idSalle='" + idSalle + '\'' +
+                ", idFilm='" + idFilm + '\'' +
                 ", nbrPlaceRes=" + nbrPlaceRes +
+                ", idSpectacle='" + idSpectacle + '\'' +
                 '}';
     }
 }

@@ -5,15 +5,14 @@ import Dashboard.DashboardFilmController;
 import entites.Planning;
 import entites.Reservation;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,16 +25,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InterfaceMyReservationListController implements Initializable {
     ReservationService rs= new ReservationService();
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        showFilm();
-        //searchReservation();
-    }
+
     @FXML
     private TableView<Reservation> tvReservation;
 
@@ -61,7 +57,7 @@ public class InterfaceMyReservationListController implements Initializable {
     private TextField tfId;
 
     @FXML
-    private TextField tfDate;
+    private DatePicker tfDate;
 
     @FXML
     private TextField tfIdUser;
@@ -74,6 +70,9 @@ public class InterfaceMyReservationListController implements Initializable {
 
     @FXML
     private TextField tfPlace;
+
+    @FXML
+    private TextField tfSearch;
 
     @FXML
     private Button btnAdd;
@@ -89,11 +88,18 @@ public class InterfaceMyReservationListController implements Initializable {
 
     private Planning currentReservation = null;
 
-   /* public void test (Planning data){
-        currentReservation = data;
-        tfFilm.setText(String.valueOf(data.getIdFilm()));
-        tfSalle.setText(String.valueOf(data.getIdSalle()));
-    }*/
+    public void test (Planning p){
+        currentReservation = p;
+        tfFilm.setText(String.valueOf(p.getTitreEvent()));
+        tfSalle.setText(String.valueOf(p.getNomSalle()));
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        showFilm();
+        searchReservation();
+    }
 
     @FXML
     void handleButtonAction(ActionEvent event) throws IOException {
@@ -106,7 +112,6 @@ public class InterfaceMyReservationListController implements Initializable {
     void handleMouseAction() {
         int index = tvReservation.getSelectionModel().getSelectedIndex();
         if(index<=-1){
-
             return;
         }
     }
@@ -122,7 +127,7 @@ public class InterfaceMyReservationListController implements Initializable {
         tvReservation.setItems(list);
     }
 
-    /*@FXML
+    @FXML
     void searchReservation() {
         FilteredList<Reservation> filteredData = new FilteredList<>(rs.reservationList(), b -> true);
         tfSearch.setOnKeyReleased(b -> {
@@ -132,9 +137,13 @@ public class InterfaceMyReservationListController implements Initializable {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if(reservation.getValidation().toLowerCase().contains(lowerCaseFilter)){
+                    if(reservation.getIdSalle().toLowerCase().contains(lowerCaseFilter)){
                         return true;
-                    }
+                    }else if(reservation.getIdFilm().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }else if(reservation.getIdSpectacle().toLowerCase().contains(lowerCaseFilter)){
+                        return true;
+                    }else
                     return false;
                 });
             });
@@ -142,7 +151,9 @@ public class InterfaceMyReservationListController implements Initializable {
             sortedList.comparatorProperty().bind(tvReservation.comparatorProperty());
             tvReservation.setItems(sortedList);
         });
-    }*/
+    }
+
+    //.setValue(new Date(p.getDate().getTime()).toLocalDate());
 
     public void DeleteReservation(){
         try {

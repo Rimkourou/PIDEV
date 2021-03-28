@@ -269,6 +269,9 @@
                            <HBox.margin>
                               <Insets left="20.0" top="30.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </TextField>
                         <ComboBox fx:id="comboCategory" onAction="#selectCategory" prefHeight="38.0" prefWidth="112.0" promptText="CATEGORY" style="-fx-background-radius: 50; -fx-border-radius: 50;" stylesheets="@DashboardFilm.css">
                            <styleClass>
@@ -337,14 +340,9 @@
                   </TableView>
                   <VBox prefHeight="695.0" prefWidth="392.0">
                      <children>
-                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="278.0" promptText="ID">
-                           <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="40.0" />
-                           </VBox.margin>
-                        </TextField>
                         <TextField fx:id="tfTitle" prefHeight="43.0" prefWidth="278.0" promptText="Title">
                            <VBox.margin>
-                              <Insets left="40.0" right="120.0" top="10.0" />
+                              <Insets left="40.0" right="120.0" top="40.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField fx:id="tfDescription" prefHeight="43.0" prefWidth="278.0" promptText="Description">
@@ -365,6 +363,11 @@
                            <VBox.margin>
                               <Insets left="40.0" right="120.0" top="10.0" />
                            </VBox.margin></ComboBox>
+                        <TextField fx:id="tfId" prefHeight="43.0" prefWidth="278.0" promptText="Picture">
+                           <VBox.margin>
+                              <Insets left="40.0" right="120.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
                         <ImageView fx:id="picId" fitHeight="117.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets left="40.0" top="10.0" />
