@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import service.hazem.RecalamationService;
 
@@ -45,6 +46,10 @@ public class ReclamationControllerAdmin implements Initializable {
 
     @FXML
     private TextArea tfDescriptionMail;
+
+    @FXML
+    private AnchorPane page;
+
     private RecalamationService recalamationService = new RecalamationService();
 
     private int idReclamation;
@@ -149,5 +154,59 @@ public class ReclamationControllerAdmin implements Initializable {
         tvReclamation.setItems(pf);
 
 
+    }
+
+    public void handleShowPromotion(MouseEvent mouseEvent) throws IOException {
+        Parent promotiontParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/Promotion.fxml"));
+        Scene promotionScene = new Scene(promotiontParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(promotionScene);
+        window.show();
+    }
+
+    public void handleShowUsers(MouseEvent mouseEvent) throws IOException {
+        Parent usersParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/Admin.fxml"));
+        Scene usersScene = new Scene(usersParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(usersScene);
+        window.show();
+    }
+
+    public void handleShowFilm(MouseEvent mouseEvent) throws IOException {
+        Parent Parent3 = FXMLLoader.load(getClass().getResource("../../GUI/wifek/DashboardFilm.fxml"));
+        Scene Scene3 = new Scene(Parent3, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene3);
+        window.show();
+    }
+
+    public void handleShowReservation(MouseEvent mouseEvent) throws IOException {
+        Parent Parent4 = FXMLLoader.load(getClass().getResource("../../GUI/wifek/DashboardReservation.fxml"));
+        Scene Scene4 = new Scene(Parent4, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene4);
+        window.show();
+    }
+
+    public void handleShowPlanning(MouseEvent mouseEvent) throws IOException {
+        Parent Parent5 = FXMLLoader.load(getClass().getResource("../../GUI/sana/Planning.fxml"));
+        Scene Scene5 = new Scene(Parent5, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene5);
+        window.show();
+    }
+
+    public void handleShowSpectacle(MouseEvent mouseEvent) throws IOException {
+        Parent Parent6 = FXMLLoader.load(getClass().getResource("../../GUI/sana/Spectacle.fxml"));
+        Scene Scene6 = new Scene(Parent6, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene6);
+        window.show();
     }
 }

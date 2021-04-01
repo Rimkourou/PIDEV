@@ -10,10 +10,10 @@ public class MainAdminTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../../GUI/hazem/admin/SalledeCinemaAdmin.fxml"));
-//        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1200, 680));
-        primaryStage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("../../GUI/hazem/admin/SalledeCinemaAdmin.fxml"));
+////        primaryStage.setTitle("Hello World");
+//        primaryStage.setScene(new Scene(root, 1200, 680));
+//        primaryStage.show();
     }
 
 

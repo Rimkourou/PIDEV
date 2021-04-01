@@ -1,14 +1,14 @@
 package utils;
 
-import javax.activation.DataSource;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SingletonConnection {
-    private String url="jdbc:mysql://127.0.0.1/project";
+public class SingletonConnection{
+    private String url="jdbc:mysql://127.0.0.1/project1";
     private String login="root";
     private String pwd="";
 
@@ -21,7 +21,7 @@ public class SingletonConnection {
             cnx= DriverManager.getConnection(url, login, pwd);
             System.out.println("Connexion");
         } catch (SQLException ex) {
-            Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SingletonConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

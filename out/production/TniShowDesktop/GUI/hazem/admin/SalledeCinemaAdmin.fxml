@@ -29,7 +29,7 @@
                   <Insets left="25.0" right="15.0" top="55.0" />
                </VBox.margin>
             </ImageView>
-            <HBox prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@../style/style.css">
+            <HBox onMouseClicked="#handleShowUsers" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@../style/style.css">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -227,19 +227,31 @@
             </HBox>
             <VBox prefHeight="138.0" prefWidth="274.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../style/style.css" text="Settings" textAlignment="CENTER" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets left="30.0" top="70.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Calibri Bold" size="24.0" />
-                     </font>
+                  <HBox onMouseClicked="#handleShowPromotion" prefHeight="45.0" prefWidth="274.0" style="-fx-background-radius: 50px 0px 0px 50px; -fx-border-radius: 50px 0px 0px 50px;" stylesheets="@../style/style.css">
+                     <children>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Data/promotion.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" text="Promotion" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
                      <styleClass>
-                        <String fx:value="button_settings" />
+                        <String fx:value="menu_hbox" />
                         <String fx:value="menu_hbox" />
                         <String fx:value="cursor-hand" />
                      </styleClass>
-                  </Button>
+                  </HBox>
                </children>
             </VBox>
          </children>
@@ -399,5 +411,15 @@
             </HBox>
          </children>
       </VBox>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="718.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="211.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #eab3ac;" stylesheets="@../style/style.css" text="Settings" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="24.0" />
+         </font>
+         <styleClass>
+            <String fx:value="button_settings" />
+            <String fx:value="menu_hbox" />
+            <String fx:value="cursor-hand" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>

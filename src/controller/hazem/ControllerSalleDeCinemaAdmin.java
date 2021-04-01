@@ -1,5 +1,6 @@
 package controller.hazem;
 
+import controller.ons.FXMLDocumentController;
 import entitie.hazem.SalleDeCinema;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
     @FXML
     private TableColumn<SalleDeCinema, String> colAdresse;
 
-    private int idU = 1;
+    private int idU = FXMLDocumentController.currentUser;
     static int idSalle;
     private int idCelle = -1;
     private SaleDeCinemaService saleDeCinemaService = new SaleDeCinemaService();
@@ -79,7 +80,8 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
     private int checkInt(String nombre) {
         for (int i=0; i<nombre.length(); i++){
             System.out.println((int) nombre.charAt(i));
-            if ((int) nombre.charAt(i) < 30 || (int) nombre.charAt(i) > 39) {
+            System.out.println("char " + (int) nombre.charAt(i));
+            if ((int) nombre.charAt(i) < 48 || (int) nombre.charAt(i) > 57) {
                 return -1;
             }
 
@@ -87,8 +89,8 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
         return 1;
     }
     public void handleAddSalle(MouseEvent mouseEvent) {
-
-//        System.out.println(checkInt(tfNbrPlace.getText()));
+//        System.out.println(checkInt(tfNbrPlace.getText())+ "idU "+idU);
+        System.out.println(checkInt(tfNbrPlace.getText()));
 
         if (tfTitreSalle.getText().trim().isEmpty() ||
                 tfAdresse.getText().trim().isEmpty() ||
@@ -101,6 +103,7 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
             alert.showAndWait();
         } else {
             if( checkInt(tfNbrPlace.getText()) == -1) {
+//
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning"); //affichage dans la barre de titre
                 alert.setHeaderText("le champs nombre de place doit être un nombre");
@@ -198,5 +201,58 @@ public class ControllerSalleDeCinemaAdmin implements Initializable {
         colDescription.setCellValueFactory(new PropertyValueFactory<SalleDeCinema, String>("Description"));
         colAdresse.setCellValueFactory(new PropertyValueFactory<SalleDeCinema, String>("adresse"));
         tvSalle.setItems(listSalle);
+    }
+
+    public void handleShowPromotion(MouseEvent mouseEvent) throws IOException {
+        Parent promotiontParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/Promotion.fxml"));
+        Scene promotionScene = new Scene(promotiontParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(promotionScene);
+        window.show();
+    }
+
+    public void handleShowUsers(MouseEvent mouseEvent) throws IOException {
+        Parent usersParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/Admin.fxml"));
+        Scene usersScene = new Scene(usersParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(usersScene);
+        window.show();
+    }
+    public void handleShowFilm(MouseEvent mouseEvent) throws IOException {
+        Parent Parent3 = FXMLLoader.load(getClass().getResource("../../GUI/wifek/DashboardFilm.fxml"));
+        Scene Scene3 = new Scene(Parent3, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene3);
+        window.show();
+    }
+
+    public void handleShowReservation(MouseEvent mouseEvent) throws IOException {
+        Parent Parent4 = FXMLLoader.load(getClass().getResource("../../GUI/wifek/DashboardReservation.fxml"));
+        Scene Scene4 = new Scene(Parent4, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene4);
+        window.show();
+    }
+
+    public void handleShowPlanning(MouseEvent mouseEvent) throws IOException {
+        Parent Parent5 = FXMLLoader.load(getClass().getResource("../../GUI/sana/Planning.fxml"));
+        Scene Scene5 = new Scene(Parent5, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene5);
+        window.show();
+    }
+
+    public void handleShowSpectacle(MouseEvent mouseEvent) throws IOException {
+        Parent Parent6 = FXMLLoader.load(getClass().getResource("../../GUI/sana/Spectacle.fxml"));
+        Scene Scene6 = new Scene(Parent6, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene6);
+        window.show();
     }
 }

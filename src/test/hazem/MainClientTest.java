@@ -10,9 +10,9 @@ public class MainClientTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre//SalledeCinemaClient.fxml"));
-//        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1200, 700));
-        primaryStage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre//SalledeCinemaClient.fxml"));
+////        primaryStage.setTitle("Hello World");
+//        primaryStage.setScene(new Scene(root, 1200, 700));
+//        primaryStage.show();
     }
 }

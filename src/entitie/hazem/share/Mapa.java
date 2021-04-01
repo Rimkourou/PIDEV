@@ -1,10 +1,9 @@
 package entitie.hazem.share;
 
-import com.teamdev.jxmaps.*;
+/*import com.teamdev.jxmaps.*;
 import com.teamdev.jxmaps.swing.MapView;
 
-import javax.swing.*;
-import java.awt.*;
+import java.util.Map;
 
 public class Mapa extends MapView {
     private Map map;
@@ -43,4 +42,4 @@ public class Mapa extends MapView {
         frame.setSize(700, 500);
         frame.setVisible(true);
     }
-}
+}*/

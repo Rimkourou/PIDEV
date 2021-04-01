@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="485.0" prefWidth="896.0" style="-fx-background-color: #fff; -fx-background-radius: 20px; -fx-border-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ons.FXMLDocumentController">
+   <children>
+      <AnchorPane fx:id="login1" layoutX="447.0" layoutY="40.0" prefHeight="442.0" prefWidth="448.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 20px;" stylesheets="@css.css" visible="false">
+         <children>
+            <TextField fx:id="txtemail" layoutX="106.0" layoutY="173.0" prefHeight="25.0" prefWidth="236.0" promptText="Email Address" stylesheets="@css.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="txtpass" layoutX="106.0" layoutY="245.0" prefHeight="25.0" prefWidth="236.0" promptText="Password" stylesheets="@css.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="login" layoutX="225.0" layoutY="315.0" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 50px; -fx-border-radius: 50px;" stylesheets="@css.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Italic" size="24.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="button_settings" />
+                  <String fx:value="cursor-hand" />
+                  <String fx:value="menu_hbox" />
+               </styleClass>
+            </Button>
+            <Label layoutX="198.0" layoutY="64.0" stylesheets="@css.css" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="forgotBtn" layoutX="106.0" layoutY="325.0" mnemonicParsing="false" onAction="#forgotPsw" style="-fx-background-color: transparent;" stylesheets="@css.css" text="Forgot Password" textFill="WHITE" underline="true" />
+            <Label fx:id="errorMsg" layoutX="106.0" layoutY="285.0" prefHeight="17.0" prefWidth="240.0" textFill="#ff3d3d" />
+            <CheckBox fx:id="checkbox" layoutX="107.0" layoutY="277.0" mnemonicParsing="false" onAction="#check" text="show password" textFill="WHITE" />
+            <TextField fx:id="txt_pass" layoutX="107.0" layoutY="245.0" prefHeight="30.0" prefWidth="236.0" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="signup2" layoutX="-4.0" layoutY="43.0" prefHeight="442.0" prefWidth="450.0" style="-fx-background-color: #fff; -fx-background-radius: 20px;" stylesheets="@css.css" visible="false">
+         <children>
+            <Label layoutX="110.0" layoutY="107.0" prefHeight="31.0" prefWidth="254.0" text="Welcome to Tunishow">
+               <font>
+                  <Font name="Agency FB Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="138.0" text="Get your ticket Now">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="Enter_signup" layoutX="141.0" layoutY="206.0" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 50px; -fx-border-radius: 50px;" stylesheets="@css.css" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="login2" layoutX="450.0" layoutY="40.0" prefHeight="442.0" prefWidth="448.0" style="-fx-background-color: #fff; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="161.0" layoutY="169.0" text="I have an Account">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="Enter_signin" layoutX="172.0" layoutY="206.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 50;" text="Sign in" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="149.0" layoutY="108.0" text="Sign In to Tunishow">
+               <font>
+                  <Font name="Agency FB Bold" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="signup1" layoutX="1.0" layoutY="41.0" prefHeight="442.0" prefWidth="450.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 20;">
+         <children>
+            <TextField fx:id="txt_username_up" layoutX="131.0" layoutY="95.0" prefHeight="28.0" prefWidth="189.0" promptText="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txt_prenom_up" layoutX="131.0" layoutY="132.0" prefHeight="28.0" prefWidth="189.0" promptText="Lastname">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txt_email_up" layoutX="131.0" layoutY="201.0" prefHeight="28.0" prefWidth="189.0" promptText="Email Address">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txt_age1" layoutX="131.0" layoutY="151.0" prefHeight="28.0" prefWidth="189.0" promptText="Age" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="txt_password_up" layoutX="131.0" layoutY="238.0" prefHeight="25.0" prefWidth="189.0" promptText="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="btn_signup" layoutX="161.0" layoutY="360.0" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 20;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="190.0" layoutY="23.0" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="questionBox" layoutX="131.0" layoutY="275.0" prefHeight="28.0" prefWidth="189.0" promptText="choose a question" style="-fx-border-radius: 50; -fx-background-radius: 50;" styleClass="button_settings" stylesheets="@css.css" />
+            <Label fx:id="errorMessage" layoutX="41.0" layoutY="410.0" prefHeight="18.0" prefWidth="361.0" textFill="#ff3d3d" />
+            <TextField fx:id="txt_answer_up" layoutX="131.0" layoutY="311.0" prefHeight="28.0" prefWidth="189.0" promptText="Answer">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <DatePicker fx:id="txt_age" layoutX="131.0" layoutY="167.0" prefHeight="28.0" prefWidth="189.0" promptText="Date of Birth" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="close" layoutX="830.0" layoutY="15.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="20.0" prefWidth="26.0" style="-fx-background-color: #fff;" stylesheets="@css.css">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Data/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="button_settings" />
+            <String fx:value="cursor-hand" />
+         </styleClass>
+      </Button>
+      <AnchorPane fx:id="otpSystem" layoutY="43.0" prefHeight="442.0" prefWidth="898.0" style="-fx-background-color: #fff; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: #2c3e50;" visible="false">
+         <children>
+            <PasswordField fx:id="enterOTP" layoutX="340.0" layoutY="145.0" prefHeight="25.0" prefWidth="218.0" promptText="Enter your otp" />
+            <Button fx:id="save" layoutX="374.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 50px; -fx-border-radius: 50px;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <TextField fx:id="hide" editable="false" layoutX="22.0" layoutY="84.0" prefHeight="25.0" prefWidth="78.0" visible="false" />
+            <Label layoutX="310.0" layoutY="83.0" text="Your OTP will be sent to your Email ">
+               <font>
+                  <Font name="Agency FB Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_message" layoutX="370.0" layoutY="197.0" prefHeight="18.0" prefWidth="204.0" textFill="#3bda1f" />
+         </children>
+      </AnchorPane>
+      
+   </children>
+</AnchorPane>

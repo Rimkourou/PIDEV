@@ -1,5 +1,6 @@
 package controller.hazem;
 
+import controller.ons.FXMLDocumentController;
 import entitie.hazem.Reclamation;
 import entitie.hazem.SalleDeCinema;
 import javafx.collections.FXCollections;
@@ -54,6 +55,7 @@ public class ReclamationControllerClient implements Initializable {
     @FXML
     private ComboBox<String> selectState;
 
+    private int idU = FXMLDocumentController.currentUser;
 
 
     private RecalamationService recalamationService = new RecalamationService();
@@ -69,7 +71,7 @@ public class ReclamationControllerClient implements Initializable {
     }
 
     private void showReclamationListe() {
-        ObservableList<Reclamation> pf = recalamationService.reclamationListe(1);
+        ObservableList<Reclamation> pf = recalamationService.reclamationListe(idU);
         colId.setCellValueFactory(new PropertyValueFactory<Reclamation, Integer>("id"));
         colObject.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("objet"));
         colDescription.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("description"));
@@ -133,16 +135,7 @@ public class ReclamationControllerClient implements Initializable {
         window.setScene(salleDeCinemaScene);
         window.show();
     }
-    public void handleSearchReclamation(KeyEvent keyEvent) {
-        ObservableList<Reclamation> pf = recalamationService.rechercherReclamationByObject(tfSearchR.getText());
-        colId.setCellValueFactory(new PropertyValueFactory<Reclamation, Integer>("id"));
-        colObject.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("objet"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("description"));
-        colState.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("state"));
-        tvReclamation.setItems(pf);
 
-
-    }
 
 
     public void handleSearchByState(ActionEvent actionEvent) {
@@ -158,5 +151,44 @@ public class ReclamationControllerClient implements Initializable {
             tvReclamation.setItems(pf);
         }
 
+
+    }
+    public void handleShowPromotion(MouseEvent mouseEvent) throws IOException {
+        Parent promotiontParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/FrontPromotion.fxml"));
+        Scene promotionScene = new Scene(promotiontParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(promotionScene);
+        window.show();
+    }
+
+
+    public void handleShowRooms(MouseEvent mouseEvent) throws IOException {
+        Parent movieParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre/SalledeCinemaClient.fxml"));
+        Scene movieScene = new Scene(movieParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(movieScene);
+        window.show();
+    }
+
+    public void handleShowComplaint(MouseEvent mouseEvent) throws IOException {
+        Parent complaintParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre/ReclamationClient.fxml"));
+        Scene complaintScene = new Scene(complaintParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(complaintScene);
+        window.show();
+    }
+
+
+    public void handleSearchReclamation(ActionEvent actionEvent) {
+        System.out.println("hh");
+        ObservableList<Reclamation> pf = recalamationService.rechercherReclamationByObject(tfSearchR.getText());
+        colId.setCellValueFactory(new PropertyValueFactory<Reclamation, Integer>("id"));
+        colObject.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("objet"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("description"));
+        colState.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("state"));
+        tvReclamation.setItems(pf);
     }
 }

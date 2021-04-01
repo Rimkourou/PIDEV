@@ -20,7 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import service.hazem.MapService;
 import service.hazem.SaleDeCinemaService;
-import entitie.hazem.share.Mapa;
+//import entitie.hazem.share.Mapa;
 
 import java.io.IOException;
 import java.net.URL;
@@ -144,8 +144,35 @@ public class ControllerSalleDeCinemaClient implements Initializable {
                 alert.showAndWait();
             }else {
 
-                Mapa temp = new Mapa(mapSelect.getNom(), mapSelect.getLat(), mapSelect.getLon());
+                //Mapa temp = new Mapa(mapSelect.getNom(), mapSelect.getLat(), mapSelect.getLon());
             }
         }
+    }
+    public void handleShowPromotion(MouseEvent mouseEvent) throws IOException {
+        Parent promotiontParent = FXMLLoader.load(getClass().getResource("../../GUI/ons/FrontPromotion.fxml"));
+        Scene promotionScene = new Scene(promotiontParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(promotionScene);
+        window.show();
+    }
+
+
+    public void handleShowRooms(MouseEvent mouseEvent) throws IOException {
+        Parent movieParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre/SalledeCinemaClient.fxml"));
+        Scene movieScene = new Scene(movieParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(movieScene);
+        window.show();
+    }
+
+    public void handleShowComplaint(MouseEvent mouseEvent) throws IOException {
+        Parent complaintParent = FXMLLoader.load(getClass().getResource("../../GUI/hazem/membre/ReclamationClient.fxml"));
+        Scene complaintScene = new Scene(complaintParent, 1200, 680);
+
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(complaintScene);
+        window.show();
     }
 }
