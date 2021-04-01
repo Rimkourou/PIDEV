@@ -18,7 +18,7 @@ import utils.ConnexionBD;
 
 /**
  *
- * @author Saif
+ * @author user
  */
 public class serviceprod  {
      Connection cn= ConnexionBD.getInstance().getCnx();
