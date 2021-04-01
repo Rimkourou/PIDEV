@@ -27,7 +27,7 @@ public class Pidev extends Application {
  
     public void start(Stage primaryStage) throws IOException {
         
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherProduit.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("InterfaceShop.fxml"));
             
             Scene scene = new Scene(root);
             

@@ -90,9 +90,9 @@ public class ServicePanier {
             ResultSet rs3 = pt3.executeQuery();
             
             while (rs3.next()) { 
-               
-                Produit P = new Produit(rs3.getInt(1),rs3.getString(2),rs3.getDouble(3),rs2.getInt(3),rs3.getInt(5));
-               p.getProduits().add(P);
+
+                Produit P = new Produit(rs3.getInt("id"),rs3.getString("nom"),rs3.getFloat("prix"),rs2.getInt("Qte"),rs3.getString("idCategorie"),rs3.getString("image"));
+                p.getProduits().add(P);
               
             }
      }

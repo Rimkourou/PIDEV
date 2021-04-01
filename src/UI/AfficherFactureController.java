@@ -32,6 +32,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
@@ -76,6 +78,10 @@ public class AfficherFactureController implements Initializable {
     private TextField idCommande;
     @FXML
     private TextField date;
+    @FXML
+    private TableColumn<?, ?> id;
+    @FXML
+    private TableColumn<Produit, ImageView> image;
 
     /**
      * Initializes the controller class.
@@ -110,11 +116,22 @@ public class AfficherFactureController implements Initializable {
             try {
                         
                 for(Produit bb: sc.getProduitCommande(C))
-                    listu.add(bb);
+                {
+                    Image i = new Image(bb.getImage().substring(56));
+                ImageView im = new ImageView() ;
+               im.setFitHeight(100);
+im.setFitWidth(100);
+                im.setImage(i);
+               bb.setIm(im);
+                                   listu.add(bb);
+
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(AfficherFactureController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            nom.setCellValueFactory(new PropertyValueFactory<>("id"));
+            nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+                        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+            image.setCellValueFactory(new PropertyValueFactory<>("im"));
             prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
             Qte.setCellValueFactory(new PropertyValueFactory<>("Qte"));
             
@@ -148,7 +165,7 @@ try {
     
     PDDocument doc    = new PDDocument();
     // PDPage page = new PDPage();
-    PDPage page = new PDPage(new PDRectangle(800,600));
+    PDPage page = new PDPage(new PDRectangle(1000,800));
     PDImageXObject pdimage;
     PDPageContentStream content;
     pdimage = PDImageXObject.createFromFile("chart.png",doc);
@@ -156,7 +173,7 @@ try {
     content.setNonStrokingColor(Color.decode("#f4f4f4"));
 content.addRect(0, 0,1000,1000 );
 content.fill();
-    content.drawImage(pdimage, 100, 100);
+    content.drawImage(pdimage, 100,100);
 
     content.close();
     doc.addPage(page);

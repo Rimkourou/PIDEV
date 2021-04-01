@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMouseClicked="#click" prefHeight="236.0" prefWidth="219.0" style="-fx-background-radius: 30; -fx-background-color: #74afd6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ItemPController">
+   <children>
+      <Label fx:id="nom" layoutX="26.0" layoutY="193.0" text="Nom">
+         <font>
+            <Font name="Calibri" size="24.0" />
+         </font></Label>
+      <Label fx:id="prix" layoutX="158.0" layoutY="190.0" prefHeight="28.0" prefWidth="48.0" text="Prix">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <ImageView fx:id="img" fitHeight="156.0" fitWidth="200.0" layoutX="10.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="id" layoutX="36.0" layoutY="203.0" opacity="0.0" text="id">
+         <font>
+            <Font name="Calibri" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

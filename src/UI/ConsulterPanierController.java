@@ -32,6 +32,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -58,6 +60,10 @@ public class ConsulterPanierController implements Initializable {
     private Button Retour;
     @FXML
     private TableColumn<?, ?> Qte;
+    @FXML
+    private TableColumn<Produit, ImageView> image;
+    @FXML
+    private TableColumn<?, ?> id;
 
     /**
      * Initializes the controller class.
@@ -80,8 +86,16 @@ public class ConsulterPanierController implements Initializable {
             Panier P = Panier.getInstance(C);
                 montant.setText(""+sv.calculePrix(P));
 
-         for(Produit bb: sv.getPanier(P))
-             listu.add(bb);
+         for(Produit bb: sv.getPanier(P)){
+                Image i = new Image(bb.getImage().substring(56));
+                ImageView im = new ImageView() ;
+               im.setFitHeight(100);
+im.setFitWidth(100);
+                im.setImage(i);
+               bb.setIm(im);
+                            listu.add(bb);
+
+         }
       } catch (SQLException ex) {
             Logger.getLogger(ConsulterPanierController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,10 +104,12 @@ public class ConsulterPanierController implements Initializable {
      
 
          //mettre les données dans la table view: 
+         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-         nom.setCellValueFactory(new PropertyValueFactory<>("id"));
+         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
          prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
                           Qte.setCellValueFactory(new PropertyValueFactory<>("Qte"));
+         image.setCellValueFactory(new PropertyValueFactory<>("im"));
 
         table.setItems(listu);
         
@@ -129,7 +145,7 @@ public class ConsulterPanierController implements Initializable {
                 scene2Controller.setResNom(idClient);
                 Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Hello World");
+            stage.setTitle("TuniShow");
             stage.show();
     }
 
@@ -158,7 +174,7 @@ public class ConsulterPanierController implements Initializable {
     @FXML
     private void Retour(ActionEvent event) {
          try {
-        javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("AfficherProduit.fxml"));
+        javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("InterfaceShop.fxml"));
         Scene sceneview = new Scene(tableview);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(sceneview);

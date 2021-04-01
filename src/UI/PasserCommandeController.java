@@ -30,6 +30,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -61,6 +63,10 @@ public class PasserCommandeController implements Initializable {
                    User C = new User(1,"sarsour","rim.kourou@esprit.tn");  
          ServicePanier sv =new ServicePanier();
          ServiceCommande sc =new ServiceCommande();
+    @FXML
+    private TableColumn<?, ?> image;
+    @FXML
+    private TableColumn<?, ?> id;
 
   public void setResNom(TextField resNom) {
         this.idClient.setText(resNom.getText());
@@ -82,8 +88,16 @@ public class PasserCommandeController implements Initializable {
                 montant.setText(""+sv.calculePrix(P));
                 double i = sv.calculePrix(P) +(sv.calculePrix(P)*0.1) ;
                 montant1.setText(""+i);
-         for(Produit bb: sv.getPanier(P))
-             listu.add(bb);
+         for(Produit bb: sv.getPanier(P)){
+              Image imm = new Image(bb.getImage().substring(56));
+                ImageView im = new ImageView() ;
+               im.setFitHeight(100);
+im.setFitWidth(100);
+                im.setImage(imm);
+               bb.setIm(im);
+                listu.add(bb);
+         }
+            
       } catch (SQLException ex) {
             Logger.getLogger(ConsulterPanierController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,10 +106,12 @@ public class PasserCommandeController implements Initializable {
      
 
          //mettre les données dans la table view: 
+         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
          nom.setCellValueFactory(new PropertyValueFactory<>("id"));
          prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
                           Qte.setCellValueFactory(new PropertyValueFactory<>("Qte"));
+         image.setCellValueFactory(new PropertyValueFactory<>("im"));
 
         table.setItems(listu);
         

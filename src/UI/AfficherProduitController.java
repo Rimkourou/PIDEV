@@ -24,11 +24,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -37,8 +40,6 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AfficherProduitController implements Initializable {
 
-    @FXML
-    private AnchorPane chercher;
     @FXML
     private TableView<Produit> table;
     @FXML
@@ -50,6 +51,8 @@ public class AfficherProduitController implements Initializable {
     private TextField idClient;
     
     serviceprod sv =new serviceprod();
+    @FXML
+    private AnchorPane chercher;
 
     /**
      * Initializes the controller class.
@@ -116,5 +119,6 @@ public class AfficherProduitController implements Initializable {
                 System.out.println(ex.getMessage());
                 }
     }
+
     
 }

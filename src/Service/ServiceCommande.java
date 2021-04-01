@@ -92,6 +92,8 @@ public class ServiceCommande {
                 P.setPrix(rs3.getInt(3));
                  P.setId(rs3.getInt(1));
                  P.setNom(rs3.getString(2));
+                                  P.setImage(rs3.getString("image"));
+
                p.getProduits().add(P);
               
             }

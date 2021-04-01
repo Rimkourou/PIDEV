@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Pidev.jar" size="75642" download="eager" />
+    <jar href="Pidev.jar" size="1156372" download="eager" />
+    <jar href="lib\TrayNotification.jar" size="41019" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.48.jar" size="1006956" download="eager" />

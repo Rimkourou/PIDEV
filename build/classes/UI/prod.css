@@ -1,0 +1,49 @@
+.table-view {
+    -fx-background-radius:20;
+}
+.fruit-item{
+    -fx-background-color:  #74afd6;
+        -fx-background-radius: 30;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+.table-view .column-header-background {
+    -fx-background-color: #2c3e50;
+    -fx-background-radius:20;
+    -fx_background-insets: 0 0 10 0;
+    -fx-padding: 0 0 10 0;
+}
+.table-view .column-header, .table-view .filter {
+    -fx-size: 40;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-padding: 10 0 0 0px;
+}
+.button_settings{
+    -fx-background-color: 	#eab3ac;
+}
+.menu_hbox:hover{
+    -fx-background-color: 	#eab3ac;
+}
+.menu_hbox:pressed{
+    -fx-border-color: #eab3ac;
+    -fx-border-image-width: 2px 0px 0px 0px;
+}
+.cursor-hand{
+    -fx-cursor: hand;
+}
+.combo-box .cell{
+    -fx-text-fill: white;
+}
+.menu:hover{
+    -fx-background-color: 	#eab3ac;
+}
+.menu:pressed{
+    -fx-border-color: #eab3ac;
+    -fx-border-image-width: 2px 0px 0px 0px;
+}

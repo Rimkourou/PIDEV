@@ -11,13 +11,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AfficherFactureController">
+<AnchorPane id="AnchorPane" prefHeight="763.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AfficherFactureController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="chercher" layoutX="-1.0" prefHeight="549.0" prefWidth="792.0" stylesheets="@prod.css">
+      <AnchorPane id="AnchorPane" fx:id="chercher" layoutY="1.0" prefHeight="763.0" prefWidth="846.0" stylesheets="@prod.css">
          <children>
-            <TableView fx:id="table" layoutX="25.0" layoutY="131.0" prefHeight="289.0" prefWidth="707.0">
+            <TableView fx:id="table" layoutX="25.0" layoutY="131.0" prefHeight="290.0" prefWidth="747.0">
                <columns>
-                  <TableColumn fx:id="nom" prefWidth="244.0" text="id" />
+                  <TableColumn fx:id="id" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="nom" prefWidth="244.0" text="nom" />
+                  <TableColumn fx:id="image" prefWidth="75.0" text="image" />
                   <TableColumn fx:id="prix" prefWidth="263.0" text="Prix" />
                   <TableColumn fx:id="Qte" prefWidth="75.0" text="Qte" />
                </columns>
@@ -29,40 +31,43 @@
                </columnResizePolicy>
             </TableView>
             <TextField fx:id="idClient" disable="true" editable="false" layoutX="200.0" layoutY="14.0" visible="false" />
-            <Button layoutX="64.0" layoutY="474.0" mnemonicParsing="false" onAction="#Telecharger" style="-fx-background-color: #eab3ac;" text="Telecharger Pdf" />
-            <TextField fx:id="montant" disable="true" layoutX="602.0" layoutY="443.0">
+            <Button layoutX="25.0" layoutY="456.0" mnemonicParsing="false" onAction="#Telecharger" prefHeight="44.0" prefWidth="159.0" style="-fx-background-color: #eab3ac; -fx-background-radius: 50; -fx-border-radius: 50;" text="Telecharger Pdf" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font></Button>
+            <TextField fx:id="montant" disable="true" layoutX="537.0" layoutY="452.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Label layoutX="473.0" layoutY="447.0" prefHeight="17.0" prefWidth="103.0" text="Montant Produits" />
-            <Label layoutX="481.0" layoutY="491.0" prefHeight="17.0" prefWidth="103.0" text="Montant Total" />
-            <TextField fx:id="montant1" disable="true" layoutX="602.0" layoutY="487.0">
+            <Label layoutX="399.0" layoutY="456.0" prefHeight="17.0" prefWidth="103.0" text="Montant Produits" />
+            <Label layoutX="399.0" layoutY="491.0" prefHeight="17.0" prefWidth="103.0" text="Montant Total" />
+            <TextField fx:id="montant1" disable="true" layoutX="537.0" layoutY="487.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="email" disable="true" layoutX="269.0" layoutY="27.0">
+            <TextField fx:id="email" disable="true" layoutX="262.0" layoutY="27.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Label layoutX="148.0" layoutY="29.0" prefHeight="17.0" prefWidth="103.0" text="Email " />
+            <Label layoutX="139.0" layoutY="31.0" prefHeight="17.0" prefWidth="103.0" text="Email " />
             <Label layoutX="139.0" layoutY="70.0" prefHeight="17.0" prefWidth="103.0" text="Id Commande" />
-            <TextField fx:id="idCommande" disable="true" layoutX="269.0" layoutY="66.0">
+            <TextField fx:id="idCommande" disable="true" layoutX="262.0" layoutY="66.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="date" disable="true" layoutX="592.0" layoutY="66.0">
+            <TextField fx:id="date" disable="true" layoutX="554.0" layoutY="66.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Label layoutX="541.0" layoutY="70.0" prefHeight="17.0" prefWidth="50.0" text="Date" />
-            <ImageView fitHeight="57.0" fitWidth="103.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="452.0" layoutY="70.0" prefHeight="17.0" prefWidth="50.0" text="Date" />
+            <ImageView fitHeight="69.0" fitWidth="103.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/150937304_4080817231943099_1648160319076134588_n.png" />
+                  <Image url="@../Images/150937304_4080817231943099_1648160319076134588_n.png" />
                </image>
             </ImageView>
          </children>

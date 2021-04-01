@@ -4,19 +4,44 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/mailing.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/GUI/Prod.fxml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/serviceprod.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/DashboardCategoriesController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/ItemPController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/ServiceCategorie.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/PasserCommande.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/Commande.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/itemP.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherFactureController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/utils/ConnexionBD.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/GUI/AfficherProduit.fxml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/pidev/PIDEV1.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/IService.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/StatstiqueController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/Panier.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/GUI/AfficherProduitController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/GUI/ProdController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/pidev/Pidev.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/ProduitCategorie.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/ServiceCommande.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/GUI/prod.css</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherCommandsController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/ConsulterPanierController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/InterfaceShopController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/ServicePanier.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/Categorie.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/MyListener.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/PasserCommandeController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/DashboardProduit.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Service/serviceprod.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/InterfaceShop.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/ConsulterPanier.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/pidev/PIDEV1.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/Pidev.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherProduitController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/Prod.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/DashboardCategorie.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherFacture.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/Statstique.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/DashboardProduitController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/ProdController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/prod.css</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/User.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/Entity/Produit.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherProduit.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Pidev/src/UI/AfficherCommands.fxml</file>
         </group>
     </open-files>
 </project-private>
