@@ -1,0 +1,16 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+{{ form_widget(form.nom,{ 'label':'','attr':{'class':'form-control','placeholder':'YOUR nom *'}}) }}
+{{ form_errors(form.nom) }}
+    {{ form_widget(form.prix,{ 'label':'','attr':{'class':'form-control','placeholder':'prix *'}}) }}
+{{ form_errors(form.prix) }}
+{{ form_widget(form.Qte,{ 'label':'','attr':{'class':'form-control','placeholder':' quantite *'}}) }}
+{{ form_errors(form.Qte) }}
+    {{ form_widget(form.idCategorie,{ 'label':'','attr':{'class':'form-control','placeholder':'categorie *'}}) }}
+{{ form_errors(form.idCategorie) }}
+  {{ form_widget(form.imageFile,{ 'attr':{'class':'form-control ','placeholder':'YOUR image *'}}) }}
+
+
+
+<div class="col-md-offset-5" > <button class="btn btn-primary mt30 btn-black ">{{ button_label|default('Save') }}</button> </div>
+
+{{ form_end(form) }}
