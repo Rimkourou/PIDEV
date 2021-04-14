@@ -1,0 +1,104 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="{{ asset('dist/img/Data/logo.png') }}" alt="AdminLTE Logo" class="brand-image ml-5"
+             style="opacity: .8; width: 100px;">
+        <span class="brand-text font-weight-light" style="opacity: 0; margin: 0; padding: 0;">a</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ asset('dist/img/hazem.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Gdara Hazem</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+
+                <li class="nav-item">
+                    <a href="{{ path('salle_de_cinema_membre_index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-person-booth"></i></i>
+                        <p>
+                            Movie Rooms
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p>
+                            Movies
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        {#                        <i class="nav-icon fas fa-th"></i>#}
+                        <i class="nav-icon fas fa-snowplow"></i>
+                        <p>
+                            Shows
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Shop
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ path('reclamation_membre_index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-exclamation-circle"></i>
+                        <p>
+                            Complaints
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>
+                            Booking
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-percent"></i>
+                        <p>
+                            Promotion
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                            Planning
+                        </p>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

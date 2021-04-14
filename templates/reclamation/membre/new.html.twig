@@ -1,0 +1,17 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block body %}
+    <div class="wrapper m-5">
+        <div class="content-wrapper">
+            {{ form_start(form)}}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

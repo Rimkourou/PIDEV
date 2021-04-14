@@ -1,0 +1,46 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper m-5">
+
+        <div class="content-wrapper">
+            <h1>Reclamation</h1>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ reclamation.id }}</td>
+                </tr>
+                <tr>
+                    <th>Objet</th>
+                    <td>{{ reclamation.objet }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ reclamation.description }}</td>
+                </tr>
+                <tr>
+                    <th>Stete</th>
+                    <td>{{ reclamation.stete }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="float-left mt-5 ml-1">
+                <a class="btn btn-dark" href="{{ path('reclamation_membre_index') }}"><i
+                            class="fas fa-long-arrow-alt-left nav-icon"></i> back to complaint List</a>
+            </div>
+            {#            <a href="{{ path('reclamation_index') }}">back to list</a>#}
+
+            {#            <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a>#}
+
+            {#            {{ include('reclamation/_delete_form.html.twig') }}#}
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,88 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}SalleDeCinema index{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+
+        <div class="content-wrapper">
+{#            <a class="btn btn-primary ml-3 mt-3" href="{{ path('salle_de_cinema_new') }}">#}
+{#                <i class="fas fa-plus nav-icon"></i> Create new movie room</a>#}
+            <div class="card m-3">
+                <div class="card-header">
+                    <h1 class="card-title">Movie Romms List</h1>
+                </div>
+                <!-- /.card-header -->
+
+                <div class="card-body">
+
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            {#                            <th>Id</th>#}
+                            <th>Nom</th>
+                            <th>NbrPlace</th>
+                            <th>Description</th>
+                            <th>Adresse</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for salle_de_cinema in salle_de_cinemas %}
+                            <tr>
+                                {#                                <td>{{ salle_de_cinema.id }}</td>#}
+                                <td>{{ salle_de_cinema.nom }}</td>
+                                <td>{{ salle_de_cinema.nbrPlace }}</td>
+                                <td>{{ salle_de_cinema.Description }}</td>
+                                <td>{{ salle_de_cinema.adresse }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-dark"
+                                       href="{{ path('salle_de_cinema_membre_show', {'id': salle_de_cinema.id}) }}">show</a>
+{#                                    <a class="btn btn-sm btn-warning"#}
+{#                                       href="{{ path('salle_de_cinema_edit', {'id': salle_de_cinema.id}) }}">edit</a>#}
+{#                                    {{ include('salle_de_cinema/_delete_form.html.twig') }}#}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            {#                            <th>Id</th>#}
+                            <th>Nom</th>
+                            <th>NbrPlace</th>
+                            <th>Description</th>
+                            <th>Adresse</th>
+                            <th>actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}

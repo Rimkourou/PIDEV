@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SalleDeCinema{% endblock %}
+
+{% block body %}
+    <div class="wrapper m-5">
+        <div class="content-wrapper">
+            <h1>{{ salle_de_cinema.nom }} Detail</h1>
+
+            <table class="table">
+                <tbody>
+                {# <tr> #}
+                {# <th>Id</th> #}
+                {# <td>{{ salle_de_cinema.id }}</td> #}
+                {# </tr> #}
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ salle_de_cinema.nom }}</td>
+                </tr>
+                <tr>
+                    <th>NbrPlace</th>
+                    <td>{{ salle_de_cinema.nbrPlace }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ salle_de_cinema.Description }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ salle_de_cinema.adresse }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+{#            <a href="{{ path('salle_de_cinema_edit', {'id': salle_de_cinema.id}) }}">edit</a>#}
+            <div class="float-left mt-5 ml-1">
+                <a class="btn btn-dark" href="{{ path('salle_de_cinema_index') }}"><i
+                            class="fas fa-long-arrow-alt-left nav-icon"></i> back to movie rooms list</a>
+            </div>
+            {# {{ include('salle_de_cinema/_delete_form.html.twig') }} #}
+        </div>
+    </div>
+{% endblock %}

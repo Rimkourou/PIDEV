@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SalleDeCinema{% endblock %}
+
+{% block body %}
+    <div class="wrapper m-5">
+
+        <div class="content-wrapper">
+            <h1>Create new SalleDeCinema</h1>
+
+            {{ include('salle_de_cinema/_form.html.twig') }}
+
+            <div class="float-right mt-5 mr-1">
+                <a class="btn btn-dark" href="{{ path('salle_de_cinema_index') }}"><i
+                            class="fas fa-long-arrow-alt-left nav-icon"></i> back to movie rooms list</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

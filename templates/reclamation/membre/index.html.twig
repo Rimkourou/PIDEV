@@ -1,0 +1,91 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+
+        <div class="content-wrapper">
+            <a class="btn btn-primary ml-3 mt-3" href="{{ path('reclamation_membre_new') }}">
+                <i class="fas fa-plus nav-icon"></i> Create new Complaint</a>
+            <div class="card m-3">
+                <div class="card-header">
+                    <h1 class="card-title">Complaint List</h1>
+                </div>
+                <!-- /.card-header -->
+
+                <div class="card-body">
+
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            {# <th>Id</th> #}
+                            <th>objet</th>
+                            <th>Description</th>
+                            <th>State</th>
+                            <th>salle</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reclamation in reclamations %}
+                            <tr>
+                                {# <td>{{ salle_de_cinema.id }}</td> #}
+                                <td>{{ reclamation.objet }}</td>
+                                <td>{{ reclamation.description }}</td>
+                                <td>{{ reclamation.stete }}</td>
+                                <td>{{ reclamation.salle.nom }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-dark"
+                                       href="{{ path('reclamation_membre_show', {'id': reclamation.id}) }}">show</a>
+                                    <a class="btn btn-sm btn-warning"
+                                       href="{{ path('reclamation_edit_membre', {'id': reclamation.id}) }}">edit</a>
+{#                                    {{ include('reclamation/_delete_form.html.twig') }}#}
+
+
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            {# <th>Id</th> #}
+                            <th>objet</th>
+                            <th>Description</th>
+                            <th>State</th>
+                            <th>Salle</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+
+{% endblock %}
