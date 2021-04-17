@@ -1,0 +1,14 @@
+<style>
+    .button {
+        margin: 10px 0 10px 0;
+        float: right;
+        padding: 5px;
+        background-color: #eab3ac;
+        border: #eab3ac solid 2px;
+        color: white;
+    }
+</style>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="button" style="margin-left: 10px">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
