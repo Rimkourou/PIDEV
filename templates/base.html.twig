@@ -7,7 +7,6 @@
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
@@ -34,8 +33,9 @@
         <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     {% endblock %}
+    <script src="https://js.stripe.com/v3/"></script>
 
-    {% block javascripts %}
+
         <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -82,6 +82,7 @@
         <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
         <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
         <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    {% block javascripts %}
 
     {% endblock %}
 </head>

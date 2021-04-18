@@ -98,6 +98,6 @@ class ReservationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('reservation_index');
+        return $this->redirectToRoute('reservationList');
     }
 }

@@ -19,42 +19,46 @@
                         <div class="col-12">
                             <button class="button"><a style="color: white" href="{{ path('film_new') }}">Create new</a>
                             </button>
-                            <table class="table table-bordered table-hover" style="background-color: white;">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Author</th>
-                                    <th>Category</th>
-                                    <th>Type</th>
-                                    <th>Image</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for film in films %}
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
                                     <tr>
-                                        <td>{{ film.id }}</td>
-                                        <td>{{ film.titre }}</td>
-                                        <td style="width: 3000%!important;">{{ film.description }}</td>
-                                        <td>{{ film.auteur }}</td>
-                                        <td>{{ film.categorie }}</td>
-                                        <td>{{ film.genre }}</td>
-                                        <td>{{ film.img }}</td>
-                                        <td>
-                                            <a href="{{ path('film_show', {'id': film.id}) }}">show</a>
-                                            <a href="{{ path('film_edit', {'id': film.id}) }}">edit</a>
-                                            {{ include('film/_delete_form.html.twig') }}
-                                        </td>
+                                        <th>Id</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Type</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
                                     </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="8">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    {% for film in films %}
+                                        <tr>
+                                            <td>{{ film.id }}</td>
+                                            <td>{{ film.titre }}</td>
+                                            <td style="width: 3000%!important;">{{ film.description }}</td>
+                                            <td>{{ film.auteur }}</td>
+                                            <td>{{ film.categorie }}</td>
+                                            <td>{{ film.genre }}</td>
+                                            <td style="width: 1000%!important;">{{ film.img }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary"><a style="color: white" href="{{ path('film_show', {'id': film.id}) }}"><i class="far fa-eye"></i></a></button>
+                                                <button type="button" class="btn btn-success"><a style="color: white" href="{{ path('film_edit', {'id': film.id}) }}"><i class="fas fa-edit"></i></a></button>
+                                                {{ include('film/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="8">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,4 +69,22 @@
                     Loop</a>.</strong> All rights reserved.
         </footer>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 {% endblock %}

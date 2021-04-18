@@ -18,39 +18,40 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <br>
-                        <table class="table table-bordered table-hover" style="background-color: white;">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Reservation Date</th>
-                <th>User</th>
-                <th>Movie Room</th>
-                <th>Movie</th>
-                <th>Places</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.datereservation ? reservation.datereservation|date('Y-m-d') : '' }}</td>
-                <td>{{ reservation.iduser }}</td>
-                <td>{{ reservation.idsalle }}</td>
-                <td>{{ reservation.idfilm }}</td>
-                <td>{{ reservation.nbrplaceres }}</td>
-                <td>
-                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Reservation Date</th>
+                                    <th>User</th>
+                                    <th>Movie Room</th>
+                                    <th>Movie</th>
+                                    <th>Places</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for reservation in reservations %}
+                                    <tr>
+                                        <td>{{ reservation.datereservation ? reservation.datereservation|date('Y-m-d') : '' }}</td>
+                                        <td>{{ reservation.iduser }}</td>
+                                        <td>{{ reservation.idsalle }}</td>
+                                        <td>{{ reservation.idfilm }}</td>
+                                        <td>{{ reservation.nbrplaceres }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"><a style="color: white" href="{{ path('reservation_show', {'id': reservation.id}) }}"><i class="far fa-eye"></i></a></button>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,4 +62,22 @@
                 Loop</a>.</strong> All rights reserved.
     </footer>
 </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 {% endblock %}
