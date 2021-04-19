@@ -11,6 +11,9 @@
         background-color: #eab3ac;
         border: #eab3ac solid 2px;
     }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+        display: none;
+    }
 </style>
 <div class="wrapper">
     <div class="content-wrapper">
@@ -39,7 +42,7 @@
                                         <td>{{ reservation.idfilm }}</td>
                                         <td>{{ reservation.nbrplaceres }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary"><a style="color: white" href="{{ path('reservation_show', {'id': reservation.id}) }}"><i class="far fa-eye"></i></a></button>
+                                            <button type="button" style="background-color: #0a0e14!important;" class="btn"><a style="color: white" href="{{ path('reservation_show', {'id': reservation.id}) }}"><i class="far fa-eye"></i></a></button>
                                         </td>
                                     </tr>
                                 {% else %}

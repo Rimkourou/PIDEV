@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Film;
+use App\Entity\Reservation;
 use App\Form\FilmType;
 use App\Repository\FilmRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -130,5 +131,16 @@ class FilmController extends AbstractController
         }
 
         return $this->redirectToRoute('film_index');
+    }
+
+    /**
+     * @Route("/member/recherche", name="recherche")
+     */
+    public function Recherche(FilmRepository $filmRepository, \Symfony\Component\HttpFoundation\Request $request)
+    {
+        $data=$request->get('search');
+        $film=$filmRepository->findBy(['titre'=>$data]);
+        return $this->render('film/indexMember.html.twig',
+            ['films'=>$film]);
     }
 }

@@ -17,11 +17,66 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
+                            <form method="post" action="{{ path('recherche') }}">
+                                <div class="input-group">
+                                    <input type="text"  class="form-control" placeholder="Search"
+                                           name="search">
+                                </div>
+                            </form>
                             <br>
                             {% for film in films %}
-                            <card style="margin-left: 15px">
-                                <a href="{{ path('film_showMember', {'id': film.id}) }}"><img src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
-                            </card>
+                                <card style="margin-left: 15px">
+                                    <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
+                                                src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
+                                </card>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 style="margin: 20px 0px 20px 15px;">Drama</h3>
+                            {% for film in films %}
+                                {% if film.genre =='Drama' %}
+                                    <card style="margin-left: 15px">
+                                        <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
+                                                    src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
+                                    </card>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 style="margin: 20px 0px 20px 15px;">Horror</h3>
+                            {% for film in films %}
+                                {% if film.genre =='Horror' %}
+                                    <card style="margin-left: 15px">
+                                        <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
+                                                    src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
+                                    </card>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 style="margin: 20px 0px 20px 15px;">Action</h3>
+                            {% for film in films %}
+                                {% if film.genre =='Action' %}
+                                    <card style="margin-left: 15px">
+                                        <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
+                                                    src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
+                                    </card>
+                                {% endif %}
+
                             {% endfor %}
                         </div>
                     </div>

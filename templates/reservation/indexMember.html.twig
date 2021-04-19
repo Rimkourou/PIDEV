@@ -5,27 +5,26 @@
 {% block body %}
     <style>
         .button {
-            margin: 10px 0 10px 0;
-            float: right;
+            margin: 5px 0 -20px 8px!important;
             padding: 5px;
             background-color: #eab3ac;
             border: #eab3ac solid 2px;
+        }
+        div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+            display: none;
         }
     </style>
     <div class="wrapper">
         <div class="content-wrapper">
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <button class="button"><a style="color: white" href="{{ path('reservation_new') }}">Create
-                                    new</a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
+                        <div class="row">
+                            <div >
+                                <button class="button"><a style="color: white;" href="{{ path('reservation_new') }}">Create new</a>
+                                </button>
+                            </div>
+                        </div>
                         <thead>
                         <tr>
                             <th>Reservation Date</th>

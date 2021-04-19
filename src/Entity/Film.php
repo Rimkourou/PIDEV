@@ -21,7 +21,7 @@ class Film
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank (message="please insert the title")
-     * @Assert\Length (min=5, max=10, minMessage = "Movie name must be at least {{ limit }} characters long",maxMessage = "Movie name cannot be longer than {{ limit }} characters")
+     * @Assert\Length (min=4, max=10, minMessage = "Movie name must be at least {{ limit }} characters long",maxMessage = "Movie name cannot be longer than {{ limit }} characters")
      */
     private $titre;
 
