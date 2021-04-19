@@ -34,6 +34,7 @@ class FilmController extends AbstractController
     {
         return $this->render('film/indexMember.html.twig', [
             'films' => $filmRepository->findAll(),
+            'tests' => $filmRepository->filmReservation(),
         ]);
     }
 

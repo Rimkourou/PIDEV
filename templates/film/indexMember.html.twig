@@ -2,6 +2,10 @@
 {% block title %}Film index{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('/path/to/bootstrap.min.css') }}"/>
+    <script src="{{ asset('/path/to/jquery.min.js') }}"></script>
+    <script src="{{ asset('/path/to/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('carousel.js') }}"></script>
     <style>
         .button {
             margin: 10px 0 10px 0;
@@ -14,45 +18,82 @@
     <div class="wrapper">
         <div class="content-wrapper">
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <form method="post" action="{{ path('recherche') }}">
-                                <div class="input-group">
-                                    <input type="text"  class="form-control" placeholder="Search"
-                                           name="search">
-                                </div>
-                            </form>
-                            <br>
-                            {% for film in films %}
-                                <card style="margin-left: 15px">
-                                    <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
-                                                src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
-                                </card>
-                            {% endfor %}
+                <form method="post" action="{{ path('recherche') }}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search"
+                               name="search" style="margin: 15px 70% 0 5px;">
+                    </div>
+                </form>
+                <div style="background: rgb(2,0,36);background: linear-gradient(356deg, rgba(2,0,36,1) 0%, rgba(44,62,80,1) 0%, rgba(234,179,172,1) 100%);padding-bottom: 50px">
+                    <h3 style="margin: 20px 0px 30px 15px;color:white;padding-top:20px;text-align: center;font-weight: 600;text-transform: uppercase;">Most watched Movies</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                {% for t in tests %}
+                                    <card style="margin-left: 15px">
+                                        <a href="{{ path('film_showMember', {'id': t.id}) }}"><img
+                                                    src="{{ asset('dist/img/' ~ t.img) }}" width="230" height="260"></a>
+                                    </card>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
+                <div class="container">
+                    <div class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    {% for film in films %}
+                                        <div class="col-sm">
+                                            <card style="margin-left: 15px">
+                                                <a href="{{ path('film_showMember', {'id': film.id}) }}">
+                                                    <img class="d-block w-100" src="{{ asset('dist/img/' ~ film.img) }}"
+                                                         width="230" height="260">
+                                                </a>
+                                            </card>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    {% for film in films %}
+                                        <div class="col-sm">
+                                            <card style="margin-left: 15px">
+                                                <a href="{{ path('film_showMember', {'id': film.id}) }}">
+                                                    <img class="d-block w-100" src="{{ asset('dist/img/' ~ film.img) }}"
+                                                         width="230" height="260">
+                                                </a>
+                                            </card>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h3 style="margin: 20px 0px 20px 15px;">Drama</h3>
+                            <h3 style="margin: 20px 0px 20px 15px;font-weight: 600;text-transform: uppercase;font-size: 20px">Drama</h3>
                             {% for film in films %}
                                 {% if film.genre =='Drama' %}
+
                                     <card style="margin-left: 15px">
                                         <a href="{{ path('film_showMember', {'id': film.id}) }}"><img
                                                     src="{{ asset('dist/img/' ~ film.img) }}" width="230" height="260"></a>
                                     </card>
                                 {% endif %}
-
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h3 style="margin: 20px 0px 20px 15px;">Horror</h3>
+                            <h3 style="margin: 20px 0px 20px 15px;font-weight: 600;text-transform: uppercase;font-size: 20px">Horror</h3>
                             {% for film in films %}
                                 {% if film.genre =='Horror' %}
                                     <card style="margin-left: 15px">
@@ -65,10 +106,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h3 style="margin: 20px 0px 20px 15px;">Action</h3>
+                            <h3 style="margin: 20px 0px 20px 15px;font-weight: 600;text-transform: uppercase;font-size: 20px">Action</h3>
                             {% for film in films %}
                                 {% if film.genre =='Action' %}
                                     <card style="margin-left: 15px">

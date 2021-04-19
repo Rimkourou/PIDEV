@@ -19,6 +19,15 @@ class FilmRepository extends ServiceEntityRepository
         parent::__construct($registry, Film::class);
     }
 
+    public function filmReservation(){
+        $entityManager = $this->getEntityManager();
+        return $entityManager->createQuery(
+            'select f from App\Entity\Film f,
+            App\Entity\Reservation r
+            where f.titre = r.idfilm'
+        )->getResult();
+    }
+
     // /**
     //  * @return Film[] Returns an array of Film objects
     //  */
