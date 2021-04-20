@@ -141,7 +141,8 @@ class FilmController extends AbstractController
     {
         $data=$request->get('search');
         $film=$filmRepository->findBy(['titre'=>$data]);
+        $tests=$filmRepository->filmReservation();
         return $this->render('film/indexMember.html.twig',
-            ['films'=>$film]);
+            ['films'=>$film,'tests'=>$tests]);
     }
 }
