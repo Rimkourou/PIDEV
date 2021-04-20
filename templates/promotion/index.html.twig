@@ -44,8 +44,9 @@
                                         <th>ID</th>
                                         <th>Critere</th>
                                         <th>IDUser</th>
-                                        <th>CastPhoto</th>
                                         <th>Reduction</th>
+                                        <th>StartDate</th>
+                                        <th>EndDate</th>
                                         <th>Update</th>
                                         <th>Delete</th>
                                     </tr>
@@ -54,8 +55,9 @@
                                         <td>{{ p.id }}</td>
                                         <td>{{ p.critaire }}</td>
                                         <td>{{ p.idUser }}</td>
-                                        <td>{{ p.castphoto }}</td>
-                                        <td>{{ p.reduction }}
+                                        <td>{{ p.reduction }}</td>
+                                        <td>{{p.dated|date('Y-m-d')}}</td>
+                                        <td>{{p.datef|date('Y-m-d')}}</td>
                                         <td><a class="btn btn-info btn-sm" href="{{ path('update2',{'id':p.id}) }}"><i class="fas fa-pencil-alt"></i>update</a></td>
                                         <td><a class="btn btn-danger btn-sm" href="{{ path('delete',{'id':p.id}) }}"><i class="fas fa-trash"></i>Delete</a></td>
                                     </tr {% endfor%} >

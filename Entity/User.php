@@ -4,14 +4,17 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields="email", message="Email already taken")
+ * @ORM\Table(name="user", indexes={@ORM\Index(columns={"nom","prenom","email"}, flags={"fulltext"})})
  */
-class User
+class User implements UserInterface , \Serializable
 {
     /**
      * @ORM\Id
@@ -38,7 +41,7 @@ class User
      */
     private $role;
     /**
-     *@ORM\Column(type="string" , length=255)
+     *@ORM\Column(type="string" , length=255 ,unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
@@ -49,7 +52,6 @@ class User
      */
     private $password;
     /**
-     *@Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -57,6 +59,14 @@ class User
      *@ORM\Column(type="string" , length=255)
      */
     private $state;
+    /**
+     *@ORM\Column(type="string" , length=255)
+     */
+    private $resettoken;
+    /**
+     *@ORM\Column(type="string" , length=255)
+     */
+    private $token;
 
     public function getId(): ?int
     {
@@ -191,5 +201,86 @@ class User
         $this->plainPassword = $plainPassword;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
 
+    /**
+     * @param mixed $token
+     */
+    public function setToken($token): void
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResettoken()
+    {
+        return $this->resettoken;
+    }
+
+    /**
+     * @param mixed $resettoken
+     */
+    public function setResettoken($resettoken): void
+    {
+        $this->resettoken = $resettoken;
+    }
+
+
+
+
+    public function getRoles()
+    {
+        return [
+            'ROLE_USER'
+        ];
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->nom,
+            $this->prenom,
+            $this->age,
+            $this->role,
+            $this->email,
+            $this->password
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->nom,
+            $this->prenom,
+            $this->age,
+            $this->role,
+            $this->email,
+            $this->password
+            )= unserialize($serialized, ['allowed_classes' =>false]);
+    }
 }

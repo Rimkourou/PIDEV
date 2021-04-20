@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 2em auto; max-width: 3000px; width: 90%; font: 12px/1.5 sans-serif; }
+    .example {  max-width: 3000px;}
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example">
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+
+
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+
+                                <div class="grix xs4 container">
+                                    <div class="col-xs4"><h1>{{ app.user.nom }} {{ app.user.prenom }} 's Profil</h1></div>
+
+                                    <p><b>Nom : </b> {{ app.user.nom }}</p>
+                                    <p><b>Prénom :</b> {{ app.user.prenom }}</p>
+                                    <p><b>E-mail :</b> {{ app.user.email }}</p>
+
+                                    <div class="col-xs4">
+                                        <a href="updateProfile" class="btn btn-primary float-right" style="margin-right: 5px;"> Edif Profil</a><br><br>
+                                        <a href="EditPassword" class="btn btn-primary float-right" style="margin-right: 5px;"> Edit Password</a>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        {% for message in app.flashes('message') %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

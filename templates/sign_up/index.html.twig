@@ -29,7 +29,17 @@
 
 
 
-            <a href="login.html" class="text-center">I already have a membership</a>
+            <a href="login" class="text-center">I already have a membership</a>
+            {% for message in app.flashes('message') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-info" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

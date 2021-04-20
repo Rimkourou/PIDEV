@@ -1,5 +1,60 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Promotion{% endblock %}
+
 {% block body %}
-<img src="{{  asset('uploads/images/' ~ promotion.castphoto) }}" width="200" height="200">
+    <style>
+        .example-wrapper { margin: 2em auto; max-width: 3000px; width: 90%; font: 12px/1.5 sans-serif; }
+        .example {  max-width: 3000px;}
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example">
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Promotions Table</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Promotions Table</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    {% for p in promotion %}
+                                      <card style="margin-left: 10px">
+                                          <img src="{{  asset('dist/img/' ~ p.castphoto) }}" width="200" height="200">
+                                      </card>
+                                        <p><b>Reduction : </b> {{p.reduction}}</p>
+                                        <p><b>StartDate/EndDate: </b> {{p.dated|date('Y-m-d')}}/{{p.datef|date('Y-m-d')}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
 {% endblock %}

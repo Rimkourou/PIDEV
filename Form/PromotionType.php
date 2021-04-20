@@ -21,7 +21,6 @@ class PromotionType extends AbstractType
             ])
             ->add('dated')
             ->add('datef')
-            ->add('idUser')
             ->add('castPhoto', FileType::class,[
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

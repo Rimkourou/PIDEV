@@ -36,8 +36,8 @@ class UserType extends AbstractType
                     'placeholder' =>'Enter your Email'
                 ]
             ])
-            ->add('password', TextType::class,
-                ['attr'=>['placeholder' =>'Enter your Password']
+            ->add('password', TextType::class,[
+                'attr'=>['placeholder' =>'Enter your Password']
             ])
             ->add('state', TextType::class, [
                 'attr'=>[

@@ -33,12 +33,11 @@ class Promotion
     private $datef;
     /**
      *@ORM\Column(type="integer")
-     *  @Assert\NotBlank
      */
     private $iduser;
     /**
      *@ORM\Column(type="string")
-     *  @Assert\Image()
+     *
      */
     private $castphoto;
     /**

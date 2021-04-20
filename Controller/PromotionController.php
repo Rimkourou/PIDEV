@@ -11,10 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\String\Slugger\AsciiSlugger;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 
 class PromotionController extends AbstractController
@@ -54,6 +52,7 @@ class PromotionController extends AbstractController
     /**
      * @param PromotionRepository $repository
      * @return Response
+     * @param Request $request
      * @Route ("/update2/{id}",name="update2")
      */
 
@@ -89,7 +88,7 @@ class PromotionController extends AbstractController
      * @return Response
      * @Route ("/promotionA/add" ,name="add2")
      */
-    function Add(Request $request){
+    function Add(Request $request, UserInterface $user){
         $promotion=new Promotion();
         $form=$this->createForm(PromotionType::class,$promotion);
         $form->add('Ajouter',SubmitType::class);
@@ -105,7 +104,9 @@ class PromotionController extends AbstractController
                 $this->getParameter('image_directory'),$fileName
             );
 
+            $userId = $user->getId();
             $promotion->setCastphoto($fileName);
+            $promotion->setIduser($userId);
    //_____________________________
             $em=$this->getDoctrine()->getManager();
             $em->persist($promotion);
@@ -118,7 +119,15 @@ class PromotionController extends AbstractController
 
     }
 
-
-
+    /**
+     * @param PromotionRepository $repository
+     * @return Response
+     * @Route ("/showPromotions" ,name="showPromotions")
+     */
+    function showPromotions(PromotionRepository $repository){
+        $promotion=$repository->findAll();
+        return $this->render('promotion/show.html.twig',
+            ['promotion'=>$promotion]);
+    }
 
 }
