@@ -19,9 +19,34 @@ class SalleDeCinemaRepository extends ServiceEntityRepository
         parent::__construct($registry, SalleDeCinema::class);
     }
 
-    // /**
-    //  * @return SalleDeCinema[] Returns an array of SalleDeCinema objects
-    //  */
+    public function findAdminSalle($id)
+    {
+        $entityManager = $this->getEntityManager();
+        return $entityManager->createQuery(
+            '
+            SELECT s FROM 
+             App\Entity\SalleDeCinema s,
+             App\Entity\User u
+             WHERE s.user = u.id AND u.id = :id
+            '
+        )->setParameter('id', $id)->getResult();
+    }
+
+    public function findAdminSalleByName($id, $nom)
+    {
+        $entityManager = $this->getEntityManager();
+        return $entityManager->createQuery(
+            '
+            SELECT s FROM 
+             App\Entity\SalleDeCinema s,
+             App\Entity\User u
+             WHERE s.user = u.id AND u.id = :id AND s.nom LIKE :nom
+            '
+        )->setParameter('id', $id)->setParameter('nom', "%" . $nom . "%")->getResult();
+    }
+// /**
+//  * @return SalleDeCinema[] Returns an array of SalleDeCinema objects
+//  */
     /*
     public function findByExampleField($value)
     {
@@ -47,4 +72,15 @@ class SalleDeCinemaRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findMembreSalleByName($nom)
+    {
+        $entityManager = $this->getEntityManager();
+        return $entityManager->createQuery(
+            '
+            SELECT s FROM 
+             App\Entity\SalleDeCinema s
+             WHERE s.nom LIKE :nom
+            '
+        )->setParameter('nom', "%" . $nom . "%")->getResult();
+    }
 }

@@ -27,18 +27,25 @@
                 <th>Adresse</th>
                 <td>{{ salle_de_cinema.adresse }}</td>
             </tr>
+            <tr>
+                <th>Map position</th>
+                <td><iframe src="{{ map }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></td>
+            </tr>
             </tbody>
         </table>
 
+        <div class="text-center mt-2">
 
-        {#            <a href="{{ path('salle_de_cinema_edit', {'id': salle_de_cinema.id}) }}">edit</a>#}
+        </div>
+
+        {# <a href="{{ path('salle_de_cinema_edit', {'id': salle_de_cinema.id}) }}">edit</a> #}
         <div class="float-left mt-5 ml-1">
             <a class="btn btn-dark" href="{{ path('salle_de_cinema_membre_index') }}"><i
                         class="fas fa-long-arrow-alt-left nav-icon"></i> back to movie rooms list</a>
         </div>
-{% endblock %}
+        {% endblock %}
 
-{% block title %}
+        {% block title %}
 
-{% endblock %}
+        {% endblock %}
 

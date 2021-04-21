@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\PropertySearchSalle;
 use App\Entity\SalleDeCinema;
 use App\Entity\User;
+use App\Form\PropertySearchSalleDeCinemaType;
+use App\Form\PropertySearchSalleType;
 use App\Form\SalleDeCinemaType;
 use App\Repository\SalleDeCinemaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,14 +20,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class SalleDeCinemaController extends AbstractController
 {
     /**
-     * @Route("/", name="salle_de_cinema_index", methods={"GET"})
+     * @Route("/", name="salle_de_cinema_index")
      * @param SalleDeCinemaRepository $salleDeCinemaRepository
      * @return Response
      */
-    public function index(SalleDeCinemaRepository $salleDeCinemaRepository): Response
+    public function index(SalleDeCinemaRepository $salleDeCinemaRepository, Request $request): Response
     {
+
+        $propertySearchSalle = new PropertySearchSalle();
+        $form = $this->createForm(PropertySearchSalleDeCinemaType::class, $propertySearchSalle);
+        $form->handleRequest($request);
+        $salle = $salleDeCinemaRepository->findAdminSalle(1);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $nom = $propertySearchSalle->getName();
+            if ($nom != "")
+                $salle = $salleDeCinemaRepository->findAdminSalleByName(1,$nom);
+
+        }
         return $this->render('salle_de_cinema/index.html.twig', [
-            'salle_de_cinemas' => $salleDeCinemaRepository->findAll(),
+            'salle_de_cinemas' => $salle,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -89,7 +105,7 @@ class SalleDeCinemaController extends AbstractController
      */
     public function delete(Request $request, SalleDeCinema $salleDeCinema): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$salleDeCinema->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $salleDeCinema->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($salleDeCinema);
             $entityManager->flush();

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\PropertySearchReclamation;
 use App\Entity\Reclamation;
 use App\Entity\User;
+use App\Form\PropertySearchReclamationType;
 use App\Form\ReclamationEditAdminType;
 use App\Form\ReclamationEditMembreType;
 use App\Form\ReclamationMembreType;
@@ -19,10 +21,34 @@ class ReclamationMembreController extends AbstractController
     /**
      * @Route("/reclamation_membre", name="reclamation_membre_index")
      */
-    public function index(ReclamationRepository $reclamationRepository): Response
+    public function index(ReclamationRepository $reclamationRepository, Request $request): Response
     {
+        $propertySearchReclamation = new PropertySearchReclamation();
+        $form = $this->createForm(PropertySearchReclamationType::class, $propertySearchReclamation);
+        $form->handleRequest($request);
+        $reclamation = $reclamationRepository->findMembreReclamation(2);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $objet = $propertySearchReclamation->getObjet();
+            $state = $propertySearchReclamation->getState();
+//            var_dump($objet);
+//            var_dump($state);
+//            die();
+            if ($state != null)
+                $reclamation = $reclamationRepository->findMembreByState(2, $state);
+            if ($objet != null) {
+                $reclamation = $reclamationRepository->findMembreByObject(2, $objet);
+            }
+            if ($state == null and $objet == null) {
+                $reclamation = $reclamationRepository->findMembreReclamation(2);
+            }
+            if ($state != null and $objet != null) {
+                $reclamation = $reclamationRepository->findMembreByObjectAndState(2, $objet, $state);
+            }
+
+        }
         return $this->render('reclamation/membre/index.html.twig', [
-                        'reclamations' => $reclamationRepository->findMembreReclamation(2)
+            'reclamations' => $reclamation,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -43,7 +69,7 @@ class ReclamationMembreController extends AbstractController
             $reclamation->setUser($user);
             $entityManager->persist($reclamation);
             $entityManager->flush();
-
+            $this->addFlash('notice','add successfuly');
             return $this->redirectToRoute('reclamation_membre_index');
         }
         return $this->render('reclamation/membre/new.html.twig', [

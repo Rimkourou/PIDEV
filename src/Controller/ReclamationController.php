@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\PropertySearchReclamation;
 use App\Entity\Reclamation;
+use App\Form\PropertySearchReclamationType;
 use App\Form\ReclamationEditAdminType;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
@@ -17,20 +19,47 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReclamationController extends AbstractController
 {
     /**
-     * @Route("/", name="reclamation_index", methods={"GET"})
+     * @Route("/", name="reclamation_index")
+     * @param ReclamationRepository $reclamationRepository
+     * @param Request $request
+     * @param $state
+     * @return Response
      */
-    public function index(ReclamationRepository $reclamationRepository): Response
+    public function index(ReclamationRepository $reclamationRepository, Request $request): Response
     {
-        return $this->render('reclamation/index.html.twig', [
-//            'reclamations' => $reclamationRepository->findAll()
-            'reclamations' => $reclamationRepository->findAdminReclamation(1)
-        ]);
+        $propertySearchReclamation = new PropertySearchReclamation();
+        $form = $this->createForm(PropertySearchReclamationType::class, $propertySearchReclamation);
+        $form->handleRequest($request);
+        $reclamation = $reclamationRepository->findAdminReclamation(1);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $objet = $propertySearchReclamation->getObjet();
+            $state = $propertySearchReclamation->getState();
+//            var_dump($objet);
+//            var_dump($state);
+//            die();
+            if ($state != null)
+                $reclamation = $reclamationRepository->findAdminByState(1, $state);
+            if ($objet != null) {
+                $reclamation = $reclamationRepository->findAdminByObject(1, $objet);
+            }
+            if ($state == null and $objet == null) {
+                $reclamation = $reclamationRepository->findAdminReclamation(1);
+            }
+            if ($state != null and $objet != null) {
+                $reclamation = $reclamationRepository->findAdminByObjectAndState(1, $objet, $state);
+            }
+
+        }
+        return $this->render('reclamation/index.html.twig', [//            'reclamations' => $reclamationRepository->findAll()
+            'reclamations' => $reclamation,
+            'form' => $form->createView(),]);
     }
 
     /**
      * @Route("/new", name="reclamation_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public
+    function new(Request $request): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
@@ -65,16 +94,25 @@ class ReclamationController extends AbstractController
      * @Route("/{id}/edit", name="reclamation_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Reclamation $reclamation
+     * @param \Swift_Mailer $mailer
      * @return Response
      */
-    public function edit(Request $request, Reclamation $reclamation): Response
+    public function edit(Request $request, Reclamation $reclamation, \Swift_Mailer $mailer): Response
     {
+
         $form = $this->createForm(ReclamationEditAdminType::class, $reclamation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+//            var_dump($reclamation->getStete(),$request->get('mail_description'));
+//            die();
+            $message = (new \Swift_Message('reply to your complaint'))
+                ->setFrom('tunishow.tn@gmail.com')
+                ->setTo('tunishow.tn@gmail.com')
+                ->setBody('<h1>Your State changed to <span style=\"color: red;\"> ' . $reclamation->getStete() . '</span></h1>'
+                    . '<h4>' . $request->get('mail_description') . '</h4>', 'text/html');
+            $mailer->send($message);
             return $this->redirectToRoute('reclamation_index');
         }
 

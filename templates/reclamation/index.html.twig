@@ -10,7 +10,24 @@
 {#                <i class="fas fa-plus nav-icon"></i> Create new Complaint</a>#}
             <div class="card m-3">
                 <div class="card-header">
-                    <h1 class="card-title">Complaint List</h1>
+                    {{ form_start(form) }}
+                    <div class="form-row align-items-end" >
+                        <div class="col">
+                            <h1 class="card-title">Complaints List</h1>
+                        </div>
+                        <div class="col">
+                            {{ form_widget(form.objet) }}
+                        </div>
+                         <div class="col">
+                            {{ form_widget(form.state) }}
+                        </div>
+                        <div class="col">
+                            <div>
+                                <button type="submit" class="btn btn-outline-success">Rechercher</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
                 </div>
                 <!-- /.card-header -->
 
@@ -71,21 +88,21 @@
     </div>
 
     <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+        // $(function () {
+        //     $("#example1").DataTable({
+        //         "responsive": true, "lengthChange": false, "autoWidth": false,
+        //         "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        //     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        //     $('#example2').DataTable({
+        //         "paging": true,
+        //         "lengthChange": false,
+        //         "searching": false,
+        //         "ordering": true,
+        //         "info": true,
+        //         "autoWidth": false,
+        //         "responsive": true,
+        //     });
+        // });
     </script>
 
 {% endblock %}
