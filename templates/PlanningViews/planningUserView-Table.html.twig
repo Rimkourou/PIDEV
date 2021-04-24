@@ -1,0 +1,84 @@
+{% extends 'PlanningViews/planningUserView-Index.html.twig' %}
+{% block titreTableau %}
+    <div class="row">
+        <div >
+            <h1>List Des Plannings</h1>
+        </div>
+        <div class="col-2 mt-2 ml-1">
+            <!-- Plannings Calendar btn-->
+            <a href="{{ path('afficher_plannings_User_Calendar') }}" type="button" class="btn btn-block btn-primary"
+               style="width: 41px"
+               title="Afficher plannings des événnement sous forme de calendrier">
+                <i class="fa fa-calendar-alt"></i>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+{% block componentAffichagePlanning %}
+
+<!-- Plannings Table -->
+<table id="planningTableUser" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type Event</th>
+        <th>Titre Event</th>
+        {#            <th>Image Event</th>#}
+        <th>Nom Du Salle</th>
+        <th>Date De Projection</th>
+        <th>Heure De Debut</th>
+        <th>Heure De Fin</th>
+        <th>Réservation</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for pln in plannings %}
+        <tr align="center" valign="middle">
+            <td align="center" vertical-align="middle">{{ pln.id }}</td>
+            <td align="center" VALIGN="BOTTOM">{{ pln.typeEvent }}</td>
+            <td align="center" VALIGN="BOTTOM">{{ pln.titreEvent }}</td>
+            <td align="center" VALIGN="BOTTOM">{{ pln.nomSalle }}</td>
+            {#                <td align="center" vertical-align="middle">#}
+            {#                    <img src="{{ asset('dist/img/Data/' ~ listImg[pln.id]) }}" alt="Image du spectacle {{ pln.titreEvent }}"#}
+            {#                         title="Image du spectacle '{{ pln.titreEvent }}'"#}
+            {#                         width="80px">#}
+            {#                </td>#}
+            <td align="center" vertical-align="middle">{{ pln.date|date('d-m-Y') }}</td>
+            <td align="center" vertical-align="middle">{{ pln.heureDebut|date('H:i:s') }}</td>
+            <td align="center" vertical-align="middle">{{ pln.heureFin|date('H:i:s') }}</td>
+            <td align="center" vertical-align="middle">
+                <a href="#" class="btn btn-warning mr-1"><i class="fa fa-shopping-basket mr-2"></i>Réserver</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+<script>
+    $(function () {
+        console.log("Script working properly ds spectacle list");
+        var planningTableUser = $("#planningTableUser").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": [
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ],
+        });
+        planningTableUser.buttons().container().appendTo('#planningTableUser_wrapper .col-md-6:eq(0)');
+
+        // var calendarBtn = `<a href="/planningsUser-Calendar" type="button" class="btn btn-primary ml-2" style="width: 39px">
+        // <i class="fa fa-calendar-alt" ></i></a>`
+        //
+        // var spectacleTable_wrapper = document.getElementById("planningTableUser_wrapper");
+        // spectacleTable_wrapper.childNodes[0].insertAdjacentHTML("afterbegin", calendarBtn);
+        // spectacleTable_wrapper.childNodes[0].childNodes[2].classList.remove("col-md-6");
+        // spectacleTable_wrapper.childNodes[0].childNodes[2].classList.add("col-md-3");
+    });
+</script>
+{% endblock %}

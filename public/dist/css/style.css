@@ -1,0 +1,20 @@
+.sidebar-dark-primary{
+    background-color: #0C1021;
+}
+
+nav .nav-item:hover {
+    background-color: #eab3ac;
+}
+
+aside a img {
+    display: inline-block;
+    margin-left: 0;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    visibility: visible
+
+}

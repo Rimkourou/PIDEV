@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Des Plannings{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <br><br>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            {% block titreTableau %}<h1>List Des Plannings</h1>{% endblock %}
+                            <br><br>
+                            {% block mainContent %}{% endblock %}
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+             <br><br>
+        </div>
+
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright &copy; 2021 Tunishow Team</strong> All rights reserved.
+        </footer>
+    </div>
+{% endblock %}
+
+

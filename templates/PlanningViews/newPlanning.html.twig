@@ -1,0 +1,116 @@
+{% extends 'PlanningViews/indexPlanning.html.twig' %}
+{% block titreTableau %}{% endblock %}
+{% block mainContent %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="planningModal" tabindex="-1" role="dialog" aria-labelledby="planningModalLabel"
+         aria-hidden="false">
+        {# {{ form_start(form_planning,{'attr':{'novalidate':'novalidate'}}) }} #}
+        {{ form_start(form_planning,{'attr':{'novalidate':'novalidate'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form_planning) }}
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPlanning">{{ form_title }}</h5>
+                    <button type="button" onclick="window.open('/plannings','_self')" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+{#                    <div class="d-flex justify-content-center">#}
+{#                        <img style="border:5px double black;" src="" title="image de l'événnement"#}
+{#                             width="110" height="140" alt="image de l'événnement" id="planning_form_imgEvent"/>#}
+{#                    </div>#}
+{#                    <br>#}
+                    <div class="form-group" style="display: none">
+                        {{ form_label(form_planning.typeEvent, "Type Événement") }}
+                        {{ form_widget(form_planning.typeEvent) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form_planning.titreEvent, "Titre Événement") }}
+                        {{ form_errors(form_planning.titreEvent) }}
+                        {{ form_widget(form_planning.titreEvent) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form_planning.nomSalle, "Nom Du Salle") }}
+                        {{ form_errors(form_planning.nomSalle) }}
+                        {{ form_widget(form_planning.nomSalle) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form_planning.date, "Date De Projection") }}
+                        {{ form_errors(form_planning.date) }}
+                        {{ form_widget(form_planning.date) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form_planning.heureDebut, "Heure De Debut") }}
+                        {{ form_errors(form_planning.heureDebut) }}
+                        {{ form_widget(form_planning.heureDebut) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form_planning.heureFin, "Heure De Fin") }}
+                        {{ form_errors(form_planning.heureFin) }}
+                        {{ form_widget(form_planning.heureFin) }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    {# <button type="reset" class='btn btn-danger btn-rounded btn-fw' data-dismiss="modal" #}
+                    {# onclick="window.open('/plannings','_self')">Annuler #}
+                    {# </button> #}
+                    {# <button type="submit" class='btn btn-success btn-rounded btn-fw'>Submit</button> #}
+                    {{ form_row(form_planning.annuler) }}
+                    {{ form_row(form_planning.submit) }}
+                </div>
+                {{ form_rest(form_planning) }}
+                {{ form_end(form_planning) }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $("#planningModal").modal({show: true});
+    </script>
+    <style>
+        .parent {
+            position: relative;
+            width: 151px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        .child1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .child2 {
+            z-index: 1;
+            width: 50%;
+            height: 20%;
+            margin-top: 102%;
+            margin-left: 45%;
+        }
+
+        .modal-dialog {
+            vertical-align: middle;
+            margin-top: 6%;
+        }
+    </style>
+{% endblock %}
+
+
+
