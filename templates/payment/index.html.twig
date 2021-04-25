@@ -10,17 +10,18 @@
     <script type="text/javascript">
         // Create an instance of the Stripe object with your publishable API key
         var stripe = Stripe('pk_test_51IhZSmEUbBuxKZQLAShLgJGf7GTeute4M2aynvfTVWubRV9HvskcB9ecZARTpZmv9naDUCEmDUgOk3BbERrtzvB600ygWRIwQI');
-        function payment(){
+
+        function payment() {
             fetch('/create-checkout-session', {
                 method: 'POST',
             })
-                .then(function(response) {
+                .then(function (response) {
                     return response.json();
                 })
-                .then(function(session) {
-                    return stripe.redirectToCheckout({ sessionId: session.id });
+                .then(function (session) {
+                    return stripe.redirectToCheckout({sessionId: session.id});
                 })
-                .then(function(result) {
+                .then(function (result) {
                     // If `redirectToCheckout` fails due to a browser or network
                     // error, you should display the localized error message to your
                     // customer using `error.message`.
@@ -28,10 +29,11 @@
                         alert(result.error.message);
                     }
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.error('Error:', error);
                 });
         }
+
         /*var checkoutButton = document.getElementById('checkout-button');
         checkoutButton.addEventListener('click', function() {
             // Create a new Checkout Session using the server-side endpoint you

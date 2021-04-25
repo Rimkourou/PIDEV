@@ -4,58 +4,82 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 2em auto; max-width: 3000px; width: 90%; font: 12px/1.5 sans-serif; }
-        .example {  max-width: 3000px;}
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 3000px;
+            width: 90%;
+            font: 12px/1.5 sans-serif;
+        }
+
+        .example {
+            max-width: 3000px;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+
+        .container2 {
+            margin: 20px 50px 160px 50px;
+        }
+
+        .wrapper {
+            background-color: #f4f6f9;
+        }
     </style>
 
     <div class="example">
 
 
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Promotions Table</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Promotions Table</li>
-                            </ol>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <!--<section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Promotions Table</h1>
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Promotions Table</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <div class="wrapper">
 
             <!-- Main content -->
-            <section class="content">
+            <section class="container2">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
 
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    {% for p in promotion %}
-                                        <card style="margin-left: 10px">
-                                            <img src="{{  asset('dist/img/' ~ p.castphoto) }}" width="200" height="200">
-                                            <p><b>Reduction : </b> {{p.reduction}}</p>
-                                            <p><b>StartDate/EndDate: </b> {{p.dated|date('Y-m-d')}}/{{p.datef|date('Y-m-d')}}</p>
-                                        </card>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                {% for p in promotion %}
+                                    <card style="margin-left: 10px">
+                                        <img src="{{ asset('dist/img/' ~ p.castphoto) }}" width="230" height="260">
+                                        <p style="margin-left: 10px"><b>Reduction : </b> {{ p.reduction }}</p>
+                                        <p style="margin-left: 10px"><b>Date: </b> {{ p.dated|date('Y-m-d') }}
+                                            /{{ p.datef|date('Y-m-d') }}</p>
+                                    </card>
 
-                                    {% endfor %}
-                                </div>
+                                {% endfor %}
                             </div>
-
                         </div>
 
                     </div>
+
                 </div>
             </section>
 
         </div>
+        <footer class="main-footer" style="text-align: center;margin-left:0px;">
+            <strong>Copyright &copy; 2021 <a style="color: #eab3ac" href="https://adminlte.io">Infinite
+                    Loop</a>.</strong> All rights reserved.
+        </footer>
     </div>
 
 {% endblock %}
