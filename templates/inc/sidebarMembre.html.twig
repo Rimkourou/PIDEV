@@ -12,30 +12,30 @@
             {# </a> #}
             <a class="nav-item nav-link active" href="{{ path('filmList') }}">
 
-                Movies
+                {% trans %}Movies{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="{{ path('afficher_spectacle_user') }}">
 
-                Shows
+                {% trans %}Shows{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="{{ path('salle_de_cinema_membre_index') }}">
-                Movie Rooms
+                {% trans %}Movie Rooms{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="{{ path('afficheP_membre') }}">
 
-                Promotion
+                {% trans %}Promotion{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="{{ path('afficher_plannings_User_Table') }}">
 
-                Planning
+                {% trans %}Planning{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="#">
 
-                Shop
+                {% trans %}Shop{% endtrans %}
             </a>
             <a class="nav-item nav-link active" href="{{ path('reclamation_membre_index') }}">
 
-                Complaints
+                {% trans %}Complaints{% endtrans %}
             </a>
         </div>
     </div>
@@ -46,14 +46,14 @@
                aria-haspopup="true" aria-expanded="false">
                 Change language
             </a>
-            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{# {{ path('change_locale', {'locale': 'fr'}) }} #}">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('change_locale', {'locale': 'fr'}) }}">
                     <img src="https://img.icons8.com/doodle/30/000000/france.png"/> <span>Français</span>
                 </a>
-                <a class="dropdown-item" href="{# {{ path('change_locale', {'locale': 'en'}) }} #}">
+                <a class="dropdown-item" href="{{ path('change_locale', {'locale': 'en'}) }}">
                     <img src="https://img.icons8.com/doodle/30/000000/usa.png"/> <span>Anglais</span>
                 </a>
-            </div>-->
+            </div>
         </li>
         {# <li class="nav-item"> #}
         {# <a class="nav-link" data-widget="navbar-search" href="#" role="button"> #}

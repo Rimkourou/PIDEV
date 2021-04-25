@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Film;
 use App\Entity\Planning;
+use App\Entity\Reservation;
 use App\Entity\Salledecinema;
 use App\Entity\Spectacle;
 use App\Form\PlanningFormType;
+use App\Form\ReservationType;
 use Doctrine\ORM\EntityManager;
 use phpDocumentor\Reflection\Type;
 use PhpParser\Node\Expr\Array_;
@@ -127,7 +129,7 @@ class PlanningController extends AbstractController
         $listFilms = $this->getDoctrine()->getRepository(Film::class)->findAll();
 
         return $this->render('PlanningViews/newPlanning.html.twig', [
-            "form_title" => "Ajouter un planning d'un " . strtolower($type),
+            "form_title" => "Add a planning for " . strtolower($type),
             "form_planning" => $form->createView(),
             "list_plannings" => $listSpectacles,
             "list_Films" => $listFilms,
@@ -151,7 +153,7 @@ class PlanningController extends AbstractController
         }
 
         return $this->render("PlanningViews/newPlanning.html.twig", [
-            "form_title" => "Modifier un planning d'un " . strtolower($pln->getTypeEvent()),
+            "form_title" => "Edit the planning of " . strtolower($pln->getTypeEvent()),
             "form_planning" => $form->createView(),
         ]);
     }
@@ -170,5 +172,29 @@ class PlanningController extends AbstractController
         return $this->redirectToRoute("afficher_plannings");
     }
 
+
+    /**
+     * @Route("new/{id}", name="planning_show", methods={"GET","POST"})
+     */
+    public function show(Planning $planning,Request $request): Response
+    {
+        $reservation = new Reservation();
+        $reservation->setIdFilm($planning->getTitreEvent());
+        $reservation->setIdSalle($planning->getNomSalle());
+        $form = $this->createForm(ReservationType::class, $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('reservation_index');
+        }
+        return $this->render('reservation/new.html.twig', [
+            'plannings' => $planning,
+            'form' => $form->createView(),
+        ]);
+    }
 
 }

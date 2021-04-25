@@ -1,4 +1,4 @@
-{
+    {
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -25,6 +25,7 @@
         "symfony/intl": "4.4.*",
         "symfony/mailer": "4.4.*",
         "symfony/monolog-bundle": "^3.1",
+        "symfony/polyfill-intl-messageformatter": "^1.22",
         "symfony/process": "4.4.*",
         "symfony/property-access": "4.4.*",
         "symfony/property-info": "4.4.*",

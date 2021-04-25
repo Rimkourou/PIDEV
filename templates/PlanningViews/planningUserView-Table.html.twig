@@ -69,7 +69,7 @@
             <td align="center" vertical-align="middle">{{ pln.heureDebut|date('H:i:s') }}</td>
             <td align="center" vertical-align="middle">{{ pln.heureFin|date('H:i:s') }}</td>
             <td align="center" vertical-align="middle">
-                <a href="#" style="color: white;background-color: #eab3ac" class="btn  mr-1"><i class="fa fa-shopping-basket mr-2"></i>Réserver</a>
+                <a href="{{ path('planning_show', {'id': pln.id}) }}" style="color: white;background-color: #eab3ac" class="btn  mr-1"><i class="fa fa-shopping-basket mr-2"></i>Réserver</a>
             </td>
         </tr>
     {% endfor %}
