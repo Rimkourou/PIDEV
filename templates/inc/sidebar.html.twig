@@ -14,7 +14,7 @@
                 <img src="{{ asset('dist/img/hazem.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Gdara Hazem</a>
+                <a href="{{ path('profile') }}" class="d-block">{{ app.user.nom }} {{ app.user.prenom }}</a>
             </div>
         </div>
 
@@ -29,18 +29,18 @@
                      with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="/userA" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Users
+                            {% trans %}Users{% endtrans %}
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ path('salle_de_cinema_index') }}" class="nav-link">
                         <i class="nav-icon fas fa-person-booth"></i></i>
                         <p>
-                            Movie Rooms
+                            {% trans %}Movie Rooms{% endtrans %}
                         </p>
                     </a>
                 </li>
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ path('afficher_spectacle') }}" class="nav-link">
 {#                        <i class="nav-icon fas fa-th"></i>#}
                         <i class="nav-icon fas fa-snowplow"></i>
                         <p>
@@ -71,10 +71,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ path('reclamation_index') }}" class="nav-link">
                         <i class="nav-icon fas fa-exclamation-circle"></i>
                         <p>
-                            Complaints
+                            {% trans %}Complaints{% endtrans %}
+
                         </p>
                     </a>
                 </li>
@@ -87,7 +88,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="/promotionA" class="nav-link">
                         <i class="nav-icon fas fa-percent"></i>
                         <p>
                             Promotion
@@ -95,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ path('afficher_plannings') }}" class="nav-link">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
                             Planning

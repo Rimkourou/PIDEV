@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 2em auto; max-width: 3000px; width: 90%; font: 12px/1.5 sans-serif; }
+        .example {  max-width: 3000px;}
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+<div class="example">
+
+    <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                {{ form(form) }}
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>UserTable</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">UserTable</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Role</th>
+                                        <th>Email</th>
+                                        <th>state</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <tr {% for u in user%}>
+                                        <td>{{ u.id }}</td>
+                                        <td>{{ u.nom }}</td>
+                                        <td>{{ u.prenom }}</td>
+                                        <td>{{ u.role }}</td>
+                                        <td>{{ u.email }}</td>
+                                        <td>{{ u.state }}</td>
+                                        <td><a class="btn btn-info btn-sm" href="{{ path('update',{'id':u.id}) }}"><i class="fas fa-pencil-alt"></i>update</a></td>
+                                        <td><a class="btn btn-danger btn-sm" href="{{ path('d',{'id':u.id}) }}"><i class="fas fa-trash"></i>Delete</a></td>
+                                    </tr {% endfor%} >
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+            <i class="fas fa-download"></i> Generate PDF
+        </button>
+        <a href="{{ path('add') }}" class="btn btn-primary float-right" style="margin-right: 5px;">
+            <i class="fas fa-pencil-alt"></i> Add User
+        </a>
+    </div>
+</div>
+
+{% endblock %}

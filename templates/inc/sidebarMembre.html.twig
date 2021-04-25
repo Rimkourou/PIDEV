@@ -1,0 +1,146 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2c3e50">
+    <a href="#" class="navbar-brand ml-3">
+        <img src="{{ asset('dist/img/Data/logo.png') }}" alt="CoolBrand" style="width: 140px;height: 60px;">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 230px">
+        <div class="navbar-nav">
+            {# <a class="nav-item nav-link active" href="#"> #}
+            {# <img  alt="AdminLTE Logo" class="brand-image ml-5" style="opacity: .8; width: 100px;"> #}
+            {# </a> #}
+            <a class="nav-item nav-link active" href="{{ path('filmList') }}">
+
+                Movies
+            </a>
+            <a class="nav-item nav-link active" href="{{ path('afficher_spectacle_user') }}">
+
+                Shows
+            </a>
+            <a class="nav-item nav-link active" href="{{ path('salle_de_cinema_membre_index') }}">
+                Movie Rooms
+            </a>
+            <a class="nav-item nav-link active" href="{{ path('afficheP_membre') }}">
+
+                Promotion
+            </a>
+            <a class="nav-item nav-link active" href="{{ path('afficher_plannings_User_Table') }}">
+
+                Planning
+            </a>
+            <a class="nav-item nav-link active" href="#">
+
+                Shop
+            </a>
+            <a class="nav-item nav-link active" href="{{ path('reclamation_membre_index') }}">
+
+                Complaints
+            </a>
+        </div>
+    </div>
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Change language
+            </a>
+            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{# {{ path('change_locale', {'locale': 'fr'}) }} #}">
+                    <img src="https://img.icons8.com/doodle/30/000000/france.png"/> <span>Français</span>
+                </a>
+                <a class="dropdown-item" href="{# {{ path('change_locale', {'locale': 'en'}) }} #}">
+                    <img src="https://img.icons8.com/doodle/30/000000/usa.png"/> <span>Anglais</span>
+                </a>
+            </div>-->
+        </li>
+        {# <li class="nav-item"> #}
+        {# <a class="nav-link" data-widget="navbar-search" href="#" role="button"> #}
+        {# <i class="fas fa-search"></i> #}
+        {# </a> #}
+        {# <div class="navbar-search-block"> #}
+        {# <form class="form-inline"> #}
+        {# <div class="input-group input-group-sm"> #}
+        {# <input class="form-control form-control-navbar" type="search" placeholder="Search" #}
+        {# aria-label="Search"> #}
+        {# <div class="input-group-append"> #}
+        {# <button class="btn btn-navbar" type="submit"> #}
+        {# <i class="fas fa-search"></i> #}
+        {# </button> #}
+        {# <button class="btn btn-navbar" type="button" data-widget="navbar-search"> #}
+        {# <i class="fas fa-times"></i> #}
+        {# </button> #}
+        {# </div> #}
+        {# </div> #}
+        {# </form> #}
+        {# </div> #}
+        {# </li> #}
+        <!-- Notifications Dropdown Menu -->
+        {# <li class="nav-item dropdown"> #}
+        {# <a class="nav-link" data-toggle="dropdown" href="#"> #}
+        {# <i class="far fa-bell"></i> #}
+        {# <span class="badge badge-warning navbar-badge">15</span> #}
+        {# </a> #}
+        {# <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"> #}
+        {# <span class="dropdown-item dropdown-header">15 Notifications</span> #}
+        {# <div class="dropdown-divider"></div> #}
+        {# <a href="#" class="dropdown-item"> #}
+        {# <i class="fas fa-envelope mr-2"></i> 4 new messages #}
+        {# <span class="float-right text-muted text-sm">3 mins</span> #}
+        {# </a> #}
+        {# <div class="dropdown-divider"></div> #}
+        {# <a href="#" class="dropdown-item"> #}
+        {# <i class="fas fa-users mr-2"></i> 8 friend requests #}
+        {# <span class="float-right text-muted text-sm">12 hours</span> #}
+        {# </a> #}
+        {# <div class="dropdown-divider"></div> #}
+        {# <a href="#" class="dropdown-item"> #}
+        {# <i class="fas fa-file mr-2"></i> 3 new reports #}
+        {# <span class="float-right text-muted text-sm">2 days</span> #}
+        {# </a> #}
+        {# <div class="dropdown-divider"></div> #}
+        {# <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> #}
+        {# </div> #}
+        {# </li> #}
+    </ul>
+</nav>
+{# <aside class="main-sidebar sidebar-dark-primary elevation-4"> #}
+{# <!-- Brand Logo --> #}
+{# <a href="index3.html" class="brand-link"> #}
+{# <img src="{{ asset('dist/img/Data/logo.png') }}" alt="AdminLTE Logo" class="brand-image ml-5" #}
+{# style="opacity: .8; width: 100px;"> #}
+{# <span class="brand-text font-weight-light" style="opacity: 0; margin: 0; padding: 0;">a</span> #}
+{# </a> #}
+
+{# <!-- Sidebar --> #}
+{# <div class="sidebar"> #}
+{# <!-- Sidebar user panel (optional) --> #}
+{# <div class="user-panel mt-3 pb-3 mb-3 d-flex"> #}
+{# <div class="image"> #}
+{# <img src="{{ asset('dist/img/hazem.jpg') }}" class="img-circle elevation-2" alt="User Image"> #}
+{# </div> #}
+{# <div class="info"> #}
+{# <a href="#" class="d-block">Gdara Hazem</a> #}
+{# </div> #}
+{# </div> #}
+
+{# <!-- SidebarSearch Form --> #}
+
+
+{# <!-- Sidebar Menu --> #}
+{# <nav class="mt-2"> #}
+{# <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" #}
+{# data-accordion="false"> #}
+{# <!-- Add icons to the links using the .nav-icon class #}
+{# with font-awesome or any other icon font library --> #}
+
+
+
+
+{# </ul> #}
+{# </nav> #}
+{# <!-- /.sidebar-menu --> #}
+{# </div> #}
+{# <!-- /.sidebar --> #}
+{# </aside>     #}

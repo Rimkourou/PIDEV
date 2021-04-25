@@ -12,6 +12,9 @@
         div.dataTables_wrapper div.dataTables_paginate ul.pagination{
             display: none;
         }
+        .col-md-6{
+            margin-top: -30px!important;
+        }
     </style>
     <div class="wrapper">
         <div class="content-wrapper">
@@ -21,12 +24,7 @@
                             <div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
-                                    <div class="row">
-                                        <div >
-                                            <button class="button"><a style="color: white;" href="{{ path('film_new') }}">Create new</a>
-                                            </button>
-                                        </div>
-                                    </div>
+                                            <a href="{{ path('film_new') }}" type="button" style="color: white;background-color: #eab3ac" class="btn btn-block  ml-2 col-md-1" ><span class="fa fa-plus-circle mr-2"></span>Add</a>
                                     <thead>
                                     <tr>
                                         <th>Id</th>

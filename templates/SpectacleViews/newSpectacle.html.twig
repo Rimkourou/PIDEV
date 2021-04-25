@@ -1,0 +1,329 @@
+{% extends 'SpectacleViews/indexSpectacle.html.twig' %}
+{% block titreTableau %}{% endblock %}
+{% block mainContent %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="spectacleModal" tabindex="-1" role="dialog" aria-labelledby="spectacleModalLabel"
+         aria-hidden="false">
+        {# {{ form_start(form_spectacle,{'attr':{'novalidate':'novalidate'}}) }} #}
+        {{ form_start(form_spectacle) }}
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSpectacle">{{ form_title }}</h5>
+                    <button type="button" onclick="window.open('/shows','_self')" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        {# {{ form_widget(form_spectacle.imgSpec) }} #}
+                        <img class="imageBorder"
+                             src="{{ asset('dist/img/' ~ 'default+show+img.jpg') }}" title="Image du spectacle"
+                             width="100" height="151" alt="Image du spectacle" id="imgSpec"/>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="fSpecTitre" class="col-form-label">Title</label>
+                        {{ form_widget(form_spectacle.titre) }}
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="fSpecDate" class="col-form-label">Date</label>
+                        {{ form_widget(form_spectacle.date) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fSpecDate" class="col-form-label">Image</label>
+                        <div class="row">
+                            <div style="width: 380px; margin-left: 6px">
+                                <select class="form-control" id="sourceImageSelector"
+                                        onchange="loadBrowsingImgSrc(this.value)">
+                                    {# <option>Choisir la source de l'image</option> #}
+                                    <option value="Desktop">From desktop</option>
+                                    <option value="Web">From web</option>
+                                </select>
+                            </div>
+                            <div class="ml-2 uploadBtnWidth" id="sourceImageUploader">
+                                {# <div class="ml-2" id="sourceImageUploader"> #}
+                                {{ form_widget(form_spectacle.imagePath) }}
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" id="genreField">
+                        <label for="fSpecGenre" class="col-form-label"> Type</label>
+                        {{ form_widget(form_spectacle.genre ) }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    {{ form_row(form_spectacle.close) }}
+                    {{ form_row(form_spectacle.submit) }}
+                </div>
+                {{ form_rest(form_spectacle) }}
+                {{ form_end(form_spectacle) }}
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade modalRechImages" id="loadImageModal" style=""
+             tabindex="-1" role="dialog" aria-labelledby="loadImageModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="carouselRechImgFromWeb" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" id="carouselImageFromWeb">
+                                <!-- the carousel options-->
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselRechImgFromWeb" role="button"
+                               data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselRechImgFromWeb" role="button"
+                               data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <script>
+        $("#spectacleModal").modal({
+            show: true, keyboard: false,
+            backdrop: 'static'
+        });
+
+        function closeModal(modalId) {
+            $("#" + modalId).modal({show: false});
+        }
+
+        function openModal(modalId) {
+            $("#" + modalId).modal({show: true});
+        }
+
+        // function to change the button to browse the image like the source
+        function loadBrowsingImgSrc(srcImage) {
+            let sourceImageUploader = document.getElementById("sourceImageUploader");
+            let customFile = document.getElementById("spectacle_form_imagePath");
+            let customFileLabel = customFile.nextSibling
+            let genreField = document.getElementById("genreField");
+
+
+            if (srcImage === "Desktop") {
+                console.log(srcImage);
+                let rechBtnNode = document.getElementById("spectacle_form_rechImageBtn");
+                rechBtnNode.remove();
+                customFile.style.display = "block";
+                customFileLabel.style.display = "block";
+                genreField.classList.remove("mt-n5");
+            } else if (srcImage === "Web") {
+                console.log(srcImage);
+                customFile.style.display = "none";
+                customFileLabel.style.display = "none";
+
+                let rechBtnHtml = `<button class="btn btn-default uploadBtnWidth rechBtnStyle" id="spectacle_form_rechImageBtn"
+                                    onclick="searchForImages()">
+                                    Reche.
+                                    </button>`;
+                sourceImageUploader.insertAdjacentHTML("afterbegin", rechBtnHtml);
+                genreField.classList.add("mt-n5");
+                rechBtnNode.style.display = "block";
+            }
+        }
+
+        function searchForImages() {
+            const data = null;
+            let keyword = document.getElementById("spectacle_form_titre").value.replace(' ', '+')
+
+            const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                    // console.log(this.responseText);
+                    let dataJson = JSON.parse(this.responseText);
+                    console.log(dataJson.image_results);
+                    let imageTab = [];
+                    for (let i = 0; i < 20; i++) {
+                        imageTab[i] = dataJson.image_results[i].image.src;
+                    }
+                    console.log(imageTab);
+
+                    let carouselImageFomWeb = document.getElementById("carouselImageFromWeb");
+                    carouselImageFomWeb.innerHTML = '';
+                    let carouselItem = '';
+                    for (let i = 0; i < 5; i++) {
+                        console.log("carousel-item-" + i + 1)
+                        active = ''
+                        if (i === 0) {
+                            active = 'active';
+                        } else {
+                            active = '';
+                        }
+                        carouselItem = `<div class="carousel-item ${active}">
+                                            <div class="row">
+                                                <div class="col-3 ">
+                                                    <img src="${imageTab[i * 4]}"
+                                                         class="borderimg"
+                                                         id="specImage-Sugg-${i * 4}"
+                                                         alt="Image du spectacle"
+                                                         title="Image du spectacle"
+                                                         width="105" height="118"
+                                                         onclick="getImagefromTheWeb(this.src)">
+                                                </div>
+                                                <div class="col-3">
+                                                    <img src="${imageTab[i * 4 + 1]}"
+                                                         class="borderimg"
+                                                         id="specImage-Sugg-${i * 4 + 1}"
+                                                         alt="Image du spectacle"
+                                                         title="Image du spectacle"
+                                                         width="105" height="118"
+                                                         onclick="getImagefromTheWeb(this.src)">
+                                                </div>
+                                                <div class="col-3">
+                                                    <img src="${imageTab[i * 4 + 2]}"
+                                                         class="borderimg"
+                                                         id="specImage-Sugg-${i * 4 + 2}"
+                                                         alt="Image du spectacle"
+                                                         title="Image du spectacle"
+                                                         width="105" height="118"
+                                                         onclick="getImagefromTheWeb(this.src)">
+                                                </div>
+                                                <div class="col-3">
+                                                    <img src="${imageTab[i * 4 + 3]}"
+                                                         class="borderimg"
+                                                         id="specImage-Sugg-${i * 4 + 3}"
+                                                         alt="Image du spectacle"
+                                                         title="Image du spectacle"
+                                                         width="105" height="118"
+                                                         onclick="getImagefromTheWeb(this.src)">
+                                                </div>
+                                            </div>
+                                        </div>`;
+                        carouselImageFomWeb.innerHTML += carouselItem;
+                    }
+
+                    // open the modal with the images
+                    openModal("loadImageModal");
+
+
+                }
+            });
+
+            xhr.open("GET", "https://google-search3.p.rapidapi.com/api/v1/images/q=" + keyword);
+            xhr.setRequestHeader("x-rapidapi-key", "d766ffcfa6msh7d28138b6e7dfdfp1f9430jsn250d79eb676c");
+            xhr.setRequestHeader("x-rapidapi-host", "google-search3.p.rapidapi.com");
+
+            xhr.send(data);
+        }
+
+        function getImagefromTheWeb(imgUrl) {
+            <!-- Set the image in the new spectacle window -->
+            let imgSpec = document.getElementById("imgSpec");
+            imgSpec.src = imgUrl;
+
+            <!-- Download the image -->
+            let keyword = document.getElementById("spectacle_form_titre").value.replace(' ', '+')
+            forceDownload(imgUrl, keyword + ".png");
+        }
+
+        function forceDownload(url, fileName) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = "blob";
+            xhr.onload = function () {
+                var urlCreator = window.URL || window.webkitURL;
+                var imageUrl = urlCreator.createObjectURL(this.response);
+                var tag = document.createElement('a');
+                tag.href = imageUrl;
+                tag.download = fileName;
+                document.body.appendChild(tag);
+                tag.click();
+                document.body.removeChild(tag);
+            }
+            xhr.send();
+        }
+
+        // function uploadImageToDataFolder(file_data) {
+        //     var form_data = new FormData();
+        //     form_data.append('file', file_data);
+        //     alert(form_data);
+        //     $.ajax({
+        //         url: '../../src/Service/FileUpload.php', // point to server-side PHP script
+        //         dataType: 'text',  // what to expect back from the PHP script, if anything
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         data: form_data,
+        //         type: 'post',
+        //         success: function(php_script_response){
+        //             alert(php_script_response); // display response from the PHP script, if any
+        //         }
+        //     });
+
+
+    </script>
+    <style>
+        .parent {
+            position: relative;
+            width: 151px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        .child1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .child2 {
+            z-index: 1;
+            width: 50%;
+            height: 20%;
+            margin-top: 102%;
+            margin-left: 45%;
+        }
+
+        .borderimg {
+            border: 1px solid black;
+        }
+
+        .uploadBtnWidth {
+            width: 76px;
+        }
+
+        .rechBtnStyle {
+            background-color: #e9ecef;
+        }
+
+        .modalRechImages {
+            margin-top: 34.5%;
+            margin-right: 10%
+        }
+
+        .imageBorder {
+            border: 5px double black;
+        }
+    </style>
+{% endblock %}
+
+
+
