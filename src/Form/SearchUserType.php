@@ -17,10 +17,10 @@ class SearchUserType extends AbstractType
                 'label' =>false,
                 'attr' =>[
                     'class' =>'form-control',
-                    'placeholder' =>'Entrer un ou plusieurs mots-clés'
+                    'placeholder' =>'Enter keywords'
                 ]
             ])
-            ->add('Rechercher',SubmitType::class)
+            ->add('Search',SubmitType::class)
         ;
     }
 

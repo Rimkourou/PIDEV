@@ -15,51 +15,46 @@
             background: #F5F5F5;
             padding: 2px 6px;
         }
+        .button {
+            margin: 10px 0 10px 0;
+            float: right;
+            padding: 5px;
+            background-color: #eab3ac;
+            border: #eab3ac solid 2px;
+        }
     </style>
     <div class="wrapper">
-
-    <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Update Profil</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Update Profil</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3 style="margin: 10px 0 10px 0;">Update Profile</h3>
+                                </div>
+                                <div class="col-6">
+                                    <button class="button" style="margin-left: 10px">
+                                        <a style="color: white" href="{{ path('profile') }}">back to list</a>
+                                    </button>
+                                </div>
+                            </div>
                             {{ form_start(f,{'attr': {'novalidate': 'novalidate'}}) }}
                             {{ form_end(f) }}
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                        </div>
-                        {% for message in app.flashes('message') %}
-                            <div class="alert alert-success" role="alert">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                {% for message in app.flashes('message') %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
 
-
-
+        </section>
+    </div>
+    <footer class="main-footer" style="text-align: center">
+        <strong>Copyright &copy; 2021 <a style="color: #eab3ac" href="https://adminlte.io">Infinite
+                Loop</a>.</strong> All rights reserved.
+    </footer>
+    </div>
 {% endblock %}

@@ -17,12 +17,13 @@
 <body class="hold-transition login-page">
 
 <div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
-    </div>
+
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
+            <div class="login-logo">
+                <img src="{{ asset('dist/img/Data/logo2.png') }}" width="150" height="80">
+            </div>
             <p class="login-box-msg">Sign in to start your session</p>
 
             {% if error %}
@@ -56,7 +57,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" style="background-color: #eab3ac;color: white" class="btn  btn-block">Sign In</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -66,10 +67,10 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="password_forgot">I forgot my password</a>
+                <a href="password_forgot" style="color:#eab3ac;">I forgot my password</a>
             </p>
             <p class="mb-0">
-                <a href="register" class="text-center">Register a new membership</a>
+                <a href="register" style="color:#eab3ac" class="text-center">Register a new membership</a>
             </p>
             {% for message in app.flashes('message') %}
                 <div class="alert alert-success" role="alert">
