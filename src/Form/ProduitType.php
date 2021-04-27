@@ -22,10 +22,11 @@ class ProduitType extends AbstractType
                 'class' => Categorie::class, 'choice_label' => 'nom',
                 'required' => false,
             ])
+
+
             ->add('imageFile', FileType::class,[
                 'mapped' => false
             ])
-
         ;
     }
 
@@ -35,4 +36,5 @@ class ProduitType extends AbstractType
             'data_class' => Produit::class,
         ]);
     }
+
 }

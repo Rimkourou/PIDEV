@@ -2,7 +2,13 @@
 
 namespace App\Entity;
 
+use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * Produit
@@ -56,6 +62,16 @@ class Produit
      */
 
     private $categorie;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Panier::class, mappedBy="Produit")
+     */
+    private $paniers;
+
+    public function __construct()
+    {
+        $this->paniers = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -151,4 +167,60 @@ class Produit
     }
 
 
+
+
+
+//    /**
+//     * @return Collection|Panier[]
+//     */
+//    public function getPanier(): Collection
+//    {
+//        return $this->panier;
+//    }
+//
+//    public function addPanier(Panier $panier): self
+//    {
+//        if (!$this->panier->contains($panier)) {
+//            $this->panier[] = $panier;
+//            $panier->addProduit($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removePanier(Panier $panier): self
+//    {
+//        if ($this->panier->removeElement($panier)) {
+//            $panier->removeProduit($this);
+//        }
+//
+//        return $this;
+//    }
+
+/**
+ * @return Collection|Panier[]
+ */
+public function getPaniers(): Collection
+{
+    return $this->paniers;
+}
+
+public function addPanier(Panier $panier): self
+{
+    if (!$this->paniers->contains($panier)) {
+        $this->paniers[] = $panier;
+        $panier->addProduit($this);
+    }
+
+    return $this;
+}
+
+public function removePanier(Panier $panier): self
+{
+    if ($this->paniers->removeElement($panier)) {
+        $panier->removeProduit($this);
+    }
+
+    return $this;
+}
 }

@@ -63,5 +63,82 @@ class Promotion
      */
     private $reduction;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getCritaire(): ?string
+    {
+        return $this->critaire;
+    }
+
+    public function setCritaire(string $critaire): self
+    {
+        $this->critaire = $critaire;
+
+        return $this;
+    }
+
+    public function getDated(): ?\DateTimeInterface
+    {
+        return $this->dated;
+    }
+
+    public function setDated(\DateTimeInterface $dated): self
+    {
+        $this->dated = $dated;
+
+        return $this;
+    }
+
+    public function getDatef(): ?\DateTimeInterface
+    {
+        return $this->datef;
+    }
+
+    public function setDatef(\DateTimeInterface $datef): self
+    {
+        $this->datef = $datef;
+
+        return $this;
+    }
+
+    public function getIduser(): ?int
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(int $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getCastphoto(): ?string
+    {
+        return $this->castphoto;
+    }
+
+    public function setCastphoto(string $castphoto): self
+    {
+        $this->castphoto = $castphoto;
+
+        return $this;
+    }
+
+    public function getReduction(): ?string
+    {
+        return $this->reduction;
+    }
+
+    public function setReduction(string $reduction): self
+    {
+        $this->reduction = $reduction;
+
+        return $this;
+    }
+
 
 }

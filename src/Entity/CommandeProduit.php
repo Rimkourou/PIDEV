@@ -37,5 +37,27 @@ class CommandeProduit
      */
     private $qte;
 
+    public function getIdproduit(): ?int
+    {
+        return $this->idproduit;
+    }
+
+    public function getIdcommande(): ?int
+    {
+        return $this->idcommande;
+    }
+
+    public function getQte(): ?int
+    {
+        return $this->qte;
+    }
+
+    public function setQte(int $qte): self
+    {
+        $this->qte = $qte;
+
+        return $this;
+    }
+
 
 }
