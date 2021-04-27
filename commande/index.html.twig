@@ -1,0 +1,199 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}Votre panier
+{% endblock %}
+
+{% block body %}
+
+
+    <link rel="stylesheet" href="{{ asset('/path/to/bootstrap.min.css') }}"/>
+    <script src="{{ asset('/path/to/jquery.min.js') }}"></script>
+    <script src="{{ asset('/path/to/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('carousel.js') }}"></script>
+    <style>
+        .button {
+            margin: 10px 0 10px 0;
+            float: right;
+            padding: 5px;
+            background-color: #eab3ac;
+            border: #eab3ac solid 2px;
+        }
+    </style>
+
+
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="">Votre Commande</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body pl-5 pr-5">
+                    <table id="example1" class="table table-bordered table-striped text-center">
+                        <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Image</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            {# <th>Actions</th> #}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for element in dataPanier %}
+                            <tr>
+                                <td>{{ element.produit.nom }}</td>
+                                <td><img width="80" height="80" id="img" class="card-img-top img-fluid"
+                                         style="height: 100px; width: 110px; border: solid black 1px" src="/img/{{ element.produit.image }}"></td>
+
+                                <td class="text-end">{{ element.produit.prix }} TND</td>
+                                <td>{{ element.quantite }}</td>
+                                <td class="text-end">{{ element.quantite * element.produit.prix }} TND</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center">Votre panier est vide</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th class="text-left" colspan="4">Total</th>
+                            <th class="text-end">{{ total }} TND
+                            </th>
+
+
+                            {# <td> #}
+                            {# <a href="{{path("delete_all")}}" class="btn btn-danger"> #}
+                            {# <i class="far fa-trash-alt"></i> #}
+                            {# </a> #}
+                            {# </td> #}
+                        </tr>
+
+
+                        </tfoot>
+                    </table>
+                    <div class="float-right mt-4">
+                        <button class="btn btn-primary" onclick="test()" id="checkout-button">
+                            <i class="fas fa-money-check-alt mr-2"></i>
+                            Paiement
+                        </button>
+
+                        <a class="btn btn-warning" href="/pdf">
+                            <i class="fas fa-download mr-2"></i>
+                            Télecharger
+                        </a>
+
+
+                        <a class="btn btn-success" href="/Envoyer">
+                            <i class="fas fa-check mr-2"></i>
+                            Confirmer Commande
+                        </a>
+                    </div>
+                </div>
+
+
+                </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- /.col -->
+
+    <!-- /.row -->
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}
+
+
+
+{% block javascripts %}
+    <script type="text/javascript">
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe('pk_test_51IhkrqHkmBI45FCuDIdW2msMJKXJ9aaymwz12KkXgo5YmFUuhfUMyFNXuPTmLwTHkaGtj3jm0nKHQOmqnqxkgfWq00GWKRYgZz');
+
+        //var checkoutButton = document.getElementById('checkout-button');
+        function test() {
+            console.log("test")
+
+            fetch('/create-checkout-session', {
+                method: 'POST',
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({sessionId: session.id});
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
+
+        ;}
+
+    </script>
+
+
+
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../../plugins/jszip/jszip.min.js"></script>
+    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+
+
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                // "buttons": [ "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock %}
+

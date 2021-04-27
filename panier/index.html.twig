@@ -1,0 +1,252 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="">Votre Panier</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-5">
+                    <table id="productTable" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Image</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for element in dataPanier %}
+                            <tr id="Product-{{ element.produit.id }}">
+                                <td class="text-center">{{ element.produit.nom }}</td>
+                                <td class="text-center">
+                                    <img width="100" height="110" id="img"
+                                         class="card-img-top img-fluid"
+                                         style="height: 100px; width: 110px; border: solid black 1px"
+                                         src="/img/{{ element.produit.image }}"></td>
+                                {# <td><img src="{{ asset('/img' ~ element.produit.image) }}" width="80" height="80" {{ element.produit.image }} ></td> #}
+                                <td class="text-center"><span
+                                            id="prixProduit-{{ element.produit.id }}">{{ element.produit.prix }}</span>
+                                    TND
+                                </td>
+                                <td class="text-center"
+                                    id="qteProduit-{{ element.produit.id }}">{{ element.quantite }}</td>
+                                <td class="text-center">
+                                    <span id="totalProduit-{{ element.produit.id }}">{{ element.quantite * element.produit.prix }}</span>
+                                    TND
+                                </td>
+
+                                <td class="text-center">
+                                    <button onclick="addProduct({{ element.produit.id }})"
+                                            id="{{ element.produit.id }}"
+                                            class="btn btn-success ">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </button>
+                                    <button onclick="removeProduct({{ element.produit.id }})"
+                                            id="{{ element.produit.id }}"
+                                            class="btn btn-warning ">
+                                        <i class="fas fa-minus-circle"></i>
+                                    </button>
+                                    <button onclick="deleteProduct({{ element.produit.id }})"
+                                            id="{{ element.produit.id }}"
+                                            class="btn btn-danger ">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center">Votre panier est vide</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th colspan="4" class="text-left">Total</th>
+                            <th class="text-center" align="center"><span id="totalPanier">{{ total }}</span> TND</th>
+                            <td class="text-center">
+                                <a href="{{ path("delete_all") }}" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+
+                        </tfoot>
+                    </table>
+                    {# <div class="container"> #}
+                    {# <div class="container"> #}
+
+                    {# </div> #}
+
+
+                    {# </tfoot> #}
+                    {# </table> #}
+                    {# </div> #}
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+
+    <script>
+
+        function addProduct(id) {
+            $.ajax({
+                type: "GET",
+                url: "{{ path('add_item') }}",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    document.getElementById("qteProduit-" + id).innerHTML = data.session.panier[id];
+                    let prixProduit = parseInt(document.getElementById("prixProduit-" + id).innerHTML);
+                    let qteProduit = parseInt(data.session.panier[id]);
+                    console.log(prixProduit, qteProduit)
+                    console.log(qteProduit * prixProduit)
+                    document.getElementById("totalProduit-" + id).innerHTML = qteProduit * prixProduit;
+                    document.getElementById("totalPanier").innerHTML = data.session.total;
+                }
+            });
+        }
+
+
+        function removeProduct(id) {
+            $.ajax({
+                type: "GET",
+                url: "{{ path('remove') }}",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    console.log(data.session);
+                    console.log(data.session.panier);
+                    console.log(data.session.total);
+                    // console.log(data.panier[id]);
+                    document.getElementById("qteProduit-" + id).innerHTML = data.session.panier[id];
+                    let prixProduit = parseInt(document.getElementById("prixProduit-" + id).innerHTML);
+                    let qteProduit = parseInt(data.session.panier[id]);
+                    console.log(prixProduit, qteProduit)
+                    console.log(qteProduit * prixProduit)
+                    document.getElementById("totalProduit-" + id).innerHTML = qteProduit * prixProduit;
+                    document.getElementById("totalPanier").innerHTML = data.session.total;
+                    console.log(data.session.panier[id])
+                    if (data.session.panier[id] === 0) {
+                        console.log("test = 0")
+                        $.ajax({
+                            type: "GET",
+                            url: "{{ path('delete_item') }}",
+                            data: {
+                                id: id
+                            },
+                            success: function (data) {
+                                document.getElementById("Product-" + id).remove();
+                                console.log("delete-item " + id + " suceeded");
+                                console.log(data);
+                            }
+                        });
+
+                    }
+                }
+            });
+        }
+
+        function deleteProduct(id) {
+            $.ajax({
+                type: "GET",
+                url: "{{ path('delete_item') }}",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    document.getElementById("Product-" + id).remove();
+                    document.getElementById("totalPanier").innerHTML = data.session.total;
+                    console.log("delete-item " + id + " suceeded");
+                    console.log(data);
+                }
+            });
+        }
+
+
+        $(function () {
+            // console.log("jequerry is working")
+            let productTable = $("#productTable").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+
+            }).buttons().container().appendTo('#productTable_wrapper .col-md-6:eq(0)')
+
+            let addCommandBtn = `<a class="btn btn-success ml-2 mb-1" href="{{ path('commande') }}"><i class="fas fa-plus-circle mr-2"></i> Passer Commande</a>`;
+
+            productTable_warapper = document.getElementById("productTable_wrapper");
+            productTable_warapper.childNodes[0].insertAdjacentHTML("afterbegin", addCommandBtn);
+            productTable_warapper.childNodes[0].childNodes[2].classList.remove("col-md-6");
+            productTable_warapper.childNodes[0].childNodes[2].classList.add("col-md-3");
+
+
+            {# let removeProductBtnsList = document.getElementsByClassName("removeProduct"); #}
+            {# console.log(removeProductBtnsList) #}
+            {# var removeBtn, id; #}
+            {# for (let i = 0; i < removeProductBtnsList.length; i++) { #}
+            {# removeBtn = removeProductBtnsList.item(i); #}
+            {# removeBtn.addEventListener('click', (e) => { #}
+            {# id = e.target.id; #}
+            {# console.log(id); #}
+            {# $.ajax({ #}
+            {# type: "GET", #}
+            {# url: "{{ path('remove') }}", #}
+            {# data: { #}
+            {# id: id #}
+            {# }, #}
+            {# success: function (data) { #}
+            {# console.log(data); #}
+            {# document.getElementById("qteProduit").innerHTML = data.id; #}
+            {# } #}
+            {# }); #}
+            {# }); #}
+            {# } #}
+        });
+        // document.getElementById("removeProduct")
+    </script>
+{% endblock %}
+
+
+{# {% block javascripts %} #}
+
+
+{# <!-- jQuery --> #}
+{# <script src="../../plugins/jquery/jquery.min.js"></script> #}
+{# <!-- Bootstrap 4 --> #}
+{# <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script> #}
+{# <!-- DataTables  & Plugins --> #}
+{# <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> #}
+{# <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> #}
+{# <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script> #}
+{# <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script> #}
+{# <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script> #}
+{# <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script> #}
+{# <script src="../../plugins/jszip/jszip.min.js"></script> #}
+{# <script src="../../plugins/pdfmake/pdfmake.min.js"></script> #}
+{# <script src="../../plugins/pdfmake/vfs_fonts.js"></script> #}
+{# <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script> #}
+{# <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script> #}
+{# <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script> #}
+{# <!-- AdminLTE App --> #}
+{# <script src="../../dist/js/adminlte.min.js"></script> #}
+{# <!-- AdminLTE for demo purposes --> #}
+{# <script src="../../dist/js/demo.js"></script> #}
+{# <!-- Page specific script --> #}
+
+
+
+{# {% endblock %} #}
