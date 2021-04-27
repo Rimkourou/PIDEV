@@ -14,7 +14,7 @@ class SpectacleController extends AbstractController
 {
 
     /**
-     * @Route("/", name="afficher_spectacle")
+     * @Route("/show", name="afficher_spectacle")
      */
     public function afficher_spectacle()
     {
