@@ -19,7 +19,6 @@
 
 package tn.esprit.TuniShow.gui;
 
-import com.codename1.components.ToastBar;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -65,12 +64,12 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addComponentToSideMenu(sidemenuTop);
         getToolbar().addMaterialCommandToSideMenu("  Users", FontImage.MATERIAL_PEOPLE,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Movie Room", FontImage.MATERIAL_WEEKEND,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Movies", FontImage.MATERIAL_LOCAL_MOVIES,  e -> new FilmForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Movies", FontImage.MATERIAL_LOCAL_MOVIES,  e -> new FilmList(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Shows", FontImage.MATERIAL_LIVE_TV,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Promotions", FontImage.MATERIAL_LOCAL_OFFER,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Planning", FontImage.MATERIAL_EVENT,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Booking", FontImage.MATERIAL_EVENT_NOTE,  e -> new ReservationForm(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Shop", FontImage.MATERIAL_LOCAL_MALL,  e ->new AfficherListProduit().show());
+        getToolbar().addMaterialCommandToSideMenu("  Shop", FontImage.MATERIAL_LOCAL_MALL,  e ->showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Complaints", FontImage.MATERIAL_REPORT,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> new ProfileForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());

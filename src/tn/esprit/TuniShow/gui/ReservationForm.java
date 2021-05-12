@@ -52,7 +52,6 @@ public class ReservationForm extends SideMenuBaseForm {
 
         addButtonBottom("Reservation list", 0xd997f1, true);
         addButtonBottom("Create new reservation", 0x4dc2ff, false);
-        addButtonBottom("Delete a reservation", 0xd997f1, false);
         setupSideMenu(res);
 
     }
