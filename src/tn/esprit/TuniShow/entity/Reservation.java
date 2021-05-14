@@ -5,7 +5,7 @@ import java.util.Date;
 public class
 Reservation {
     private int id;
-    private Date datedereservation;
+    private String datedereservation;
     private String iduser;
     private String idsalle;
     private String idfilm;
@@ -14,7 +14,7 @@ Reservation {
     public Reservation() {
     }
 
-    public Reservation(int id, Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
+    public Reservation(int id, String datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.id = id;
         this.datedereservation = datedereservation;
         this.iduser = iduser;
@@ -23,7 +23,7 @@ Reservation {
         this.nbrplaceres = nbrplaceres;
     }
 
-    public Reservation(Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
+    public Reservation(String datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.datedereservation = datedereservation;
         this.iduser = iduser;
         this.idsalle = idsalle;
@@ -39,11 +39,11 @@ Reservation {
         this.id = id;
     }
 
-    public Date getDatedereservation() {
+    public String getDatedereservation() {
         return datedereservation;
     }
 
-    public void setDatedereservation(Date datedereservation) {
+    public void setDatedereservation(String datedereservation) {
         this.datedereservation = datedereservation;
     }
 

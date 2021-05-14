@@ -45,13 +45,9 @@ public class FilmService {
                 f.setImg((obj.get("img").toString()));
                 films.add(f);
             }
-
         } catch (IOException ex) {
-
         }
-
         return films;
-
     }
 
     public ArrayList<Film> getAllFilm(){
@@ -67,5 +63,28 @@ public class FilmService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return films;
+    }
+
+    public  Film DetailFilm(int id, Film film){
+        String url=Statics.BASE_URL+"/show?"+id;
+        req.setUrl(url);
+        String str = new String(req.getResponseData());
+        req.addResponseListener(((evt)->{
+           JSONParser jsonParser = new JSONParser();
+           try {
+               Map<String,Object> obj = jsonParser.parseJSON(new CharArrayReader(new String(str).toCharArray()));
+               film.setTitre(obj.get("titre").toString());
+               film.setDescription(obj.get("description").toString());
+               film.setAuteur(obj.get("auteur").toString());
+               film.setCategorie(obj.get("categorie").toString());
+               film.setGenre(obj.get("genre").toString());
+               film.setImg(obj.get("img").toString());
+           }catch (IOException ex){
+               System.out.println("error related to sql"+ex.getMessage());
+           }
+            System.out.println("data"+str);
+        }));
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return film;
     }
 }

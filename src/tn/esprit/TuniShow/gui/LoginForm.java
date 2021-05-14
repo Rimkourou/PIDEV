@@ -67,9 +67,10 @@ public class LoginForm extends Form {
         
         Button loginButton = new Button("LOGIN");
         loginButton.setUIID("LoginButton");
+        Form current=this;
         loginButton.addActionListener(e -> {
             //Toolbar.setGlobalToolbar(false);
-            new ReservationList(theme).show();
+            new ReservationList(current).show();
             //Toolbar.setGlobalToolbar(true);
         });
         

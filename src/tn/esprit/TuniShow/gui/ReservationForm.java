@@ -7,13 +7,7 @@ package tn.esprit.TuniShow.gui;
 
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
-import com.codename1.ui.Button;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Graphics;
-import com.codename1.ui.Image;
-import com.codename1.ui.Label;
-import com.codename1.ui.Toolbar;
+import com.codename1.ui.*;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -25,30 +19,17 @@ import com.codename1.ui.util.Resources;
  * @author msi
  */
 public class ReservationForm extends SideMenuBaseForm {
+    Resources res;
+    Form current = this;
     public ReservationForm(Resources res) {
         super(BoxLayout.y());
-        Toolbar tb = getToolbar();
-        tb.setTitleCentered(false);
-
+        setTitle("reservation");
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_MENU, e -> getToolbar().openSideMenu());
 
-        Container titleCmp = BoxLayout.encloseY(
-                        FlowLayout.encloseIn(menuButton),
-                        BorderLayout.centerAbsolute(
-                                BoxLayout.encloseY(
-                                    new Label("RESERVATION", "Title"),
-                                    new Label("", "SubTitle")
-                                )
-                            )
-                );
-        
-        FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
-        fab.getAllStyles().setMarginUnit(Style.UNIT_TYPE_PIXELS);
-        tb.setTitleComponent(fab.bindFabToContainer(titleCmp));                     
-           
 
         addButtonBottom("Reservation list", 0xd997f1, true);
         addButtonBottom("Create new reservation", 0x4dc2ff, false);
@@ -63,6 +44,11 @@ public class ReservationForm extends SideMenuBaseForm {
         finishLandingPage.setIcon(createCircleLine(color, finishLandingPage.getPreferredH(),  first));
         finishLandingPage.setIconUIID("Container");
         add(FlowLayout.encloseIn(finishLandingPage));
+        if(text=="Reservation list"){
+            finishLandingPage.addActionListener(e -> new ReservationList(current).show());
+        } else if(text=="Create new reservation"){
+            finishLandingPage.addActionListener(e -> new addReservationForm(current).show());
+        }
     }
     
     private Image createCircleLine(int color, int height, boolean first) {

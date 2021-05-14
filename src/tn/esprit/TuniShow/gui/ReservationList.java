@@ -8,13 +8,13 @@ import tn.esprit.TuniShow.services.ReservationService;
 
 public class ReservationList extends Form {
 
-    public ReservationList(Resources res) {
-        setTitle("Res List");
+    public ReservationList(Form previous) {
+        setTitle("your list");
 
         SpanLabel sp = new SpanLabel();
         sp.setText(ReservationService.getInstance().getAllReservation().toString());
         add(sp);
-        //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
         Form current=this;
     }
 }
