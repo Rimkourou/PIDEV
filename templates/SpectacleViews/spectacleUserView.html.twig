@@ -1,0 +1,87 @@
+{% extends 'baseMembre.html.twig' %}
+
+{% block title %}List Des Spectacles{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+
+        <br><br>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid pl-5 pr-5">
+                <div class="row">
+                    <div class="col-12">
+                        {% block titreTableau %}<h1>List Des Spectacles</h1>{% endblock %}
+                        <br><br>
+                        <!--main content-->
+
+
+                        <div class="card card-success">
+                            <div class="card-body">
+                                <div class="row">
+                                    {% for spectacle in spectacles %}
+                                        <div class="col-md-12 col-lg-6 col-xl-3">
+                                            <div class="card mb-3 bg-gradient-dark">
+                                                <img src="{{ asset('dist/img/Data/' ~ spectacle.imagePath) }}"
+                                                     class="photo-filter"
+                                                     alt="Image du spectacle {{ spectacle.titre }}"
+                                                     title="Image du spectacle '{{ spectacle.titre }}'"
+                                                     width="280px" height="300px">
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                                                    <h3 class="card-text text-white pb-3"
+                                                        style="text-decoration: underline;">{{ spectacle.titre }}</h3>
+                                                    <h6 class="card-text text-white">Id: {{ spectacle.id }}</h6>
+                                                    <h6 class="card-text text-white">Date De
+                                                        Sortie: {{ spectacle.date.format('d-m-Y') }}</h6>
+                                                    <h6 class="card-text text-white">Genre: {{ spectacle.genre }}</h6>
+                                                    <div class="row justify-content-end">
+                                                        <div class="btn-group ml-2">
+                                                            <div data-toggle="dropdown">
+                                                                <a href="" class="text-white"><span
+                                                                            class="fa fa-calendar-alt mr-2"></span>Plannings</a>
+                                                            </div>
+                                                            <div class="dropdown-menu" role="menu">
+                                                                <a class="dropdown-item"
+                                                                   href="{{ path('afficher_plannings_User_Calendar_of_certain_event', {'titre': spectacle.titre}) }}">Calendrier</a>
+                                                                <a class="dropdown-item"
+                                                                   href="{{ path('afficher_plannings_User_Table_of_certain_event', {'titre': spectacle.titre}) }}">Tableau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <style>
+                                .photo-filter {
+                                    /*filter: grayscale(80%);*/
+                                    filter: brightness(80%);
+                                    -webkit-filter: brightness(80%);
+                                }
+                            </style>
+                            <!-- /main content-->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <br><br>
+    </div>
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2021 Tunishow Team</strong> All rights reserved.
+    </footer>
+    </div>
+{% endblock %}
+
+

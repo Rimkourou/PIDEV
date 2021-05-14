@@ -1,0 +1,85 @@
+{% extends 'PlanningViews/indexPlanning.html.twig' %}
+{% block mainContent %}
+    <!-- Plannings Table -->
+    <table id="planningTable" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type Event</th>
+            <th>Titre Event</th>
+            <th>Nom Du Salle</th>
+            <th>Date De Projection</th>
+            <th>Heure De Debut</th>
+            <th>Heure De Fin</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+{# construction de tableau ainsi les btn edit w delet #}
+        <tbody>
+        {% for pln in plannings %}
+            <tr align="center" valign="middle">
+                <td align="center" vertical-align="middle">{{ pln.id }}</td>
+                <td align="center" VALIGN="BOTTOM">{{ pln.typeEvent }}</td>
+                <td align="center" VALIGN="BOTTOM">{{ pln.titreEvent }}</td>
+                <td align="center" VALIGN="BOTTOM">{{ pln.nomSalle }}</td>
+                <td align="center" vertical-align="middle">{{ pln.date|date('d-m-Y') }}</td>
+                <td align="center" vertical-align="middle">{{ pln.heureDebut|date('H:i:s') }}</td>
+                <td align="center" vertical-align="middle">{{ pln.heureFin|date('H:i:s') }}</td>
+                <td align="center" vertical-align="middle">
+
+                    <a href="/plannings/edit/{{ pln.id }}" class="btn btn-warning mr-1" disabled="true"><i
+                                class="fa fa-edit"></i></a>
+                    <a href="/plannings/delete/{{ pln.id }}" class="btn btn-danger"><i
+                                class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        $(function () {
+
+            var spectacleTable = $("#planningTable").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": [
+                    "excel",
+                    "pdf",
+                    "print",
+                    "colvis"
+                ],
+            });
+            spectacleTable.buttons().container().appendTo('#planningTable_wrapper .col-md-6:eq(0)');
+
+            {# btn ajouter #}
+            var addPlnBtn = `<div class="btn-group ml-2">
+                <div data-toggle="dropdown">
+                    <button type="button" class="btn btn-block btn-success btn-raised">
+                        <span class="fa fa-plus-circle mr-2"></span>
+                        Ajouter
+                        <span class="fa fa-caret-down ml-3"></span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item" href="/plannings/new/Film">Un Film</a>
+                    <a class="dropdown-item" href="/plannings/new/Spectacle">Un Spectacle</a>
+                </div>
+            </div>`
+
+
+
+
+            var spectacleTable_wrapper = document.getElementById("planningTable_wrapper");
+            spectacleTable_wrapper.childNodes[0].insertAdjacentHTML("afterbegin", addPlnBtn);
+            spectacleTable_wrapper.childNodes[0].childNodes[2].classList.remove("col-md-6");
+            spectacleTable_wrapper.childNodes[0].childNodes[2].classList.add("col-md-3");
+        });
+
+        $('#ajouterPln').click(function (e) {
+            e.preventDefault();
+        });
+    </script>
+{% endblock %}

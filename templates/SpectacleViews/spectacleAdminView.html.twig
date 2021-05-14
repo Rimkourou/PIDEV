@@ -1,0 +1,70 @@
+{% extends 'SpectacleViews/indexSpectacle.html.twig' %}
+{% block mainContent %}
+    <!-- Spectacle Table -->
+    <table id="spectacleTable" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Images</th>
+            <th>Date De Sortie</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for spectacle in spectacles %}
+            <tr align="center" valign="middle">
+                <td align="center" vertical-align="middle">{{ spectacle.id }}</td>
+                <td align="center" vertical-align="middle">{{ spectacle.titre }}</td>
+                <td align="center" vertical-align="middle">
+                    <img src="{{ asset('dist/img/Data/' ~ spectacle.imagePath) }}" alt="Image du spectacle {{ spectacle.titre }}"
+                         title="Image du spectacle '{{ spectacle.titre }}'"
+                         width="80px">
+                </td>
+                <td align="center" vertical-align="middle">{{ spectacle.date.format('d-m-Y') }}</td>
+                <td align="center" VALIGN="BOTTOM">{{ spectacle.genre }}</td>
+                <td align="center" vertical-align="middle">
+                    <a href="/shows/edit/{{ spectacle.id }}" class="btn btn-warning mr-1"><i
+                                class="fa fa-edit"></i></a>
+                    <a href="/shows/delete/{{ spectacle.id }}" class="btn btn-danger"><i
+                                class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        $(function () {
+            console.log("Script working properly ds spectacle list");
+            var spectacleTable = $("#spectacleTable").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": [
+                    "excel",
+                    "pdf",
+                    "print",
+                    "colvis"
+                ],
+            });
+            spectacleTable.buttons().container().appendTo('#spectacleTable_wrapper .col-md-6:eq(0)');
+            var addSpecBtn = '<a href="/shows/new" type="button" class="btn btn-block btn-success ml-2 col-md-1" id="ajouterSpec">' +
+                '<span class="fa fa-plus-circle mr-2"></span>Ajouter</a>';
+
+            {# var addSpecBtn = "<span>{{ render(controller('App\\Controller\\SpectacleController::creer_spectacle'))}}</span>"; #}
+
+            var spectacleTable_wrapper = document.getElementById("spectacleTable_wrapper");
+            spectacleTable_wrapper.childNodes[0].insertAdjacentHTML("afterbegin", addSpecBtn);
+            spectacleTable_wrapper.childNodes[0].childNodes[2].classList.remove("col-md-6");
+            spectacleTable_wrapper.childNodes[0].childNodes[2].classList.add("col-md-3");
+        });
+
+        $('#ajouterSpec').click(function (e) {
+            e.preventDefault();
+        });
+    </script>
+{% endblock %}

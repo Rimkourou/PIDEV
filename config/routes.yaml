@@ -1,0 +1,3 @@
+index:
+    path: /
+    controller: App\Controller\SpectacleController::afficher_spectacle
