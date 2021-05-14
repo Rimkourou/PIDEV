@@ -18,7 +18,16 @@ class PlanningRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Planning::class);
     }
-
+public function orderByType(){
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.typeEvent', 'ASC')
+            ->getQuery()->getResult();
+    }
+    public function getByTitle($title){
+        return $this->createQueryBuilder('p')
+            ->where('p.titreEvent = :title')
+            ->setParameter('title',$title)->getQuery()->getResult();
+    }
     // /**
     //  * @return Planning[] Returns an array of Planning objects
     //  */
