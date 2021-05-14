@@ -18,7 +18,11 @@ class SpectacleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Spectacle::class);
     }
-
+public function orderByDate(){
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.date', 'ASC')
+            ->getQuery()->getResult();
+    }
     // /**
     //  * @return Spectacle[] Returns an array of Spectacle objects
     //  */
