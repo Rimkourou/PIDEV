@@ -9,12 +9,101 @@ use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 
 class SpectacleController extends AbstractController
 {
 
     /**
-     * @Route("/show", name="afficher_spectacle")
+     * @Route("spectacle/api/show", name="api_spectacle_show")
+     */
+    public function showSpectacle()
+    {
+        $listSpectacles = $this->getDoctrine()->getRepository(Spectacle::class)->findAll();
+        $serializer = new Serializer([new DateTimeNormalizer(), new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($listSpectacles);
+        return new JsonResponse($formatted);
+    }/**
+     * @Route("spectacle/api/showOrdered", name="api_spectacle_showOrdered")
+     */
+    public function showOrderedSpectacle()
+    {
+        $listSpectacles = $this->getDoctrine()->getRepository(Spectacle::class)->orderByDate();
+        $serializer = new Serializer([new DateTimeNormalizer(), new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($listSpectacles);
+        return new JsonResponse($formatted);
+    }
+    /**
+     * @Route("spectacle/api/add", name="api_spectacle_add")
+     */
+    public function addSpectacle(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $spectacle = new Spectacle();
+        $spectacle->setTitre($request->get('titre'));
+        try {
+            $spectacle->setDate(new \DateTime($request->get('date')));
+        } catch (\Exception $e) {
+
+        }
+        $spectacle->setGenre($request->get('genre'));
+        $spectacle->setImagePath($request->get('img'));
+        $em->persist($spectacle);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($spectacle);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("spectacle/api/edit", name="api_spectacle_edit")
+     */
+    public function editSpectacle(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $spectacle = $em->getRepository(Spectacle::class)->find($request->get('id'));
+        $spectacle->setTitre($request->get('titre'));
+        try {
+            $spectacle->setDate(new \DateTime($request->get('date')));
+        } catch (\Exception $e) {
+            $spectacle->setDate(new \DateTime());
+        }
+        $spectacle->setGenre($request->get('genre'));
+        $spectacle->setImagePath($request->get('img'));
+        $em->flush();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(1);
+        $normalizer->setCircularReferenceHandler(function ($spectacle) {
+            return $spectacle->getId();
+        });
+        $encoders = [new JsonEncoder()];
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers,$encoders);
+        $formatted = $serializer->normalize($spectacle);
+        return new JsonResponse($formatted);
+    }
+    /**
+     * @Route("spectacle/api/delete/{id}", name="api_spectacle_delete")
+     */
+    public function deleteSpectacle($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $spectacle = $this->getDoctrine()->getRepository(Spectacle::class)
+         //   ->find($request->get('id'));
+        ->find($id);
+        $em->remove($spectacle);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($spectacle);
+        return new JsonResponse($formatted);
+    }
+
+
+    /**
+     * @Route("/shows", name="afficher_spectacle")
      */
     public function afficher_spectacle()
     {
@@ -33,21 +122,13 @@ class SpectacleController extends AbstractController
             array('spectacles' => $listSpectacles));
     }
 
-    /**
-     * @Route("/titreSpec", name="afficher_titre_spec")
-     */
-    public function afficher_titre_spec()
-    {
-        $titreSpec = $this->getDoctrine()->getRepository(Spectacle::class)->findSpecTitle();
-        return $this->render('SpectacleViews/titreSpec.html.twig',
-            array('titreSpecList' => $titreSpec));
-    }
+
 
     public function uploadImage($file, $filename)
     {
         try {
             $file->move(
-                $this->getParameter('image_directory'),
+                $this->getParameter('EventImage_directory'),
                 $filename
             );
         } catch (FileNotFoundException $e) {
