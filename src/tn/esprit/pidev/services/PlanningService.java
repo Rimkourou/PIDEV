@@ -33,7 +33,7 @@ public class    PlanningService {
 
 
     public boolean addPlanning(Planning planning) {
-        String url = Database.BASE_URL + "planning/api/add?titre="+planning.getTitreEvent()+
+        String url = Database.BASE_URL + "api/planning/add?titre="+planning.getTitreEvent()+
                 "&type="+planning.getTypeEvent()+
                 "&salle="+planning.getNomSalle()+
                 "&date="+planning.getDate()+
@@ -51,7 +51,7 @@ public class    PlanningService {
         return resultOK;
     }
     public boolean editPlanning(Planning planning) {
-        String url = Database.BASE_URL + "planning/api/edit?id="+planning.getId()+
+        String url = Database.BASE_URL + "api/planning/edit?id="+planning.getId()+
                 "titre="+planning.getTitreEvent()+
                 "&type="+planning.getTypeEvent()+
                 "&salle="+planning.getNomSalle()+
@@ -91,7 +91,7 @@ public class    PlanningService {
         return planningArrayList;
     }
     public boolean deletePlanning(int id){
-        String url = Database.BASE_URL  + "planning/api/delete/"+id ; // Add Symfony URL here
+        String url = Database.BASE_URL  + "api/planning/delete/"+id ; // Add Symfony URL here
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -104,7 +104,7 @@ public class    PlanningService {
         return resultOK;
     }
     public ArrayList<Planning> showAll() {
-        String url = Database.BASE_URL + "planning/api/show"; // Add Symfony URL Here
+        String url = Database.BASE_URL + "api/planning/show"; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -118,7 +118,7 @@ public class    PlanningService {
         return planningArrayList;
     }
     public ArrayList<Planning> showOrdered() {
-        String url = Database.BASE_URL + "planning/api/showOrdered"; // Add Symfony URL Here
+        String url = Database.BASE_URL + "api/planning/showOrdered"; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -134,7 +134,7 @@ public class    PlanningService {
 
     public ArrayList<Planning> getPlanningBySpectacleName(String titre) {
 
-        String url = Database.BASE_URL + "planning/api/get?titre="+titre; // Add Symfony URL Here
+        String url = Database.BASE_URL + "api/planning/get?titre="+titre; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

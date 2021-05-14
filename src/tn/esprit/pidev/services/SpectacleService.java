@@ -33,7 +33,7 @@ public class SpectacleService {
 
 
     public boolean addSpectacle(Spectacle spectacle){
-        String url = Database.BASE_URL  + "spectacle/api/add?titre="+spectacle.getTitre()+
+        String url = Database.BASE_URL  + "api/spectacle/add?titre="+spectacle.getTitre()+
                 "&genre="+spectacle.getGenre()+
                 "&img="+spectacle.getImage()+
                 "&date="+spectacle.getDate(); // Add Symfony URL here
@@ -49,7 +49,7 @@ public class SpectacleService {
         return resultOK;
     }
     public boolean deleteSpectacle(int id){
-        String url = Database.BASE_URL  + "spectacle/api/delete/"+id ; // Add Symfony URL here
+        String url = Database.BASE_URL  + "api/spectacle/delete/"+id ; // Add Symfony URL here
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -78,7 +78,7 @@ public class SpectacleService {
         return spectacleArrayList;
     }
     public ArrayList<Spectacle> showAll(){
-        String url = Database.BASE_URL+"spectacle/api/show"; // Add Symfony URL Here
+        String url = Database.BASE_URL+"api/spectacle/show"; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -93,7 +93,7 @@ public class SpectacleService {
     }
 
     public boolean editSpectacle(Spectacle spectacle) {
-            String url = Database.BASE_URL  + "spectacle/api/edit?id="+spectacle.getId()+
+            String url = Database.BASE_URL  + "api/spectacle/edit?id="+spectacle.getId()+
                     "titre="+spectacle.getTitre()+
                     "&genre="+spectacle.getGenre()+
                     "&img="+spectacle.getImage()+
@@ -111,7 +111,7 @@ public class SpectacleService {
     }
 
     public ArrayList<Spectacle> showOrdered() {
-        String url = Database.BASE_URL+"spectacle/api/showOrdered"; // Add Symfony URL Here
+        String url = Database.BASE_URL+"api/spectacle/showOrdered"; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

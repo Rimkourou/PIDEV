@@ -43,7 +43,7 @@ public class SalleService {
     }
 
     public ArrayList<String> showAll() {
-        String url = Database.BASE_URL + "salle/api/get"; // Add Symfony URL Here
+        String url = Database.BASE_URL + "api/salle/get"; // Add Symfony URL Here
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
