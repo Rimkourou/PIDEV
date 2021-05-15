@@ -8,6 +8,7 @@ import tn.esprit.TuniShow.utils.Statics;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,6 @@ public class ReservationService {
         public boolean addReservation(Reservation r) {
             String url = Statics.BASE_URL + "new?user=" + r.getIduser()+ "&salle=" + r.getIdsalle()+ "&film=" +
                     r.getIdfilm()+ "&place=" + r.getNbrplaceres(); //création de l'URL
-            System.out.println("*******"+url);
             req.setUrl(url);// Insertion de l'URL de notre demande de connexion
             req.addResponseListener(new ActionListener<NetworkEvent>() {
                 @Override
@@ -54,11 +54,8 @@ public class ReservationService {
             for(Map<String,Object> obj : list){
                 Reservation r = new Reservation();
                 r.setId((int)Float.parseFloat(obj.get("id").toString()));
-//                String DateConverter = obj.get("datedereservation").toString().substring(obj.get("datedereservation").toString().indexOf("timestamp")+10, obj.get("obj").toString().lastIndexOf("}"));
-             //   Date currentTime = new Date(Double.valueOf(DateConverter).longValue()*1000);
-               // SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                //String dateString = formatter.format(currentTime);
-                //r.setDatedereservation(dateString);
+                java.sql.Date datedereservation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("datedereservation").toString().substring(0,10)).getTime());
+                r.setDatedereservation(datedereservation);
                 r.setIduser((obj.get("iduser").toString()));
                 r.setIdsalle((obj.get("idsalle").toString()));
                 r.setIdfilm((obj.get("idfilm").toString()));
@@ -66,7 +63,7 @@ public class ReservationService {
                 reservation.add(r);
             }
 
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
 
         }
 

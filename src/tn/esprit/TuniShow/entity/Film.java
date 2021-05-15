@@ -5,6 +5,8 @@
  */
 package tn.esprit.TuniShow.entity;
 
+import java.util.Comparator;
+
 /**
  *
  * @author msi
@@ -100,6 +102,11 @@ public class Film {
     public String toString() {
         return "Film{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", auteur=" + auteur + ", categorie=" + categorie + ", genre=" + genre + ", img=" + img + '}';
     }
-    
-    
+
+    public static Comparator<Film> titleComparator = new Comparator<Film>() {
+        @Override
+        public int compare(Film f1, Film f2) {
+            return (int) (f1.getTitre().toLowerCase().compareTo(f2.getTitre().toLowerCase()));
+        }
+    };
 }

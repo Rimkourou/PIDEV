@@ -15,7 +15,7 @@ public class FilmService {
     public ArrayList<Film> films;
     public static FilmService instance = null;
 
-    private FilmService(){
+    public FilmService(){
           req = new ConnectionRequest();
      }
 

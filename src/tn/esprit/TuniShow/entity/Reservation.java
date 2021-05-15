@@ -1,11 +1,12 @@
 package tn.esprit.TuniShow.entity;
 
+import java.sql.Date;
 import java.util.Comparator;
 
 public class
 Reservation {
     private int id;
-    private String datedereservation;
+    private Date datedereservation;
     private String iduser;
     private String idsalle;
     private String idfilm;
@@ -14,7 +15,7 @@ Reservation {
     public Reservation() {
     }
 
-    public Reservation(int id, String datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
+    public Reservation(int id, Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.id = id;
         this.datedereservation = datedereservation;
         this.iduser = iduser;
@@ -23,13 +24,22 @@ Reservation {
         this.nbrplaceres = nbrplaceres;
     }
 
-    public Reservation(String datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
+    public Reservation(Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.datedereservation = datedereservation;
         this.iduser = iduser;
         this.idsalle = idsalle;
         this.idfilm = idfilm;
         this.nbrplaceres = nbrplaceres;
     }
+
+    public Reservation(String toString, String toString1, String toString2, int parseInt) {
+
+        this.iduser = iduser;
+        this.idsalle = idsalle;
+        this.idfilm = idfilm;
+        this.nbrplaceres = nbrplaceres;
+    }
+
 
     public int getId() {
         return id;
@@ -39,11 +49,11 @@ Reservation {
         this.id = id;
     }
 
-    public String getDatedereservation() {
+    public Date getDatedereservation() {
         return datedereservation;
     }
 
-    public void setDatedereservation(String datedereservation) {
+    public void setDatedereservation(Date datedereservation) {
         this.datedereservation = datedereservation;
     }
 

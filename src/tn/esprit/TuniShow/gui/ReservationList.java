@@ -64,6 +64,7 @@ public class ReservationList extends Form {
             MultiButton mb = new MultiButton();
             mb.setTextLine1(r.getIdsalle()+" : "+r.getIdfilm());
             mb.setTextLine2(String.valueOf(r.getNbrplaceres())+" "+"places");
+            //mb.setTextLine3(r.getDatedereservation().toString());
             add(mb);
         }
         //add(list);
