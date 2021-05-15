@@ -1,6 +1,6 @@
 package tn.esprit.TuniShow.entity;
 
-import java.util.Date;
+import java.util.Comparator;
 
 public class
 Reservation {
@@ -90,4 +90,11 @@ Reservation {
                 ", nbrplaceres=" + nbrplaceres +
                 '}';
     }
+
+    public static Comparator<Reservation> MovieNameComparator = new Comparator<Reservation>() {
+        @Override
+        public int compare(Reservation r1, Reservation r2) {
+            return (int) (r1.getIdfilm().toLowerCase().compareTo(r2.getIdfilm().toLowerCase()));
+        }
+    };
 }

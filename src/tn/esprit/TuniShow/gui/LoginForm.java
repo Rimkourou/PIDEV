@@ -70,7 +70,7 @@ public class LoginForm extends Form {
         Form current=this;
         loginButton.addActionListener(e -> {
             //Toolbar.setGlobalToolbar(false);
-            new ReservationList(current).show();
+           // new ReservationList(current).show();
             //Toolbar.setGlobalToolbar(true);
         });
         
