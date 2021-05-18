@@ -19,6 +19,7 @@
 
 package tn.esprit.TuniShow.gui;
 
+import com.codename1.components.MultiButton;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -27,6 +28,12 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
+import tn.esprit.TuniShow.entity.Planning;
+import tn.esprit.TuniShow.entity.Spectacle;
+import tn.esprit.TuniShow.services.PlanningService;
+import tn.esprit.TuniShow.services.SpectacleService;
+
+import java.util.ArrayList;
 
 /**
  * Common code that can setup the side menu
@@ -34,6 +41,8 @@ import com.codename1.ui.util.Resources;
  * @author Shai Almog
  */
 public abstract class SideMenuBaseForm extends Form {
+    Form current=this;
+    Spectacle s;
 
     public SideMenuBaseForm(String title, Layout contentPaneLayout) {
         super(title, contentPaneLayout);
@@ -65,9 +74,9 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Users", FontImage.MATERIAL_PEOPLE,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Movie Room", FontImage.MATERIAL_WEEKEND,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Movies", FontImage.MATERIAL_LOCAL_MOVIES,  e -> new FilmList(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Shows", FontImage.MATERIAL_LIVE_TV,  e -> showOtherForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Shows", FontImage.MATERIAL_LIVE_TV,  e -> new SpectacleForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Promotions", FontImage.MATERIAL_LOCAL_OFFER,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Planning", FontImage.MATERIAL_EVENT,  e -> showOtherForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Planning", FontImage.MATERIAL_EVENT,  e -> new PlanningsForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Booking", FontImage.MATERIAL_EVENT_NOTE,  e -> new ReservationForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Shop", FontImage.MATERIAL_LOCAL_MALL,  e ->showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Complaints", FontImage.MATERIAL_REPORT,  e -> showOtherForm(res));
