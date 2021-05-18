@@ -5,7 +5,9 @@ import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageButton;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.*;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import tn.esprit.TuniShow.entity.Film;
 import tn.esprit.TuniShow.entity.Reservation;
@@ -66,8 +68,9 @@ public class FilmList extends SideMenuBaseForm {
     public void showFilmList(){
         for(Film f : films){
             String url = "http://127.0.0.1:8000/dist/img/"+f.getImg();
-            Container m = new Container();
+            Container m = new Container(new BorderLayout());
             m.setUIID(f.getTitre());
+
 
             int deviceWidth = Display.getInstance().getDisplayWidth();
             Image placeholder = Image.createImage(deviceWidth-350, deviceWidth-150, 0xbfc9d2);
@@ -77,7 +80,7 @@ public class FilmList extends SideMenuBaseForm {
             imageViewer = new ImageViewer(img);
             ScaleImageButton fillButton = new ScaleImageButton(img);
             fillButton.addActionListener(l -> new FilmDetails(current, f).show());
-            m.addAll(fillButton);
+            m.add(BorderLayout.CENTER,fillButton);
             add(m);
         }
     }

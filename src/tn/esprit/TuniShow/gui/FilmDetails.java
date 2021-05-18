@@ -1,13 +1,18 @@
 package tn.esprit.TuniShow.gui;
 
 import com.codename1.components.ImageViewer;
+import com.codename1.components.ShareButton;
 import com.codename1.components.SpanLabel;
+import com.codename1.io.FileSystemStorage;
+import com.codename1.io.Log;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.ImageIO;
 import tn.esprit.TuniShow.entity.Film;
 import tn.esprit.TuniShow.services.FilmService;
 
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class FilmDetails extends Form {
     Form current;
@@ -34,7 +39,23 @@ public class FilmDetails extends Form {
         img = URLImage.createToStorage(ec, url, url,URLImage.RESIZE_SCALE_TO_FILL);
         imageViewer = new ImageViewer(img);
 
-        addAll(imageViewer, titleLabel, typeLabel, categoryLabel, authorLabel, descriptionLabel);
+        ShareButton sb = new ShareButton();
+        sb.setText("Share Screenshot");
+
+        Image screenshot = Image.createImage(current.getWidth(), current.getHeight());
+        current.revalidate();
+        current.setVisible(true);
+        current.paintComponent(screenshot.getGraphics(), true);
+
+        String imageFile = FileSystemStorage.getInstance().getAppHomePath() + "screenshot.png";
+        try(OutputStream os = FileSystemStorage.getInstance().openOutputStream(imageFile)) {
+            ImageIO.getImageIO().save(screenshot, os, ImageIO.FORMAT_PNG, 1);
+        } catch(IOException err) {
+            Log.e(err);
+        }
+        sb.setImageToShare(imageFile, "image/png");
+
+        addAll(imageViewer, titleLabel, typeLabel, categoryLabel, authorLabel, descriptionLabel, sb);
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }

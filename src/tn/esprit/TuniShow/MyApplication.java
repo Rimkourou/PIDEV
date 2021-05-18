@@ -2,17 +2,27 @@ package tn.esprit.TuniShow;
 
 
 import static com.codename1.ui.CN.*;
-import com.codename1.ui.Display;
-import com.codename1.ui.Form;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.Label;
+
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkManager;
+import com.codename1.ui.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
-import com.codename1.ui.Toolbar;
+
 import java.io.IOException;
+import java.io.InputStream;
+
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.nexmo.client.NexmoClient;
+import com.nexmo.client.NexmoClientException;
+import com.nexmo.client.auth.AuthMethod;
+import com.nexmo.client.auth.TokenAuthMethod;
+import com.nexmo.client.sms.SmsSubmissionResult;
+import com.nexmo.client.sms.messages.TextMessage;
 import tn.esprit.TuniShow.gui.*;
 
 /**
@@ -35,12 +45,34 @@ public class MyApplication {
     }
     
     public void start() {
-        if(current != null){
+        if (current != null) {
             current.show();
             return;
         }
         //new LoginForm(theme).show();
         new FilmList(theme).show();
+        /*Form hi = new Form("SMS demo");
+        Button btn = new Button("send sms");
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                String myURL = "https://rest.nexmo.com/sms/json?api_key=a1a54fce&api_secret=9o9T4DTrabArd7Qg&to=21625895814&from=aa&text=aa";
+                ConnectionRequest cntRqst = new ConnectionRequest() {
+                    @Override
+                    protected void readResponse(InputStream in) throws IOException {
+                    }
+
+                    @Override
+                    protected void postResponse() {
+                        Dialog.show("SMS", "sms successfully sent", "OK", null);
+                    }
+                };
+                cntRqst.setUrl(myURL);
+                NetworkManager.getInstance().addToQueue(cntRqst);
+            }
+        });
+        hi.add(btn);
+        hi.show();*/
     }
 
     public void stop() {

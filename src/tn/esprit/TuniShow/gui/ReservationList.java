@@ -21,7 +21,7 @@ public class ReservationList extends Form {
     ArrayList<Reservation> ResArrayList = new ArrayList<>();
     public ReservationList(Form previous) {
         current = this;
-        setTitle("your list");
+        setTitle("my list");
         setLayout(BoxLayout.y());
         ResArrayList = rs.getAllReservation();
         showResList();

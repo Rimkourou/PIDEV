@@ -1,7 +1,8 @@
 package tn.esprit.TuniShow.entity;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.Comparator;
+import java.util.Date;
 
 public class
 Reservation {

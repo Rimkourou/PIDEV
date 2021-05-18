@@ -7,10 +7,10 @@ import tn.esprit.TuniShow.entity.Reservation;
 import tn.esprit.TuniShow.utils.Statics;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -53,9 +53,10 @@ public class ReservationService {
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 Reservation r = new Reservation();
-                r.setId((int)Float.parseFloat(obj.get("id").toString()));
-                java.sql.Date datedereservation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("datedereservation").toString().substring(0,10)).getTime());
-                r.setDatedereservation(datedereservation);
+                //r.setId((int)Float.parseFloat(obj.get("id").toString()));
+
+                //java.sql.Date datedereservation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("datedereservation").toString().substring(0,10)).getTime());
+                //r.setDatedereservation(datedereservation);
                 r.setIduser((obj.get("iduser").toString()));
                 r.setIdsalle((obj.get("idsalle").toString()));
                 r.setIdfilm((obj.get("idfilm").toString()));
@@ -63,7 +64,7 @@ public class ReservationService {
                 reservation.add(r);
             }
 
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
 
         }
 

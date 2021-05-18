@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="https_m.facebook.com_0" uuid="0846cc28-977b-4fb1-badb-47b7c85633e2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\msi\Documents\NetBeansProjects\TuniShowMobile\.cn1\localstorage\https_m.facebook.com_0.localstorage</jdbc-url>
+    </data-source>
+  </component>
+</project>
