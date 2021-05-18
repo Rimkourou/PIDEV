@@ -16,6 +16,13 @@ Reservation {
     public Reservation() {
     }
 
+    public Reservation(String iduser, String idsalle, String idfilm, int nbrplaceres) {
+        this.iduser = iduser;
+        this.idsalle = idsalle;
+        this.idfilm = idfilm;
+        this.nbrplaceres = nbrplaceres;
+    }
+
     public Reservation(int id, Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.id = id;
         this.datedereservation = datedereservation;
@@ -27,14 +34,6 @@ Reservation {
 
     public Reservation(Date datedereservation, String iduser, String idsalle, String idfilm, int nbrplaceres) {
         this.datedereservation = datedereservation;
-        this.iduser = iduser;
-        this.idsalle = idsalle;
-        this.idfilm = idfilm;
-        this.nbrplaceres = nbrplaceres;
-    }
-
-    public Reservation(String toString, String toString1, String toString2, int parseInt) {
-
         this.iduser = iduser;
         this.idsalle = idsalle;
         this.idfilm = idfilm;

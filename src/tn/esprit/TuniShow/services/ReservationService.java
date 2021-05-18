@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
 
@@ -53,8 +53,7 @@ public class ReservationService {
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 Reservation r = new Reservation();
-                //r.setId((int)Float.parseFloat(obj.get("id").toString()));
-
+                r.setId((int)Float.parseFloat(obj.get("id").toString()));
                 //java.sql.Date datedereservation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("datedereservation").toString().substring(0,10)).getTime());
                 //r.setDatedereservation(datedereservation);
                 r.setIduser((obj.get("iduser").toString()));

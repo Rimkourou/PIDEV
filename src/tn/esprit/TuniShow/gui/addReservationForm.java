@@ -17,16 +17,15 @@ import java.text.SimpleDateFormat;
 
 public class addReservationForm extends Form {
     public addReservationForm(Form previous){
+        Form current = this;
         setTitle("book a ticket");
         setLayout(BoxLayout.y());
-        TextField datedereservation = new TextField("","yyyy-MM-dd");
-        /*Picker datePicker = new Picker();
-        datePicker.setType(Display.PICKER_TYPE_DATE);*/
+        //TextField datedereservation = new TextField("","yyyy-MM-dd");
         TextField iduser = new TextField("","Enter your name");
         TextField idsalle = new TextField("","Enter a movie room");
         TextField idfilm = new TextField("","enter a movie");
         TextField nbrplaceres = new TextField("","enter number of places");
-        Button btnValider = new Button("Add task");
+        Button btnValider = new Button("confirm your reservation");
 
         btnValider.addActionListener(new ActionListener() {
             @Override
@@ -42,12 +41,13 @@ public class addReservationForm extends Form {
                         if( ReservationService.getInstance().addReservation(r))
                         {
                             Dialog.show("Success","Connection accepted",new Command("OK"));
-                        refreshTheme();
+                            new SmsForm(current).show();
+                        //refreshTheme();
                         }else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
 
                     } catch (NumberFormatException e) {
-                        Dialog.show("ERROR", "Status must be a number", new Command("OK"));
+                        Dialog.show("ERROR", "places must be a number", new Command("OK"));
 
                     }
 
@@ -57,7 +57,7 @@ public class addReservationForm extends Form {
             }
         });
 
-        addAll(datedereservation,iduser,idsalle,idfilm,nbrplaceres,btnValider);
+        addAll(iduser,idsalle,idfilm,nbrplaceres,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
 
