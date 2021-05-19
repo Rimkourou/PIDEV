@@ -101,7 +101,7 @@ public class Commande extends Form {
         
         
         ConfComm.addActionListener((evt) -> {
-                ApiServices.getInstance().sendMail("rim.kourou@esprit.tn", "Rim Kourou",pd.get(0).getNom(),pd.get(0).getPrix(),pd.get(0).getQte(),pd.get(0).getImage(),pd.get(1).getNom(),pd.get(1).getPrix(),pd.get(1).getQte(),pd.get(1).getImage());
+                ApiServices.getInstance().sendMail("wifek.fouzai@esprit.tn", "Rim Kourou",pd.get(0).getNom(),pd.get(0).getPrix(),pd.get(0).getQte(),pd.get(0).getImage(),pd.get(1).getNom(),pd.get(1).getPrix(),pd.get(1).getQte(),pd.get(1).getImage());
                 Dialog.show("Alert", "Votre email a été bien envoyée. Merci de vérifier votre boite de réception", new Command("D'accord"));
 //                (t -> new Commande().show())
         });
