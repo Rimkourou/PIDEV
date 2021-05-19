@@ -2,10 +2,7 @@ package tn.esprit.TuniShow.gui;
 
 import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
-import com.codename1.ui.Component;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Form;
+import com.codename1.ui.*;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
@@ -15,11 +12,11 @@ import tn.esprit.TuniShow.services.ReservationService;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ReservationList extends Form {
+public class ReservationList extends SideMenuBaseForm {
     Form current;
     ReservationService rs = new ReservationService();
     ArrayList<Reservation> ResArrayList = new ArrayList<>();
-    public ReservationList(Form previous) {
+    public ReservationList(Resources res) {
         current = this;
         setTitle("my list");
         setLayout(BoxLayout.y());
@@ -28,7 +25,14 @@ public class ReservationList extends Form {
         Container list = new Container(BoxLayout.y());
         list.setScrollableY(true);
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+
+        Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_MENU, e -> getToolbar().openSideMenu());
+        setupSideMenu(res);
+
         getToolbar().addSearchCommand(e -> {
             String text = (String) e.getSource();
             if (text == null || text.length() == 0) {
@@ -69,5 +73,8 @@ public class ReservationList extends Form {
         }
         //add(list);
     }
-
+    @Override
+    protected void showOtherForm(Resources res) {
+        new StatsForm(res).show();
+    }
 }

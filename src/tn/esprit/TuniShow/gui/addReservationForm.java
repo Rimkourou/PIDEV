@@ -9,6 +9,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
 import tn.esprit.TuniShow.entity.Film;
+import tn.esprit.TuniShow.entity.Planning;
 import tn.esprit.TuniShow.entity.Reservation;
 import tn.esprit.TuniShow.services.ReservationService;
 
@@ -16,14 +17,14 @@ import tn.esprit.TuniShow.services.ReservationService;
 import java.text.SimpleDateFormat;
 
 public class addReservationForm extends Form {
-    public addReservationForm(Form previous){
+    public addReservationForm(Form previous, Planning planning){
         Form current = this;
         setTitle("book a ticket");
         setLayout(BoxLayout.y());
         //TextField datedereservation = new TextField("","yyyy-MM-dd");
         TextField iduser = new TextField("","Enter your name");
-        TextField idsalle = new TextField("","Enter a movie room");
-        TextField idfilm = new TextField("","enter a movie");
+        TextField idsalle = new TextField(planning.getNomSalle());
+        TextField idfilm = new TextField(planning.getTitreEvent());
         TextField nbrplaceres = new TextField("","enter number of places");
         Button btnValider = new Button("confirm your reservation");
 

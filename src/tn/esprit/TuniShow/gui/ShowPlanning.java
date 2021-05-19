@@ -18,7 +18,7 @@ public class ShowPlanning extends Form {
         Label typeLabel = new Label("Type: " + planning.getTypeEvent());
         Label salleLabel = new Label("Salle: " + planning.getNomSalle());
         Button buyButton = new Button("Buy Ticket");
-        buyButton.addActionListener(evt -> {
+        buyButton.addActionListener(evt -> {new addReservationForm(current,planning).show();
         });
 
         addAll(titreLabel, typeLabel, salleLabel, buyButton); //ADD ALL COMPONENTS TO THE VIEW

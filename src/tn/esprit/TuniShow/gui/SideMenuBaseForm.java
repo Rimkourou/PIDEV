@@ -77,7 +77,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Shows", FontImage.MATERIAL_LIVE_TV,  e -> new SpectacleForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Promotions", FontImage.MATERIAL_LOCAL_OFFER,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Planning", FontImage.MATERIAL_EVENT,  e -> new PlanningsForm(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Booking", FontImage.MATERIAL_EVENT_NOTE,  e -> new ReservationForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Booking", FontImage.MATERIAL_EVENT_NOTE,  e -> new ReservationList(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Shop", FontImage.MATERIAL_LOCAL_MALL,  e ->showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Complaints", FontImage.MATERIAL_REPORT,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> new ProfileForm(res).show());
