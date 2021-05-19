@@ -65,8 +65,8 @@ public class PlanningsForm extends SideMenuBaseForm {
         });
         /* *** *SIDE MENU* *** */
         getToolbar().addCommandToLeftSideMenu("", null, (evt) -> {        });
-        getToolbar().addCommandToLeftSideMenu("Shows", null, (evt) -> {            new SpectacleForm(res).show();        });
-        getToolbar().addCommandToLeftSideMenu("Planning", null, (evt) -> {            new PlanningsForm(res).show();        });
+        //getToolbar().addCommandToLeftSideMenu("Shows", null, (evt) -> {            new SpectacleForm(res).show();        });
+        //getToolbar().addCommandToLeftSideMenu("Planning", null, (evt) -> {            new PlanningsForm(res).show();        });
         getToolbar().addCommandToOverflowMenu("Stats", FontImage.createMaterial(FontImage.MATERIAL_PIE_CHART, UIManager.getInstance().getComponentStyle("TitleCommand")), (evt) -> {
             new StatsPlanningsForm(current).show();
         });

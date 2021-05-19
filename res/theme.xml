@@ -2,11 +2,13 @@
 
 <resource majorVersion="1" minorVersion="10" useXmlUI="false">
     <image name="BackgroundRect.png" type="multi"  />
+    <image name="blue.jpg"  />
     <image name="duke.png" type="multi"  />
     <image name="gradient-overlay.png"  />
     <image name="login-background.jpg"  />
     <image name="notes.png" type="multi"  />
     <image name="round-mask.png" type="multi"  />
+    <image name="seats.jpg"  />
     <image name="selected-walkthru.png" type="multi"  />
     <image name="sidemenu-top.png" type="multi"  />
     <image name="text-field-underline.png"  />
@@ -105,7 +107,7 @@
         <val key="LoginButton.sel#padding" value="2.0,2.0,2.0,2.0" />
         <val key="LoginButton.sel#transparency" value="255" />
         <val key="LoginButton.transparency" value="255" />
-        <val key="LoginForm.bgImage" value="login-background.jpg" />
+        <val key="LoginForm.bgImage" value="seats.jpg" />
         <val key="LoginForm.bgType" value="33" />
         <val key="LoginForm.margin" value="0.0,0.0,0.0,0.0" />
         <val key="LoginForm.padUnit" value="2,2,2,2" />
@@ -221,6 +223,14 @@
         <font key="TextField.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
         <val key="TextField.sel#transparency" value="0" />
         <val key="TextField.transparency" value="0" />
+        <val key="TextField2.bgImage" value="text-field-underline.png" />
+        <val key="TextField2.bgType" value="30" />
+        <border key="TextField2.border" type="empty" />
+        <val key="TextField2.fgColor" value="ffffff" />
+        <font key="TextField2.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
+        <val key="TextField2.padUnit" value="2,2,2,2" />
+        <val key="TextField2.padding" value="1.0,1.0,1.0,1.0" />
+        <val key="TextField2.transparency" value="0" />
         <val key="Title.fgColor" value="ffffff" />
         <font key="Title.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="4.5" />
         <val key="Title.margin" value="0.0,0.0,0.0,0.0" />

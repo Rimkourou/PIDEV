@@ -50,6 +50,7 @@ public class LoginForm extends Form {
         
         Container welcome = FlowLayout.encloseCenter(
                 new Label("Welcome ", "WelcomeWhite"),
+                new Label("to TuniShow ", "WelcomeWhite"),
                 new Label(n, "WelcomeBlue")
         );
         
@@ -63,11 +64,15 @@ public class LoginForm extends Form {
         
       
         this.login=new TextField("","Login", 20, TextField.EMAILADDR);
+        login.setUIID("TextField2");
         this.password=new TextField("", "Password", 1,TextField.PASSWORD);
+        password.setUIID("TextField2");
         login.getAllStyles().setMargin(LEFT, 0);
         password.getAllStyles().setMargin(LEFT, 0);
         Label loginIcon = new Label("", "TextField");
         Label passwordIcon = new Label("", "TextField");
+        loginIcon.setUIID("TextField2");
+        passwordIcon.setUIID("TextField2");
         loginIcon.getAllStyles().setMargin(RIGHT, 0);
         passwordIcon.getAllStyles().setMargin(RIGHT, 0);
         FontImage.setMaterialIcon(loginIcon, FontImage.MATERIAL_PERSON_OUTLINE, 3);

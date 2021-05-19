@@ -34,28 +34,12 @@ public class FilmDetails extends Form {
         String url = "http://127.0.0.1:8000/dist/img/"+f.getImg();
         int deviceWidth = Display.getInstance().getDisplayWidth();
         Image placeholder = Image.createImage(deviceWidth-350, deviceWidth-150, 0xbfc9d2);
-        EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+        //EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
         ec = EncodedImage.createFromImage(placeholder,false);
         img = URLImage.createToStorage(ec, url, url,URLImage.RESIZE_SCALE_TO_FILL);
         imageViewer = new ImageViewer(img);
 
-        ShareButton sb = new ShareButton();
-        sb.setText("Share Screenshot");
-
-        Image screenshot = Image.createImage(current.getWidth(), current.getHeight());
-        current.revalidate();
-        current.setVisible(true);
-        current.paintComponent(screenshot.getGraphics(), true);
-
-        String imageFile = FileSystemStorage.getInstance().getAppHomePath() + "screenshot.png";
-        try(OutputStream os = FileSystemStorage.getInstance().openOutputStream(imageFile)) {
-            ImageIO.getImageIO().save(screenshot, os, ImageIO.FORMAT_PNG, 1);
-        } catch(IOException err) {
-            Log.e(err);
-        }
-        sb.setImageToShare(imageFile, "image/png");
-
-        addAll(imageViewer, titleLabel, typeLabel, categoryLabel, authorLabel, descriptionLabel, sb);
+        addAll(imageViewer, titleLabel, typeLabel, categoryLabel, authorLabel, descriptionLabel);
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }

@@ -55,6 +55,10 @@ public class SignUpForm extends Form{
         this.login=new TextField("","Email");
         this.mdp=new TextField("", "Password", 1,TextField.PASSWORD);
         this.age=new Picker();
+        nom.setUIID("TextField2");
+        prenom.setUIID("TextField2");
+        login.setUIID("TextField2");
+        mdp.setUIID("TextField2");
         Picker datePicker = new Picker();
         datePicker.setType(Display.PICKER_TYPE_DATE);
         //this.age=new TextField("","Date of Birth");
