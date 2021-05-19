@@ -18,6 +18,7 @@ public class SmsForm extends Form{
                 , e-> previous.showBack());
     TextField telNumber = new TextField("","+216 ** *** ***");
     Button btn = new Button("send sms");
+    btn.setUIID("LoginButton");
         btn.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {

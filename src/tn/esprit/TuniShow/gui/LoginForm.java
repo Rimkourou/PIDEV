@@ -19,7 +19,10 @@
 
 package tn.esprit.TuniShow.gui;
 
+
 import com.codename1.ui.Button;
+import static com.codename1.ui.Component.LEFT;
+import static com.codename1.ui.Component.RIGHT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
@@ -27,23 +30,27 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import tn.esprit.TuniShow.services.ServicesUser;
 
-/**
- * The Login form
- *
- * @author Shai Almog
- */
 public class LoginForm extends Form {
+    private TextField login;
+    private TextField password;
     public LoginForm(Resources theme) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         setUIID("LoginForm");
+        
+        
+        String n=SessionManager.getNom();
+        
+        
         Container welcome = FlowLayout.encloseCenter(
-                new Label("Welcome, ", "WelcomeWhite"),
-                new Label("Wifek", "WelcomeBlue")
+                new Label("Welcome ", "WelcomeWhite"),
+                new Label(n, "WelcomeBlue")
         );
         
         getTitleArea().setUIID("Container");
@@ -54,8 +61,9 @@ public class LoginForm extends Form {
         Label profilePicLabel = new Label(profilePic, "ProfilePic");
         profilePicLabel.setMask(mask.createMask());
         
-        TextField login = new TextField("wifek.fouzai@esprit.com", "Login", 20, TextField.EMAILADDR) ;
-        TextField password = new TextField("password", "Password", 20, TextField.PASSWORD) ;
+      
+        this.login=new TextField("","Login", 20, TextField.EMAILADDR);
+        this.password=new TextField("", "Password", 1,TextField.PASSWORD);
         login.getAllStyles().setMargin(LEFT, 0);
         password.getAllStyles().setMargin(LEFT, 0);
         Label loginIcon = new Label("", "TextField");
@@ -67,15 +75,52 @@ public class LoginForm extends Form {
         
         Button loginButton = new Button("LOGIN");
         loginButton.setUIID("LoginButton");
-        Form current=this;
         loginButton.addActionListener(e -> {
-            //Toolbar.setGlobalToolbar(false);
-           // new ReservationList(current).show();
-            //Toolbar.setGlobalToolbar(true);
+//            String l=this.login.getText();
+//            String m=this.password.getText();
+            ServicesUser.getInstane().signin(login, password, theme);
+            
+//            //TODO
+//                try {
+//                 User user=null;
+//                Cursor c1 =  MyApplication.base.executeQuery("SELECT * FROM user WHERE login='"+this.login.getText()+"' and password='"+this.password.getText()+"' ");
+//                while(c1.next()){
+//                    Row r = c1.getRow();
+//                    user=new User();
+//                    user.setId(r.getInteger(0));
+//                    user.setNom(r.getString(1));
+//                    user.setPrenom(r.getString(2));
+//                   // user.setAge(r.getInteger(3));
+//                    user.setEmail(r.getString(4));
+//                    user.setPassword(r.getString(5));
+//                }
+//                System.out.println(user);
+//                if(user==null){
+//                    Dialog.show("Alert", "wrong credentials", new Command("OK"));
+//                }
+//                else{
+//                    new FilmForm(theme).show();
+//                }
+//                } catch (Exception ex) {
+//                    System.out.println(ex);
+//                }
+        });
+        
+        //password forgetten
+        Button mp=new Button("Password Forgotten");
+        //mp.setUIID("mpButton");
+        //password forgotten event
+        mp.addActionListener(ex->{
+           new ActivateForm(theme).show();
         });
         
         Button createNewAccount = new Button("CREATE NEW ACCOUNT");
         createNewAccount.setUIID("CreateNewAccountButton");
+        createNewAccount.addActionListener(ex->{
+           SignUpForm suf=new SignUpForm("signup",this);
+           suf.show();
+        });
+        
         
         // We remove the extra space for low resolution devices so things fit better
         Label spaceLabel;
@@ -95,7 +140,9 @@ public class LoginForm extends Form {
                 BorderLayout.center(password).
                         add(BorderLayout.WEST, passwordIcon),
                 loginButton,
-                createNewAccount
+                FlowLayout.encloseCenter(createNewAccount),
+                FlowLayout.encloseCenter(mp)
+                
         );
         add(BorderLayout.CENTER, by);
         

@@ -27,6 +27,7 @@ public class addReservationForm extends Form {
         TextField idfilm = new TextField(planning.getTitreEvent());
         TextField nbrplaceres = new TextField("","enter number of places");
         Button btnValider = new Button("confirm your reservation");
+        btnValider.setUIID("LoginButton");
 
         btnValider.addActionListener(new ActionListener() {
             @Override

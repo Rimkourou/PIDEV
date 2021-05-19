@@ -49,8 +49,8 @@ public class MyApplication {
             current.show();
             return;
         }
-        //new LoginForm(theme).show();
-        new FilmList(theme).show();
+        new LoginForm(theme).show();
+        //new FilmList(theme).show();
         /*Form hi = new Form("SMS demo");
         Button btn = new Button("send sms");
         btn.addActionListener(new ActionListener() {

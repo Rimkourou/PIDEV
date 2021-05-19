@@ -1,43 +1,41 @@
 /*
- * Copyright (c) 2016, Codename One
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
- * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions 
- * of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
- * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 package tn.esprit.TuniShow.gui;
 
+import com.codename1.ui.Form;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import tn.esprit.TuniShow.entity.User;
+import tn.esprit.TuniShow.services.ServicesUser;
 
-public class ProfileForm extends SideMenuBaseForm {
-    
-    public ProfileForm(Resources res) {
+
+class ModifyForm extends SideMenuBaseForm{
+   private Button modify;
+   private TextField email;
+   private TextField password;
+   private TextField nom;
+   private TextField prenom;
+    public ModifyForm(Resources res, User user) {
         super(BoxLayout.y());
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
@@ -52,7 +50,6 @@ public class ProfileForm extends SideMenuBaseForm {
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
         //---------------------
-        
         
         String pr=SessionManager.getPrenom();
         
@@ -75,29 +72,47 @@ public class ProfileForm extends SideMenuBaseForm {
         
         FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
         fab.getAllStyles().setMarginUnit(Style.UNIT_TYPE_PIXELS);
-        tb.setTitleComponent(fab.bindFabToContainer(titleCmp));
+        tb.setTitleComponent(fab.bindFabToContainer(titleCmp));    
+        
+        
+        add(this.nom=new TextField(user.getNom()));
+
+        add(this.prenom=new TextField(user.getPrenom()));
            
-        add(new Label("Profile", "TodayTitle"));
+        add(this.email=new TextField("",user.getEmail(), 20, TextField.EMAILADDR));
        
-        add(new Label("Name : ", "TodayTitle"));
-        add(new Label(n));
+        add(this.password=new TextField("", user.getPassword(), 1,TextField.PASSWORD));
         
-        add(new Label("Last Name : ", "TodayTitle"));
-        add(new Label(pr));
-       
-        add(new Label("Email : ", "TodayTitle"));
-        add(new Label(e));
         
-        Button modifyProfile = new Button("Modify My Account");
-        modifyProfile.setUIID("LoginButton");
-        add(modifyProfile);
-        
-        modifyProfile.addActionListener(ex->{
-            User user = null;
-           ModifyForm mf=new ModifyForm(res,user);
-           mf.show();
+
+        modify=new Button("Modify Informations");
+        modify.setUIID("LoginButton");
+        add(modify);
+        modify.addPointerPressedListener(l->{
+            
+            user.setNom(nom.getText());
+            user.setPrenom(prenom.getText());
+            user.setEmail(email.getText());
+            user.setPassword(password.getText());
+            
+            
+        //appel fonction modifier 
+        if(ServicesUser.getInstane().modifyProfile(user)){
+            Dialog.show("Success", "modified successfully", new Command("OK"));
+            new ProfileForm(res).show();
+        }
         });
-     
+        
+//            System.out.println("**************");
+//            System.out.println(nom.getText());
+//            System.out.println("**************");
+        
+        Button btnAnnuler=new Button("Annuler");
+        add(btnAnnuler);
+        btnAnnuler.addActionListener(t->{
+            new ProfileForm(res).show();
+        });
+
         
          setupSideMenu(res);
 
@@ -128,8 +143,9 @@ public class ProfileForm extends SideMenuBaseForm {
         return img;
     }
 
-    @Override
     protected void showOtherForm(Resources res) {
         new StatsForm(res).show();
     }
+    
+    
 }

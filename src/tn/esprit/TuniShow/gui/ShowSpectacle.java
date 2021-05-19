@@ -10,6 +10,9 @@ import com.codename1.messaging.Message;
 
 public class ShowSpectacle extends Form {
     Form current;
+    Image img = null;
+    ImageViewer imageViewer = null;
+    EncodedImage ec;
     PlanningService planningService = new PlanningService();
 
     public ShowSpectacle(Form previous, Spectacle spectacle) {
@@ -34,12 +37,14 @@ public class ShowSpectacle extends Form {
             }
         });
         /* *THIS CODE USED TO DISPLAY IMAGE* */
+        String url = "http://127.0.0.1:8000/dist/img/"+spectacle.getImage();
         int deviceWidth = Display.getInstance().getDisplayWidth();
         Image placeholder = Image.createImage(deviceWidth, deviceWidth, 0xbfc9d2);
-        EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
-        Image image = URLImage.createToStorage(encImage, spectacle.getTitre() + spectacle.getId(), spectacle.getImage(), URLImage.RESIZE_SCALE_TO_FILL);
-        ImageViewer imageViewer = new ImageViewer();
-        imageViewer.setImage(image);
+        ec = EncodedImage.createFromImage(placeholder,false);
+        img = URLImage.createToStorage(ec, url, url,URLImage.RESIZE_SCALE);
+        imageViewer = new ImageViewer(img);
+        //Image image = URLImage.createToStorage(encImage, spectacle.getTitre() + spectacle.getId(), spectacle.getImage(), URLImage.RESIZE_SCALE_TO_FILL);
+
 
         addAll(imageViewer, titreLabel, genreLabel, dateLabel);        //ADD ALL COMPONENTS TO THE VIEW
         /* *** *BACK BUTTON* *** */

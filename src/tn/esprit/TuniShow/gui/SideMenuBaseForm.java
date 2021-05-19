@@ -71,16 +71,15 @@ public abstract class SideMenuBaseForm extends Form {
         sidemenuTop.setUIID("SidemenuTop");
         
         getToolbar().addComponentToSideMenu(sidemenuTop);
-        getToolbar().addMaterialCommandToSideMenu("  Users", FontImage.MATERIAL_PEOPLE,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Movie Room", FontImage.MATERIAL_WEEKEND,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Movies", FontImage.MATERIAL_LOCAL_MOVIES,  e -> new FilmList(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Shows", FontImage.MATERIAL_LIVE_TV,  e -> new SpectacleForm(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Promotions", FontImage.MATERIAL_LOCAL_OFFER,  e -> showOtherForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Promotions", FontImage.MATERIAL_LOCAL_OFFER,  e -> new ListPromotionForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Planning", FontImage.MATERIAL_EVENT,  e -> new PlanningsForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Booking", FontImage.MATERIAL_EVENT_NOTE,  e -> new ReservationList(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Shop", FontImage.MATERIAL_LOCAL_MALL,  e ->showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Complaints", FontImage.MATERIAL_REPORT,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> new ProfileForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Profile", FontImage.MATERIAL_PEOPLE,  e -> new ProfileForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
     }
     

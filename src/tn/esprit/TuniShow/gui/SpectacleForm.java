@@ -1,5 +1,6 @@
 package tn.esprit.TuniShow.gui;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.components.MultiButton;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
@@ -7,12 +8,16 @@ import com.codename1.ui.util.Resources;
 import tn.esprit.TuniShow.entity.Spectacle;
 import tn.esprit.TuniShow.services.SpectacleService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class SpectacleForm extends SideMenuBaseForm {
     Resources res;
     Form current;
+    Image img = null;
+    ImageViewer imageViewer = null;
+    EncodedImage ec;
     SpectacleService spectacleService = new SpectacleService();
     ArrayList<Spectacle> spectacleArrayList = new ArrayList<>();
     public SpectacleForm(Resources res) {
@@ -71,15 +76,18 @@ public class SpectacleForm extends SideMenuBaseForm {
     }
     public void showSpectacle(){
         for (Spectacle spectacle : spectacleArrayList) {
+            String url = "http://127.0.0.1:8000/dist/img/"+spectacle.getImage();
             int deviceWidth = Display.getInstance().getDisplayWidth();
             Image placeholder = Image.createImage(deviceWidth / 3, deviceWidth / 4, 0xbfc9d2);
-            EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
-            Image image = URLImage.createToStorage(encImage, spectacle.getTitre() + spectacle.getId(), spectacle.getImage(), URLImage.RESIZE_SCALE);
+            ec = EncodedImage.createFromImage(placeholder,false);
+            img = URLImage.createToStorage(ec, url, url,URLImage.RESIZE_SCALE);
+            imageViewer = new ImageViewer(img);
+            //Image image = URLImage.createToStorage(ec, spectacle.getTitre() + spectacle.getId(), spectacle.getImage(), URLImage.RESIZE_SCALE);
             MultiButton multiButton = new MultiButton();
             multiButton.setTextLine1(spectacle.getTitre() + "");
             multiButton.setTextLine2(spectacle.getGenre() + "");
             multiButton.setTextLine3(spectacle.getDate()+"");
-            multiButton.setIcon(image);
+            multiButton.setIcon(img);
             multiButton.setUIID(spectacle.getId() + "");
             multiButton.addActionListener(l -> new ShowSpectacle(current, spectacle).show());
             add(multiButton);
