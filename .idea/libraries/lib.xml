@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TuniShowMobile/lib/CodenameOne.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TuniShowMobile/lib/CodenameOne_SRC.zip!/" />
+      <root url="jar://$PROJECT_DIR$/TuniShowMobile/lib/CLDC11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

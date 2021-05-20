@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="CLDC11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../lib/CLDC11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../lib/CodenameOne.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../lib/CLDC11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../lib/CodenameOne_SRC.zip!/" />
+    </SOURCES>
+  </library>
+</component>
